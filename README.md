@@ -57,30 +57,28 @@ _The **Project Title** will have a front end using React and a back end using Ru
 #### Wireframes
 
 > Use the Wireframes section to display desktop, tablet and mobile views.
-
+- Desktop Log in Page
 ![Log in Page](1-Login-Page.png)
 
-- Desktop Log in Page
-
-![Home Page](2-Home-Page.png)
 
 - Home Page after user log in
+![Home Page](2-Home-Page.png)
 
-![Post Page](3-Post-Page.png)
 
 - Page showing a single posts information
+![Post Page](3-Post-Page.png)
 
-![Users Posts](4-Users-Posts.png)
 
 - Page showing a list of all the current users created posts
+![Users Posts](4-Users-Posts.png)
 
-![Edit Page](5-Edit-Page.png)
 
 - Post edit form
+![Edit Page](5-Edit-Page.png)
 
-![Dummy Link](url)
 
-- Mobile Resource Index
+
+
 
 #### Component Hierarchy
 
@@ -151,8 +149,8 @@ src
 
 database_db
 |__ users/
-|__ resources/
 |__ posts/
+|__ comments/
 
 ```
 
