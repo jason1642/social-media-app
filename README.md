@@ -58,25 +58,25 @@ _The **Project Title** will have a front end using React and a back end using Ru
 
 > Use the Wireframes section to display desktop, tablet and mobile views.
 
-![Dummy Link213](https://wireframe.cc/pro/pp/b164e47b6341479)
+![Log in Page](1-Login-Page.png)
 
-- Desktop Landing
+- Desktop Log in Page
 
-![Dummy Link](url)
+![Home Page](2-Home-Page.png)
 
-- Desktop Hero
+- Home Page after user log in
 
-![Dummy Link](url)
+![Post Page](3-Post-Page.png)
 
-- Resource Index
+- Page showing a single posts information
 
-![Dummy Link](url)
+![Users Posts](4-Users-Posts.png)
 
-- Resource Show
+- Page showing a list of all the current users created posts
 
-![Dummy Link](url)
+![Edit Page](5-Edit-Page.png)
 
-- Tablet Resource Index
+- Post edit form
 
 ![Dummy Link](url)
 
