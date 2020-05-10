@@ -141,7 +141,7 @@ src
 
 #### ERD Model
 
-> Use this section to display an image of a computer generated ERD model.
+![ERD MODEL](my-erd-model.png)
 
 #### Data Heirarchy
 
