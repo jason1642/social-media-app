@@ -7,6 +7,7 @@
 - [Overview](#Overview)
   - [Core Features](#Core-Features)
   - [Goals](#Goals)
+  - [Challenges](#Challenges)
 - [MVP](#MVP)
   - [Client (Front End)](#Client-Front-End)
     - [Wireframes](#Wireframes)
@@ -43,7 +44,9 @@ A user can create a post,containing a title, description, and an optional image.
 - Crud for posts and comments, depending on their level of access
 - Consistently grant users access to certain crud actions according to their ID and post or comment owner
 
+### Challenges
 
+- Creating
 <br>
 
 ## MVP
