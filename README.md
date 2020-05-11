@@ -24,7 +24,7 @@
 
 ## Overview
 
-_**Reddit 0.2** is a website containing a collection of user forums in the form of a title + summary post or title + image 
+_**Reddit 0.2** is a website containing a collection of user forums in the form of a title + summary post with an optional image. Other users can also comment on a post. 
 
 ### Core Features
 
