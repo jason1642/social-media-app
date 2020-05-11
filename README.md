@@ -79,9 +79,18 @@ _The **Project Title** will have a front end using React and a back end using Ru
 - Post edit form
 ![Edit Page](5-Edit-Page.png)
 
+## Mobile wire frames
 
+- Post edit form
+![Log in page](1-Login-page-mobile.png)
 
+![Home Page](2-Homepage-mobile.png)
 
+![Post Info Page](3-post-info-page-mobile.png)
+
+![Users Posts Page](4-users-posts-mobile.png)
+
+![Edit Page](5-Edit-page-mobile.png)
 
 #### Component Hierarchy
 
