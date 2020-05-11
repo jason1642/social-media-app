@@ -162,10 +162,15 @@ database_db
 #### Data Heirarchy
 
 > Use this section to display the expected endpoints from your API.
+
 /user
+
 /user/:id
+
 /user/:id/posts/:id
+
 /user/:id/post/:id/comments
+
 <br>
 
 ### Dependencies
