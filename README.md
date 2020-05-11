@@ -1,8 +1,5 @@
 # Reddit 0.2 <!-- omit in toc -->
 
-> The Project Planning section **should be completed** for your project pitch with instructors.
->
-> To ensure correct Markdown, I recommend copy/pasting the raw template code.
 
 - [Overview](#Overview)
   - [Core Features](#Core-Features)
@@ -42,18 +39,16 @@ A user can create a post,containing a title, description, and an optional image.
 - Create an aesthitic home page, displaying other users posts, and a create post form 
 - Create all components with working back end functionality
 - Crud for posts and comments, depending on their level of access
-- Consistently grant users access to certain crud actions according to their ID and post or comment owner
+- Consistently grant the correct users access to certain crud actions according to their ID
 
 ### Challenges
 
-- Creating
+- Creating controllers for each data table and getting the syntax correct
 <br>
 
 ## MVP
 
-> The Minimum Viable Product should be a well-planned, easily-communicated product, ensuring that the client's deliverable will be achievable and meet specifications within the time frame estimated.
-
-_The **Project Title** will have a front end using React and a back end using Ruby on Rails, using REST APIs to allow users to create, read, update, destroy posts (and comments) depending on their level of access on them. The database will have three tables including: user, post, and comments
+_This project will have a front end using React and a back end with a database using Ruby on Rails, using REST APIs to allow users to create, read, update, destroy posts (and comments) depending on their level of access on them. The database will have three tables including: user, post, and comments
 
 ### Client (Front End)
 
@@ -94,7 +89,6 @@ _The **Project Title** will have a front end using React and a back end using Ru
 
 #### Component Hierarchy
 
-> Use this section to define your React components and the data architecture of your app.
 
 ``` structure
 
@@ -143,7 +137,6 @@ src
 | Styling |    L     |     3-6 hrs      |     TBD     |     TBD     |
 | TOTAL               |          |     20 hrs      |     TBD     |     TBD     |
 
-> _Why is this necessary? Time frames are key to the development cycle. You have limited time to code your app, and your estimates can then be used to evalute possibilities of your MVP and post-MVP based on time needed. It's best you assume an additional hour for each component, as well as a few hours added to the total time, to play it safe._
 
 <br>
 
@@ -191,14 +184,6 @@ database_db
 
 ## Post-MVP
 
-> Use this section to document ideas you've had that would be fun (or necessary) for your Post-MVP. This will be helpful when you return to your project after graduation!
+-Followers table and functionality
 
-***
 
-## Code Showcase
-
-> Use this section to include a brief code snippet of functionality that you are proud of and a brief description.
-
-## Code Issues & Resolutions
-
-> Use this section to list of all major issues encountered and their resolution, if you'd like.
