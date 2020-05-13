@@ -6,7 +6,7 @@ class CreatePost extends Component {
     this.state = {
       title: '',
       description: '',
-      imageURL: ''
+      image_url: ''
     }
   }
 
@@ -18,11 +18,12 @@ class CreatePost extends Component {
   }
 
   render() {
-    const { title, description, imageURL } = this.state;
+    const { title, description, image_url } = this.state;
 
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
+        console.log(this.state)
         this.props.handlePostSubmit(this.state);
         this.props.history.push('/posts');
       }}>
@@ -44,11 +45,11 @@ class CreatePost extends Component {
           onChange={this.handleChange}
         />
         <input
-          id="imageURL"
+          id="image_url"
           type="text"
-          name="imageURL"
-          value={imageURL}
-          placeholder="imageURL"
+          name="image_url"
+          value={image_url}
+          placeholder="image_url"
           onChange={this.handleChange}
         />
         <button>Submit</button>

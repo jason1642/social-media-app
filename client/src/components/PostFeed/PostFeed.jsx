@@ -12,6 +12,7 @@ export default function PostFeed(props) {
               {post.title}
             </Link>
             <p>{post.description}</p>
+            <p>{post.id}</p>
             {/* <button onClick={() => {
             props.history.push(`/posts/${post.id}/edit`);
           }}>Edit</button> */}
