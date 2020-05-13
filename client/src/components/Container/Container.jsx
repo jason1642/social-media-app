@@ -10,7 +10,7 @@ import { getAllFlavors, getAllPosts, postFood, putFood, destroyFood } from '../.
 // import UpdateFood from './UpdateFood';
 // import FoodItem from './FoodItem';
 import PostFeed from '../PostFeed/PostFeed.jsx'
-
+import CreatePost from '../CreatePost/CreatePost.jsx'
 export default class Container extends Component {
   state = {
     comments: [],
@@ -69,10 +69,17 @@ export default class Container extends Component {
           />
 
         )} />
-        <Route path="/posts" render={(props) => (
+        <Route exact path="/posts" render={(props) => (
           <PostFeed
             {...props}
             postList={this.state.posts}
+          />
+        )} />
+
+        <Route path="/posts/new" render={(props) => (
+          <CreatePost
+            {...props}
+            handleFoodSubmit={this.handleFoodSubmit}
           />
         )} />
 
