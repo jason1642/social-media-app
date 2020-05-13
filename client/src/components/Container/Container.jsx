@@ -69,9 +69,13 @@ export default class Container extends Component {
           />
 
         )} />
-        <PostFeed
-          postList={this.state.posts}
-        />
+        <Route path="/posts" render={(props) => (
+          <PostFeed
+            {...props}
+            postList={this.state.posts}
+          />
+        )} />
+
         <Route path='/register' render={(props) => (
           <Register
             {...props}

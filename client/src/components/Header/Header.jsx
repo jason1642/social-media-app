@@ -20,7 +20,7 @@ export default function Header(props) {
         props.currentUser
         &&
         <>
-          <Link to="/foods">Foods  </Link>
+          <Link to="/posts">posts</Link>
           <Link to="/flavors">Flavors</Link>
           <hr />
         </>
