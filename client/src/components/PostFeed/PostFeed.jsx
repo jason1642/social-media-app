@@ -1,11 +1,28 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
-
-const PostFeed = props => {
-
+export default function PostFeed(props) {
   return (
-    <h1>{props.postList.title}</h1>
+    <div>
+      <h3>posts</h3>
+      {props.postList.map(post => (
+        <React.Fragment key={post.id}>
+          <div className='post-card'>
+            <Link to={`/posts/${post.id}`}>
+              {post.title}
+            </Link>
+            <p>{post.description}</p>
+            {/* <button onClick={() => {
+            props.history.push(`/posts/${post.id}/edit`);
+          }}>Edit</button> */}
+            {/* <button onClick={() => {
+            props.handleFoodDelete(food.id);
+          }}>Delete</button> */}
+            <br />
+          </div>
+        </React.Fragment>
+      ))}
+      {/* <Link to="/foods/new"><button>Create</button></Link> */}
+    </div>
   )
 }
-
-export default PostFeed
