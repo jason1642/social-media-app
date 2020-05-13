@@ -53,8 +53,8 @@ export const getAllFlavors = async () => {
 // ================ foods =================
 // ========================================
 
-export const getAllFoods = async () => {
-  const resp = await api.get('/foods');
+export const getAllPosts = async () => {
+  const resp = await api.get('/posts');
   return resp.data;
 }
 

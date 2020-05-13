@@ -9,7 +9,7 @@ export default function Header(props) {
         props.currentUser
           ?
           <>
-            <p>{props.currentUser.username}</p>
+            <p>Hello, {props.currentUser.username}</p>
             <button onClick={props.handleLogout}>Logout</button>
           </>
           :
@@ -20,7 +20,7 @@ export default function Header(props) {
         props.currentUser
         &&
         <>
-          <Link to="/foods">Foods</Link>
+          <Link to="/foods">Foods  </Link>
           <Link to="/flavors">Flavors</Link>
           <hr />
         </>

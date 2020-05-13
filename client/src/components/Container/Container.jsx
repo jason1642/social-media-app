@@ -3,22 +3,24 @@ import { Route } from 'react-router-dom';
 
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
-import { getAllFlavors, getAllFoods, postFood, putFood, destroyFood } from '../../Services/api-helper';
+import { getAllFlavors, getAllPosts, postFood, putFood, destroyFood } from '../../Services/api-helper';
 // import ShowFlavors from './ShowFlavors';
 // import ShowFoods from './ShowFoods';
 // import CreateFood from './CreateFood';
 // import UpdateFood from './UpdateFood';
 // import FoodItem from './FoodItem';
+import PostFeed from '../PostFeed/PostFeed.jsx'
 
 export default class Container extends Component {
   state = {
-    flavors: [],
-    foods: []
+    comments: [],
+    posts: []
   }
 
   componentDidMount() {
-    this.readAllFlavors();
-    this.readAllFoods();
+    // this.readAllComments();
+    this.readAllPosts();
+    console.log(this.state.posts)
   }
 
   readAllFlavors = async () => {
@@ -26,9 +28,10 @@ export default class Container extends Component {
     this.setState({ flavors })
   }
 
-  readAllFoods = async () => {
-    const foods = await getAllFoods();
-    this.setState({ foods })
+  readAllPosts = async () => {
+    const posts = await getAllPosts();
+    this.setState({ posts })
+
   }
 
   handleFoodSubmit = async (foodData) => {
@@ -64,7 +67,11 @@ export default class Container extends Component {
             {...props}
             handleLogin={this.props.handleLogin}
           />
+
         )} />
+        <PostFeed
+          postList={this.state.posts}
+        />
         <Route path='/register' render={(props) => (
           <Register
             {...props}

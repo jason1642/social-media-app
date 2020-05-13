@@ -15,7 +15,7 @@ export default class Login extends Component {
   }
 
   render() {
-    const { username, email, password } = this.state;
+    const { username, password } = this.state;
     return (
       <form onSubmit={(e) => {
         e.preventDefault();
