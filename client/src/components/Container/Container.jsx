@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
-import { getAllFlavors, getAllPosts, postFood, putFood, destroyFood } from '../../Services/api-helper';
+import { getAllFlavors, getAllPosts, postPost, putFood, destroyFood } from '../../Services/api-helper';
 // import ShowFlavors from './ShowFlavors';
 // import ShowFoods from './ShowFoods';
 // import CreateFood from './CreateFood';
@@ -34,10 +34,10 @@ export default class Container extends Component {
 
   }
 
-  handleFoodSubmit = async (foodData) => {
-    const newFood = await postFood(foodData);
+  handlePostSubmit = async (postData) => {
+    const newPost = await postPost(postData);
     this.setState(prevState => ({
-      foods: [...prevState.foods, newFood]
+      posts: [...prevState.posts, newPost]
     }))
   }
 
@@ -79,7 +79,7 @@ export default class Container extends Component {
         <Route path="/posts/new" render={(props) => (
           <CreatePost
             {...props}
-            handleFoodSubmit={this.handleFoodSubmit}
+            handlePostSubmit={this.handlePostSubmit}
           />
         )} />
 
