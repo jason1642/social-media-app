@@ -18,11 +18,12 @@ export default function PostFeed(props) {
             {/* <button onClick={() => {
             props.handleFoodDelete(food.id);
           }}>Delete</button> */}
+            {/* <img src={post.image_url} /> */}
             <br />
           </div>
         </React.Fragment>
       ))}
-      {/* <Link to="/foods/new"><button>Create</button></Link> */}
+      <Link to="/posts/new"><button>Create a post</button></Link>
     </div>
   )
 }
