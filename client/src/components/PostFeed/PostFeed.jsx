@@ -16,9 +16,9 @@ export default function PostFeed(props) {
             {/* <button onClick={() => {
             props.history.push(`/posts/${post.id}/edit`);
           }}>Edit</button> */}
-            {/* <button onClick={() => {
-            props.handleFoodDelete(food.id);
-          }}>Delete</button> */}
+            <button onClick={() => {
+              props.handlePostDelete(post.id);
+            }}>Delete</button>
             {/* <img src={post.image_url} /> */}
             <br />
           </div>

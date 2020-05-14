@@ -1,20 +1,28 @@
 import React, { Component } from 'react'
 import './CreatePost.css'
+import { verifyUser } from '../../Services/api-helper'
 class CreatePost extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       title: '',
-      description: '',
-      image_url: ''
+      image_url: '',
+      description: ''
     }
   }
+  async componentDidMount() {
+    const currentUser1 = await verifyUser();
+    this.setState({
+      user_id: currentUser1.id
+    })
 
+  }
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
       [name]: value
     })
+
   }
 
   render() {

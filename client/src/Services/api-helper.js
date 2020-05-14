@@ -58,8 +58,8 @@ export const getAllPosts = async () => {
   return resp.data;
 }
 
-export const getOneFood = async (id) => {
-  const resp = await api.get(`/foods/${id}`);
+export const getOnePost = async (id) => {
+  const resp = await api.get(`/posts/${id}`);
   return resp.data;
 }
 
@@ -73,8 +73,8 @@ export const putFood = async (id, foodData) => {
   return resp.data;
 }
 
-export const destroyFood = async (id) => {
-  const resp = await api.delete(`/foods/${id}`);
+export const destroyPost = async (id) => {
+  const resp = await api.delete(`/posts/${id}`);
   return resp;
 }
 
