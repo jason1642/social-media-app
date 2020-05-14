@@ -68,8 +68,8 @@ export const postPost = async (postData) => {
   return resp.data;
 }
 
-export const putFood = async (id, foodData) => {
-  const resp = await api.put(`/foods/${id}`, foodData);
+export const putPost = async (id, postData) => {
+  const resp = await api.put(`/posts/${id}`, postData);
   return resp.data;
 }
 

@@ -3,11 +3,11 @@ import { Route } from 'react-router-dom';
 import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
-import { getAllFlavors, getAllPosts, postPost, putFood, destroyPost } from '../../Services/api-helper';
+import { getAllFlavors, getAllPosts, postPost, putPost, destroyPost } from '../../Services/api-helper';
+import PostEditPage from '../PostEditPage/PostEditPage.jsx';
 // import ShowFlavors from './ShowFlavors';
 // import ShowFoods from './ShowFoods';
 // import CreateFood from './CreateFood';
-// import UpdateFood from './UpdateFood';
 // import FoodItem from './FoodItem';
 import PostFeed from '../PostFeed/PostFeed.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
@@ -46,11 +46,11 @@ export default class Container extends Component {
     }))
   }
 
-  handleFoodUpdate = async (id, foodData) => {
-    const updatedFood = await putFood(id, foodData);
+  handlePostUpdate = async (id, postData) => {
+    const updatedPost = await putPost(id, postData);
     this.setState(prevState => ({
-      foods: prevState.foods.map(food => {
-        return food.id === id ? updatedFood : food
+      posts: prevState.posts.map(post => {
+        return post.id === id ? updatedPost : post
       })
     }))
   }
@@ -93,6 +93,7 @@ export default class Container extends Component {
         <Route exact path='/posts/:id' render={(props) => {
           const { id } = props.match.params
           return <PostInfoPage
+            {...props}
             postId={id}
           // flavors={this.state.flavors}
           />
@@ -101,7 +102,7 @@ export default class Container extends Component {
 
         <Route path='/posts/:id/edit' render={(props) => {
           const { id } = props.match.params
-          return <UpdatePost
+          return <PostEditPage
             {...props}
             handlePostUpdate={this.handlePostUpdate}
             postId={id}

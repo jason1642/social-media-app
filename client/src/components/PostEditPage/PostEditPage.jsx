@@ -40,19 +40,19 @@ export default class UpdateFood extends Component {
         <h3>Edit Post</h3>
         <input
           type="text"
-          value={name}
+          value={title}
           name="title"
           onChange={this.handleChange}
         />
         <input
           type="text"
-          value={name}
+          value={description}
           name="description"
           onChange={this.handleChange}
         />
         <input
           type="text"
-          value={name}
+          value={image_url}
           name="image_url"
           onChange={this.handleChange}
         />
