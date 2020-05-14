@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getOnePost } from '../../Services/api-helper'
-import { Link } from 'react-router-dom'
+import './PostInfoPage.css'
+
 class PostInfoPage extends Component {
   constructor(props) {
     super(props)
@@ -26,11 +27,17 @@ class PostInfoPage extends Component {
           post &&
           <>
             <h1>{post.title}</h1>
-            <img class='post-info-image' src={post.image_url} />
+            <img className='post-info-image' src={post.image_url} />
             <p>{post.description}</p>
           </>
         }
-        <Link to='posts/:id/edit'>edit post</Link>
+        <button onClick={() => {
+          this.props.history.push(`/posts/${post.id}/edit`);
+        }}>Edit</button>
+        <div className='comments'>
+          <h1>Comment here</h1>
+        </div>
+
       </div>
     )
   }
