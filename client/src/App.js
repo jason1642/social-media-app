@@ -53,6 +53,7 @@ class App extends Component {
         />
         {console.log(this.state.currentUser)}
         <Container
+          currentUser={this.state.currentUser}
           handleRegister={this.handleRegister}
           handleLogin={this.handleLogin}
         />

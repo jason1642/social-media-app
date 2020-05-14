@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-
+import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
-import { getAllFlavors, getAllPosts, postPost, putFood, destroyFood } from '../../Services/api-helper';
+import { getAllFlavors, getAllPosts, postPost, putFood, destroyPost } from '../../Services/api-helper';
 // import ShowFlavors from './ShowFlavors';
 // import ShowFoods from './ShowFoods';
 // import CreateFood from './CreateFood';
@@ -12,9 +12,12 @@ import { getAllFlavors, getAllPosts, postPost, putFood, destroyFood } from '../.
 import PostFeed from '../PostFeed/PostFeed.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
 export default class Container extends Component {
-  state = {
-    comments: [],
-    posts: []
+  constructor(props) {
+    super(props)
+    this.state = {
+      comments: [],
+      posts: []
+    }
   }
 
   componentDidMount() {
@@ -35,6 +38,8 @@ export default class Container extends Component {
   }
 
   handlePostSubmit = async (postData) => {
+    // const postObject = postData
+    // postObject.user_id = this.props.currentUser.id
     const newPost = await postPost(postData);
     this.setState(prevState => ({
       posts: [...prevState.posts, newPost]
@@ -50,11 +55,11 @@ export default class Container extends Component {
     }))
   }
 
-  handleFoodDelete = async (id) => {
-    await destroyFood(id);
+  handlePostDelete = async (id) => {
+    await destroyPost(id);
     this.setState(prevState => ({
-      foods: prevState.foods.filter(food => {
-        return food.id !== id
+      posts: prevState.posts.filter(post => {
+        return post.id !== id
       })
     }))
   }
@@ -72,6 +77,7 @@ export default class Container extends Component {
         <Route exact path="/posts" render={(props) => (
           <PostFeed
             {...props}
+            handlePostDelete={this.handlePostDelete}
             postList={this.state.posts}
           />
         )} />
@@ -79,9 +85,28 @@ export default class Container extends Component {
         <Route path="/posts/new" render={(props) => (
           <CreatePost
             {...props}
+            currentUser={this.props.currentUser}
             handlePostSubmit={this.handlePostSubmit}
           />
         )} />
+
+        <Route exact path='/posts/:id' render={(props) => {
+          const { id } = props.match.params
+          return <PostInfoPage
+            postId={id}
+          // flavors={this.state.flavors}
+          />
+        }
+        } />
+
+        <Route path='/posts/:id/edit' render={(props) => {
+          const { id } = props.match.params
+          return <UpdatePost
+            {...props}
+            handlePostUpdate={this.handlePostUpdate}
+            postId={id}
+          />
+        }} />
 
         <Route path='/register' render={(props) => (
           <Register
