@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
-import { getAllFlavors, getAllPosts, postPost, putPost, destroyPost } from '../../Services/api-helper';
+import { getAllComments, getAllPosts, postPost, putPost, destroyPost } from '../../Services/api-helper';
 import PostEditPage from '../PostEditPage/PostEditPage.jsx';
 // import ShowFlavors from './ShowFlavors';
 // import ShowFoods from './ShowFoods';
@@ -26,9 +26,9 @@ export default class Container extends Component {
     console.log(this.state.posts)
   }
 
-  readAllFlavors = async () => {
-    const flavors = await getAllFlavors();
-    this.setState({ flavors })
+  readAllComments = async () => {
+    const comments = await getAllComments();
+    this.setState({ comments })
   }
 
   readAllPosts = async () => {

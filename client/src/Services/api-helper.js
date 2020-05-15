@@ -41,16 +41,16 @@ export const removeToken = () => {
 
 
 // ========================================
-// ================ flavors ===============
+// ================ comments ===============
 // ========================================
 
-export const getAllFlavors = async () => {
-  const resp = await api.get('/flavors');
+export const getAllComments = async (postid) => {
+  const resp = await api.get(`/posts/${postid}/comments/1`);
   return resp.data;
 }
 
 // ========================================
-// ================ foods =================
+// ================ posts =================
 // ========================================
 
 export const getAllPosts = async () => {
@@ -79,10 +79,12 @@ export const destroyPost = async (id) => {
 }
 
 // ========================================
-// ========= foods and Flavors ============
+// ========= posts and comments ============
 // ========================================
 
-export const addFlavor = async (flavorId, foodId) => {
-  const resp = await api.get(`/flavors/${flavorId}/foods/${foodId}`)
+export const addComment = async (commentData, postId) => {
+  // const resp = await api.get(`/comments/${commentId}/posts/${postId}`)
+  const resp = await api.post(`/posts/${postId}/comments`, commentData);
+
   return resp.data;
 }
