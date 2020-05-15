@@ -20,7 +20,7 @@ User.create(username: "jason16umjthnbgvr42", email: "smallfrytbvrce19112@email.c
 
 
 
-comment1 = Comment.create(comment_text: "this is so cool!")
+
 
 p "#{User.count} user(s) created"
 
@@ -38,3 +38,12 @@ Post.create(title: "post number two", description: "This is a summary of my post
 Post.create(title: "post number three", description: "This is a summary of my post belonging to user3", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 4) 
 p "#{Post.count} posts created"
 
+
+Comment.create(comment_text: "this is so cool!", user_id: 1, post_id: 1)
+Comment.create(comment_text: "8765432", user_id: 1, post_id: 1)
+Comment.create(comment_text: "tkjhgfds", user_id: 2, post_id: 1)
+Comment.create(comment_text: "t12312weqweq12312qweqweqw!", user_id: 3, post_id: 4)
+
+
+
+p "#{Comment.count} comments created"
