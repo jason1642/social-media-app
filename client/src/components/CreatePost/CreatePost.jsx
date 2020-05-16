@@ -33,7 +33,7 @@ class CreatePost extends Component {
         e.preventDefault();
         console.log(this.state)
         this.props.handlePostSubmit(this.state);
-        this.props.history.push('/posts');
+        this.props.history.push('/');
       }}>
         <h3>Create Post</h3>
         <input

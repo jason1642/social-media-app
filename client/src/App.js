@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router';
 import './App.css'
+import { Redirect, Route } from 'react-router-dom'
 import Container from './components/Container/Container'
 import Header from './components/Header/Header';
+import LoginPage from './components/LoginPage/LoginPage.jsx'
 import {
   loginUser,
   registerUser,
@@ -41,17 +43,19 @@ class App extends Component {
       currentUser: null
     })
     removeToken();
-    this.props.history.push('/');
+    this.props.history.push('/login');
+    return <Redirect to='login' />
   }
 
   render() {
     return (
       <div className="App">
+
         <Header
           handleLogout={this.handleLogout}
           currentUser={this.state.currentUser}
         />
-        {console.log(this.state.currentUser)}
+
         <Container
           currentUser={this.state.currentUser}
           handleRegister={this.handleRegister}

@@ -1,0 +1,28 @@
+.latest-posts-title {
+  font-size: 2.5em;
+  margin: 0;
+}
+
+.postfeed-card {
+  border: 1px solid black;
+  width: 65%;
+  display : flex;
+  margin: 2% auto;
+  height: 60vh;
+}
+
+.postfeed-card-title {
+  font-size: 2.5em;
+  text-decoration: none;
+}
+
+.postfeed-card-title-link {
+  text-decoration: none;
+}
+.postfeed-card-description{
+  overflow: hidden; 
+}
+
+.postfeed-card-image{
+  
+}
