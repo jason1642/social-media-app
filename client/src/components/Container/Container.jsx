@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
@@ -67,14 +67,15 @@ export default class Container extends Component {
   render() {
     return (
       <main>
-        <Route path='/login' render={(props) => (
+
+        <Route exact path='/login' render={(props) => (
           <LoginPage
             {...props}
             handleLogin={this.props.handleLogin}
           />
-
         )} />
-        <Route exact path="/posts" render={(props) => (
+
+        <Route exact path="/" render={(props) => (
           <PostFeed
             {...props}
             handlePostDelete={this.handlePostDelete}
@@ -82,7 +83,7 @@ export default class Container extends Component {
           />
         )} />
 
-        <Route path="/posts/new" render={(props) => (
+        <Route exact path="/posts/new" render={(props) => (
           <CreatePost
             {...props}
             currentUser={this.props.currentUser}
@@ -90,17 +91,17 @@ export default class Container extends Component {
           />
         )} />
 
-        <Route exact path='/posts/:id' render={(props) => {
+        <Route exact path="/posts/:id" render={(props) => {
           const { id } = props.match.params
           return <PostInfoPage
             {...props}
             postId={id}
-          // flavors={this.state.flavors}
+            currentUser={this.props.currentUser}
           />
         }
         } />
 
-        <Route path='/posts/:id/edit' render={(props) => {
+        <Route exact path='/posts/:id/edit' render={(props) => {
           const { id } = props.match.params
           return <PostEditPage
             {...props}
@@ -109,12 +110,13 @@ export default class Container extends Component {
           />
         }} />
 
-        <Route path='/register' render={(props) => (
+        <Route exact path='/register' render={(props) => (
           <Register
             {...props}
             handleRegister={this.props.handleRegister}
           />
         )} />
+
       </main>
     )
   }

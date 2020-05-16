@@ -45,7 +45,7 @@ export const removeToken = () => {
 // ========================================
 
 export const getAllComments = async (postid) => {
-  const resp = await api.get(`/posts/${postid}/comments/1`);
+  const resp = await api.get(`/posts/${postid}/comments`);
   return resp.data;
 }
 

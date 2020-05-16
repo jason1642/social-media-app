@@ -1,27 +1,42 @@
 class CommentsController < ApplicationController
   before_action :set_comment
-  before_action  :set_post
+  before_action :set_post
 
   # GET /comments
   def index
-    @comments = Comment.all
+    # @comments = Comment.all
 
-    render json: @comments
+    # render json: @comments
+
+
+    @comments = Comment.where(post_id: @post.id)
+    render json: @comments.as_json(include:{
+      post:{
+        include: :user
+ 
+      }
+    }),status: :ok
   end
 
   # GET /comments/1
   def show
-    render json: @comment
+    # render json: @comment
+
+    render json: @comment.as_json(include:{post:{
+      include: :user
+    }}), status: :ok
   end
 
   # POST /comments
   def create
     # @comment = Comment.new(comment_params)
-    @comment = @post.comments.create(params[:comment].permit(:comment_text))
-    if @comment.save
-      render json: @comment, status: :created, location: @comment
+    # @comment = @post.comments.create(params[:comment].permit(:comment_text))
+    # @comment = @post.comments.create.require(:comment).permit(:comment_text)
+    @comments = @post.comments.create(params.require(:comment).permit(:comment_text, :user_id, :post_id))
+    if @comments.save
+      render json: @comments
     else
-      render json: @comment.errors, status: :unprocessable_entity
+      render json: @comments.errors, status: :unprocessable_entity
     end
   end
 
@@ -42,7 +57,8 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      @comment = Comment.find(params[:id])
+      # p Comment.find(params[:id])
+      @comment = Comment.find(params[:post_id])
     end
 
     def set_post

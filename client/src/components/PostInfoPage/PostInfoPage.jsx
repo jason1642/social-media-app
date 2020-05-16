@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { getOnePost, addComment, getAllComments } from '../../Services/api-helper'
+import { getOnePost, addComment, getAllComments, verifyUser } from '../../Services/api-helper'
 import './PostInfoPage.css'
+
 
 class PostInfoPage extends Component {
   constructor(props) {
@@ -8,13 +9,20 @@ class PostInfoPage extends Component {
     this.state = {
       post: null,
       comments: null,
-      commentText: ''
+      commentText: '',
+      currentUserId: null
     }
   }
 
-  componentDidMount() {
-    this.setPost();
-    this.setComments();
+  async componentDidMount() {
+    const currentUser1 = await verifyUser();
+    this.setState({
+      currentUserId: currentUser1.id
+    })
+    this.setPost()
+    if (this.setPost()) {
+      this.setComments();
+    }
   }
 
   setPost = async () => {
@@ -23,64 +31,79 @@ class PostInfoPage extends Component {
   }
 
   setComments = async () => {
-    const comments = await getAllComments(1)
+
+    const comments = await getAllComments(this.props.postId)
     this.setState({ comments })
+    console.log(this.state.comments)
   }
 
   handleChange = (e) => {
     const { value } = e.target;
-    console.log(this.state.commentText)
     this.setState({
       commentText: value
     })
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault();
-    const post = await addComment(this.state.commentText, 1, this.state.post.id);
-    this.setState({ post });
-    console.log('this is ' + this.state.post)
+  handleSubmit = async () => {
+    const newComment = await addComment({
+      comment_text: this.state.commentText,
+      user_id: this.state.currentUserId,
+      post_id: this.props.postId
+    }, this.props.postId);
 
+    this.setState(prevState => ({
+      comments: [...prevState.comments, newComment]
+    }))
   }
 
   render() {
+    console.log(this.state.comments)
     const { post, commentText } = this.state;
-    console.log('this is comments ' + this.state.comments
-    )
     return (
 
       <div>
+
         {
           post &&
           <>
-            <h1>{post.title}</h1>
-            <img className='post-info-image' src={post.image_url} alt="awrimaw" />
-            <p>{post.description}</p>
+            <>
+              <h1>{post.title}</h1>
+              <img className='post-info-image' src={post.image_url} alt="awrimaw" />
+              <p>{post.description}</p>
+            </>
+
+            <button onClick={() => {
+              this.props.history.push(`/posts/${post.id}/edit`);
+            }}>Edit</button>
+            <div className='comments'>
+              <h1>Add comment</h1>
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  type='text'
+                  value={commentText}
+                  name='commentText'
+                  onChange={this.handleChange}
+                />
+                <button>Add comment</button>
+              </form>
+              <div className="comment-section">
+
+
+                {this.state.comments &&
+                  this.state.comments.map(comment => (
+                    <React.Fragment key={comment.id}>
+                      <div className='comment-single-box'>
+                        <h3>{comment.post.user.username}:</h3>
+                        <p>{comment.comment_text}</p>
+
+                        <br />
+                      </div>
+                    </React.Fragment>
+                  ))}
+              </div>
+            </div>
           </>
         }
-        <button onClick={() => {
-          this.props.history.push(`/posts/${post.id}/edit`);
-        }}>Edit</button>
-        <div className='comments'>
-          <h1>Add comment</h1>
-          <form onSubmit={this.handleSubmit}>
-            <input
-              type='text'
-              value={commentText}
-              name='commentText'
-              onChange={this.handleChange}
-            />
-            <button>Add comment</button>
-          </form>
-          <div>
-            {
-              this.state.comments &&
-              <p>Comments here!!!</p>
-            }
-          </div>
-        </div>
-
-
       </div>
     )
   }

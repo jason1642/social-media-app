@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { verifyUser } from '../../Services/api-helper'
 
 export default class Login extends Component {
   state = {
@@ -16,7 +17,9 @@ export default class Login extends Component {
 
   render() {
     const { username, password } = this.state;
+
     return (
+
       <form onSubmit={(e) => {
         e.preventDefault();
         console.log(this.state)
@@ -46,6 +49,9 @@ export default class Login extends Component {
         <Link to='/register'>register</Link>
         <input type="submit" />
       </form>
+
+
+
     )
   }
 }
