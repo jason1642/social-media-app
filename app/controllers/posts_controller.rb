@@ -9,18 +9,12 @@ class PostsController < ApplicationController
 
     render json: @posts
 
-
-    # @posts = Post.where(user_id: @user.id)
-    # render json: @posts, include: :user, status: :ok
   end
 
   # GET /posts/1
   def show
     render json: @post
 
-    # render json: @post.as_json(include:{post:{
-    #   include: :user
-    # }}), status: :ok
   end
   # def new 
   #   @post = post.new
