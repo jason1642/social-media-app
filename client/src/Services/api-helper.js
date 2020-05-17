@@ -83,7 +83,6 @@ export const destroyPost = async (id) => {
 // ========================================
 
 export const addComment = async (commentData, postId) => {
-  // const resp = await api.get(`/comments/${commentId}/posts/${postId}`)
   const resp = await api.post(`/posts/${postId}/comments`, commentData);
 
   return resp.data;

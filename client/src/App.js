@@ -4,7 +4,6 @@ import './App.css'
 import { Redirect, Route } from 'react-router-dom'
 import Container from './components/Container/Container'
 import Header from './components/Header/Header';
-import LoginPage from './components/LoginPage/LoginPage.jsx'
 import {
   loginUser,
   registerUser,

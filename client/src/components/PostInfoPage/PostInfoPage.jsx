@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getOnePost, addComment, getAllComments, verifyUser } from '../../Services/api-helper'
+import { getOnePost, addComment, getAllComments, verifyUser, getOneUser } from '../../Services/api-helper'
 import './PostInfoPage.css'
 
 
@@ -10,11 +10,14 @@ class PostInfoPage extends Component {
       post: null,
       comments: null,
       commentText: '',
-      currentUserId: null
+      currentUserId: null,
+      postedBy: ''
     }
   }
 
   async componentDidMount() {
+
+
     const currentUser1 = await verifyUser();
     this.setState({
       currentUserId: currentUser1.id
@@ -23,6 +26,8 @@ class PostInfoPage extends Component {
     if (this.setPost()) {
       this.setComments();
     }
+    // const postCreatedBy = await getOneUser(this.state.post.user_id)
+    this.state.post && console.log(getOneUser(this.state.post))
   }
 
   setPost = async () => {
@@ -57,8 +62,9 @@ class PostInfoPage extends Component {
   }
 
   render() {
-    console.log(this.state.comments)
-    const { post, commentText } = this.state;
+    console.log(this.state.currentUser)
+    console.log(this.state.post)
+    const { post, commentText, currentUserId } = this.state;
     return (
 
       <div className='postinfo-page-container'>
@@ -67,29 +73,47 @@ class PostInfoPage extends Component {
           post &&
           <>
             <div className='postinfo-main-content'>
-              <h1>{post.title}</h1>
+              <div className='post-info-main-title'>{post.title}</div>
+              <div className='posted-by-title'>
+
+              </div>
               <div className='post-info-image-container'><img className='post-info-image' src={post.image_url} alt="awrimaw" />
               </div>
-              <p>{post.description}</p>
+              <div className='post-info-main-description'>
+                {post.description}
+              </div>
 
 
-              <button onClick={() => {
-                this.props.history.push(`/posts/${post.id}/edit`);
-              }}>Edit</button>
+
+              {
+                currentUserId == post.user_id ?
+                  <>
+                    <button onClick={() => {
+                      this.props.history.push(`/posts/${post.id}/edit`);
+                    }}>Edit</button>
+                    <button onClick={() => {
+                      this.props.handlePostDelete(post.id);
+                      this.props.history.push(`/`);
+                    }}>Delete</button>
+                  </>
+                  :
+                  <> </>
+              }
+
+
             </div>
-            {/* <button onClick={() => {
-              this.props.handlePostDelete(post.id);
-            }}>Delete</button> */}
+
             <div className='comment-container'>
-              <h1>Add comment</h1>
+              <h1 className='add-comment-title'>Comments</h1>
               <form className='comment-input-box' onSubmit={this.handleSubmit}>
                 <input
                   type='text'
                   value={commentText}
                   name='commentText'
                   onChange={this.handleChange}
+                  placeholder='Add your comment here!'
                 />
-                <button className='submit-button'>Add comment</button>
+                <button className='submit-button comment-submit-button'>Add comment</button>
               </form>
               <div className="comment-section">
 
