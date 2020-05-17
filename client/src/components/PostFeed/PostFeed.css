@@ -3,12 +3,34 @@
   margin: 0;
 }
 
+.postfeed-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+
 .postfeed-card {
-  border: 1px solid black;
-  width: 65%;
-  display : flex;
-  margin: 2% auto;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, .2);
+  width: 40%;
+  background-color: white;
+  display: flex;
   height: 60vh;
+  flex-direction: column;
+}
+
+.postfeed-card-image-container {
+  height: 60%;
+  width: 70%;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+
+.postfeed-card-image {
+  height: 100%;
+  width: 100%;
+
 }
 
 .postfeed-card-title {
@@ -19,10 +41,7 @@
 .postfeed-card-title-link {
   text-decoration: none;
 }
-.postfeed-card-description{
-  overflow: hidden; 
-}
 
-.postfeed-card-image{
-  
+.postfeed-card-description {
+  overflow: hidden;
 }

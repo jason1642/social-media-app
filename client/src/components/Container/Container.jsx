@@ -67,56 +67,68 @@ export default class Container extends Component {
   render() {
     return (
       <main>
+        {
+          this.props.currentUser ?
+            <>
+              <Route exact path='/login' render={(props) => (
+                <LoginPage
+                  {...props}
+                  handleLogin={this.props.handleLogin}
+                />
+              )} />
 
-        <Route exact path='/login' render={(props) => (
-          <LoginPage
-            {...props}
-            handleLogin={this.props.handleLogin}
-          />
-        )} />
+              <Route exact path="/" render={(props) => (
+                <PostFeed
+                  {...props}
+                  handlePostDelete={this.handlePostDelete}
+                  postList={this.state.posts}
+                />
+              )} />
 
-        <Route exact path="/" render={(props) => (
-          <PostFeed
-            {...props}
-            handlePostDelete={this.handlePostDelete}
-            postList={this.state.posts}
-          />
-        )} />
+              <Route exact path="/posts/new" render={(props) => (
+                <CreatePost
+                  {...props}
+                  currentUser={this.props.currentUser}
+                  handlePostSubmit={this.handlePostSubmit}
+                />
+              )} />
 
-        <Route exact path="/posts/new" render={(props) => (
-          <CreatePost
-            {...props}
-            currentUser={this.props.currentUser}
-            handlePostSubmit={this.handlePostSubmit}
-          />
-        )} />
+              <Route exact path="/posts/:id" render={(props) => {
+                const { id } = props.match.params
+                return <PostInfoPage
+                  {...props}
+                  postId={id}
+                  currentUser={this.props.currentUser}
+                />
+              }
+              } />
 
-        <Route exact path="/posts/:id" render={(props) => {
-          const { id } = props.match.params
-          return <PostInfoPage
-            {...props}
-            postId={id}
-            currentUser={this.props.currentUser}
-          />
+              <Route exact path='/posts/:id/edit' render={(props) => {
+                const { id } = props.match.params
+                return <PostEditPage
+                  {...props}
+                  handlePostUpdate={this.handlePostUpdate}
+                  postId={id}
+                />
+              }} />
+
+              <Route exact path='/register' render={(props) => (
+                <Register
+                  {...props}
+                  handleRegister={this.props.handleRegister}
+                />
+              )} />
+            </>
+            : <>
+              <Redirect to='/login' />
+              <Route exact path='/login' render={(props) => (
+                <LoginPage
+                  {...props}
+                  handleLogin={this.props.handleLogin}
+                />
+              )} />
+            </>
         }
-        } />
-
-        <Route exact path='/posts/:id/edit' render={(props) => {
-          const { id } = props.match.params
-          return <PostEditPage
-            {...props}
-            handlePostUpdate={this.handlePostUpdate}
-            postId={id}
-          />
-        }} />
-
-        <Route exact path='/register' render={(props) => (
-          <Register
-            {...props}
-            handleRegister={this.props.handleRegister}
-          />
-        )} />
-
       </main>
     )
   }

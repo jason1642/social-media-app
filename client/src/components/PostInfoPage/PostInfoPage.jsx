@@ -68,23 +68,27 @@ class PostInfoPage extends Component {
           <>
             <>
               <h1>{post.title}</h1>
-              <img className='post-info-image' src={post.image_url} alt="awrimaw" />
+              <div className='post-info-image-container'><img className='post-info-image' src={post.image_url} alt="awrimaw" />
+              </div>
               <p>{post.description}</p>
             </>
 
             <button onClick={() => {
               this.props.history.push(`/posts/${post.id}/edit`);
             }}>Edit</button>
-            <div className='comments'>
+            {/* <button onClick={() => {
+              this.props.handlePostDelete(post.id);
+            }}>Delete</button> */}
+            <div className='comment-container'>
               <h1>Add comment</h1>
-              <form onSubmit={this.handleSubmit}>
+              <form className='comment-input-box' onSubmit={this.handleSubmit}>
                 <input
                   type='text'
                   value={commentText}
                   name='commentText'
                   onChange={this.handleChange}
                 />
-                <button>Add comment</button>
+                <button className='submit-button'>Add comment</button>
               </form>
               <div className="comment-section">
 
@@ -93,7 +97,7 @@ class PostInfoPage extends Component {
                   this.state.comments.map(comment => (
                     <React.Fragment key={comment.id}>
                       <div className='comment-single-box'>
-                        <h3>{comment.post.user.username}:</h3>
+                        <h3>{comment.post.user.username} says:</h3>
                         <p>{comment.comment_text}</p>
 
                         <br />
