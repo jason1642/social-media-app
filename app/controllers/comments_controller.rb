@@ -62,9 +62,7 @@ class CommentsController < ApplicationController
       @post = Post.find(params[:post_id])
     end
 
-    # def set_user
-    #   @User = User.find(params[:user_id])
-    # end
+  
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
