@@ -1,0 +1,47 @@
+.login-logo {
+  height: 200px;
+  width: 250px;
+  margin-top: 14px;
+}
+
+.login-form-title {
+  font-size: 2.4em;
+}
+
+.login-page-header-title {
+  margin: 0;
+}
+
+.register-button {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  font-size: 1.4em;
+  padding: 0 10px;
+}
+
+.login-header {
+  display: flex;
+  justify-content: space-around;
+}
+
+.login-form>input {
+  height: 30px;
+  width: 18%;
+  font-size: 1.2em;
+  padding-left: 15px;
+}
+
+.login-submit-button {
+  margin: 10px 0;
+  padding: 20px 30px;
+  font-size: 1.5em;
+  border-radius: 15px;
+}
+
+@media screen and (max-width: 480px) {
+  .login-page-header-title {
+    display: none;
+  }
+
+}

@@ -12,7 +12,7 @@ class CreatePost extends Component {
   }
   async componentDidMount() {
     const currentUser1 = await verifyUser();
-    this.setState({
+    currentUser1 && this.setState({
       user_id: currentUser1.id
     })
 
@@ -35,7 +35,7 @@ class CreatePost extends Component {
         this.props.handlePostSubmit(this.state);
         this.props.history.push('/');
       }}>
-        <h3>Create Post</h3>
+        <h3>Create a Post</h3>
         <input
           id="title"
           type="text"
@@ -61,7 +61,7 @@ class CreatePost extends Component {
           placeholder="Image_url Link"
           onChange={this.handleChange}
         />
-        <button>Submit</button>
+        <button className='createpost-submit-button'>Submit</button>
 
       </form>
     )
