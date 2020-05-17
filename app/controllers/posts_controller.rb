@@ -52,12 +52,7 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-    # def set_post
-    #   @post = @current_user.posts.find(params[:id])
-    # end
-    # def set_user 
-    #   @user = User.find(params[:id])
-    # end
+   
     # Only allow a trusted parameter "white list" through.
     def post_params
       params.require(:post).permit(:title, :description, :image_url, :user_id)
