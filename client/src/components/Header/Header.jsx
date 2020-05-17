@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { verifyUser } from '../../Services/api-helper'
 import './Header.css'
 class Header extends Component {
