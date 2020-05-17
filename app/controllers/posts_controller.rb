@@ -44,11 +44,7 @@ class PostsController < ApplicationController
   end
 
 
-  # def add_comment
-  #   @comment = Comment.find(params[:comment_id])
-  #   @post.comments << @comment
-  #   render json: @post, include: :comments
-  # end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
