@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom';
-import { verifyUser } from '../../Services/api-helper'
+
 import './LoginPage.css'
 export default class Login extends Component {
   state = {
