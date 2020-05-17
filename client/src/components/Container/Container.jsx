@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
@@ -39,8 +39,6 @@ export default class Container extends Component {
   }
 
   handlePostSubmit = async (postData) => {
-    // const postObject = postData
-    // postObject.user_id = this.props.currentUser.id
     const newPost = await postPost(postData);
     this.setState(prevState => ({
       posts: [...prevState.posts, newPost]
