@@ -11,13 +11,11 @@ class PostInfoPage extends Component {
       comments: null,
       commentText: '',
       currentUserId: null,
-      postedBy: ''
+      postedBy: null
     }
   }
 
   async componentDidMount() {
-
-
     const currentUser1 = await verifyUser();
     this.setState({
       currentUserId: currentUser1.id
@@ -26,8 +24,14 @@ class PostInfoPage extends Component {
     if (this.setPost()) {
       this.setComments();
     }
-    // const postCreatedBy = await getOneUser(this.state.post.user_id)
-    this.state.post && console.log(getOneUser(this.state.post))
+    if (this.state.post) {
+      const poster = this.state.post && getOneUser(this.state.post.id).then(v => v.data.username)
+      console.log(poster)
+    }
+    // this.setState({
+    //   postedBy: poster
+    // })
+
   }
 
   setPost = async () => {
@@ -62,9 +66,8 @@ class PostInfoPage extends Component {
   }
 
   render() {
-    console.log(this.state.currentUser)
-    console.log(this.state.post)
     const { post, commentText, currentUserId } = this.state;
+    console.log(this.state.poster)
     return (
 
       <div className='postinfo-page-container'>
@@ -75,7 +78,7 @@ class PostInfoPage extends Component {
             <div className='postinfo-main-content'>
               <div className='post-info-main-title'>{post.title}</div>
               <div className='posted-by-title'>
-
+                {/* {getOneUser(post.id).then(v => v.data.username)} */}
               </div>
               <div className='post-info-image-container'><img className='post-info-image' src={post.image_url} alt="awrimaw" />
               </div>
