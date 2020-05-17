@@ -52,3 +52,15 @@
 .postfeed-card-description {
   overflow: hidden;
 }
+
+@media screen and (max-width: 480px) {
+  .postfeed-section {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .postfeed-card {
+    width: 95%;
+    margin: 15px auto;
+  }
+}
