@@ -91,9 +91,32 @@
   height: 100%;
   width: 15%;
   margin: auto 0;
-
 }
 
 .add-comment-title {
   text-align: left;
+}
+
+@media screen and (max-width: 500px) {
+  .postinfo-page-container {
+    width: 100%;
+  }
+
+  .postinfo-main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .postinfo-main-content>* {
+    grid-column: 1/2;
+    display: block;
+  }
+
+  .comment-section {
+    width: 100%;
+  }
+
+  .comment-single-box {
+    width: 100%;
+    margin: 5px auto;
+  }
 }

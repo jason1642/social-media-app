@@ -33,3 +33,14 @@
   font-size: 1.3em;
   border-radius: 15px;
 }
+
+@media screen and (max-width: 500px) {
+  .createpost-submit-button {
+    width: 100%;
+  }
+
+  .create-post-form>input,
+  .create-post-form>textarea {
+    width: 90%;
+  }
+}

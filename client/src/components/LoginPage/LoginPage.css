@@ -39,9 +39,10 @@
   border-radius: 15px;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .login-page-header-title {
     display: none;
   }
+  
 
 }
