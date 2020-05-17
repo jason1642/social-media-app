@@ -59,8 +59,12 @@
     width: 100%;
   }
 
+  .postfeed-card-title {
+    font-size: 2em;
+  }
+
   .postfeed-card {
-    width: 95%;
+    width: 100%;
     margin: 15px auto;
   }
 }
@@ -70,6 +74,8 @@
     justify-content: space-around;
     width: 100%;
   }
+
+
 
   .postfeed-card {
     width: 45%;

@@ -48,11 +48,21 @@ header {
   }
 
   .header-create-post-button {
-    font-size: 1em;
+    font-size: 1.1em;
   }
 
   header {
     width: 100vw;
   }
 
+}
+
+@media screen and (max-width: 780px) {
+  .header-logo {
+    display: none;
+  }
+
+  .welcome-text {
+    display: none;
+  }
 }
