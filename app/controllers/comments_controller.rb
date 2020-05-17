@@ -29,9 +29,6 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
-    # @comment = Comment.new(comment_params)
-    # @comment = @post.comments.create(params[:comment].permit(:comment_text))
-    # @comment = @post.comments.create.require(:comment).permit(:comment_text)
     @comments = @post.comments.create(params.require(:comment).permit(:comment_text, :user_id, :post_id))
     if @comments.save
       render json: @comments
