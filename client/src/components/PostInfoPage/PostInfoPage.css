@@ -1,8 +1,38 @@
-img {
+.post-info-image-container {
   height: 300px;
   width: 400px;
+  margin: 0 auto;
+}
+
+.comment-section {
+  /* width: 75%; */
+  margin: 0 auto;
+}
+
+.post-info-image {
+  height: 100%;
+  width: 100%;
+}
+
+.comment-container {
+  width: 75%;
+  margin: 0 auto;
+  border: 1px solid black;
 }
 
 .comment-single-box {
   border: 1px solid black;
+  margin: 5px 0;
+  text-align: left;
+  padding-left: 50px;
+}
+
+.comment-input-box {
+  height: 50px;
+
+  border: 1px solid black;
+}
+
+.comment-input-box>input {
+  height: 100%;
 }

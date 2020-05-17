@@ -3,14 +3,15 @@ header {
   border: 1px solid black;
   margin: 0;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-direction: row;
-  height: 11vh;
+  height: 5vh;
+  padding: 0;
 }
 
 .site-title {
-  text-align: left;
   text-decoration: none;
+  font-size: 2em;
   color: rgb(13, 89, 124);
 }
 
@@ -19,11 +20,19 @@ header {
 .logout-button {
   border: 1px solid black;
   font-size: 1.1em;
-  height: 50%;
+  height: 100%;
   padding: 5px 25px;
 }
 
+.header-create-post-button {
+  height: 100%;
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+}
+
 .header-logo {
+
   height: 100%;
   width: auto;
 }
@@ -31,8 +40,8 @@ header {
 .home-button {
   text-decoration: none;
   font-size: 1.8em;
-  height: 50%;
-  padding: 10px 20px;
+  height: 100%;
+  padding: 0px 20px;
   border: 1px solid black;
   background-color: white;
   color: rgb(13, 89, 124);

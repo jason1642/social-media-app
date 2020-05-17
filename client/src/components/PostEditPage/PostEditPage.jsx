@@ -35,7 +35,7 @@ export default class UpdateFood extends Component {
       <form onSubmit={(e) => {
         e.preventDefault();
         this.props.handlePostUpdate(this.props.postId, this.state);
-        this.props.history.push('/posts');
+        this.props.history.push(`/posts/${this.props.postId}`);
       }}>
         <h3>Edit Post</h3>
         <input
