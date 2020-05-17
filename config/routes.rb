@@ -9,13 +9,7 @@ Rails.application.routes.draw do
   end
 
 
-  # resources :users
-
-  # resources :users do
-  #   resources :posts do 
-  #   resources :comments
-  # end
-  # end
+  
 
 
   get '/posts/:id/comments', to: 'posts#add_comment'
