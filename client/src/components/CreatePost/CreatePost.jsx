@@ -29,7 +29,7 @@ class CreatePost extends Component {
     const { title, description, image_url } = this.state;
 
     return (
-      <form onSubmit={(e) => {
+      <form className='create-post-form' onSubmit={(e) => {
         e.preventDefault();
         console.log(this.state)
         this.props.handlePostSubmit(this.state);
@@ -40,16 +40,17 @@ class CreatePost extends Component {
           id="title"
           type="text"
           name="title"
+          maxLength='22'
           value={title}
           onChange={this.handleChange}
-          placeholder="title"
+          placeholder="Title"
         />
-        <input
+        <textarea
           id="description"
           type="text"
           name="description"
           value={description}
-          placeholder="description"
+          placeholder="Description"
           onChange={this.handleChange}
         />
         <input
@@ -57,7 +58,7 @@ class CreatePost extends Component {
           type="text"
           name="image_url"
           value={image_url}
-          placeholder="image_url"
+          placeholder="Image_url Link"
           onChange={this.handleChange}
         />
         <button>Submit</button>

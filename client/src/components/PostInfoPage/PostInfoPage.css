@@ -55,6 +55,10 @@
   grid-column: 1/2;
 }
 
+.posted-by-title {
+  font-size: 20px;
+}
+
 .comment-container {
   width: 75%;
   margin: 0 auto;

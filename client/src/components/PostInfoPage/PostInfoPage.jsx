@@ -24,19 +24,18 @@ class PostInfoPage extends Component {
     if (this.setPost()) {
       this.setComments();
     }
-    if (this.state.post) {
-      const poster = this.state.post && getOneUser(this.state.post.id).then(v => v.data.username)
-      console.log(poster)
-    }
-    // this.setState({
-    //   postedBy: poster
-    // })
+
 
   }
 
   setPost = async () => {
     const post = await getOnePost(this.props.postId);
     this.setState({ post })
+    const poster = this.state.post && await getOneUser(this.state.post.user_id).then(v => v.data.username)
+    this.setState({
+      postedBy: poster
+    })
+    console.log(this.state.postedBy)
   }
 
   setComments = async () => {
@@ -67,7 +66,6 @@ class PostInfoPage extends Component {
 
   render() {
     const { post, commentText, currentUserId } = this.state;
-    console.log(this.state.poster)
     return (
 
       <div className='postinfo-page-container'>
@@ -78,7 +76,7 @@ class PostInfoPage extends Component {
             <div className='postinfo-main-content'>
               <div className='post-info-main-title'>{post.title}</div>
               <div className='posted-by-title'>
-                {/* {getOneUser(post.id).then(v => v.data.username)} */}
+                <b>Posted by: </b>{this.state.postedBy}
               </div>
               <div className='post-info-image-container'><img className='post-info-image' src={post.image_url} alt="awrimaw" />
               </div>
@@ -108,7 +106,12 @@ class PostInfoPage extends Component {
 
             <div className='comment-container'>
               <h1 className='add-comment-title'>Comments</h1>
-              <form className='comment-input-box' onSubmit={this.handleSubmit}>
+              <form className='comment-input-box' onSubmit={(e) => {
+
+                this.handleSubmit()
+                return this.props.history.push(`/posts/${post.id}`)
+              }
+              }>
                 <input
                   type='text'
                   value={commentText}
