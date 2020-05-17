@@ -17,7 +17,7 @@ class PostInfoPage extends Component {
 
   async componentDidMount() {
     const currentUser1 = await verifyUser();
-    this.setState({
+    currentUser1 && this.setState({
       currentUserId: currentUser1.id
     })
     this.setPost()

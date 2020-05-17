@@ -23,13 +23,13 @@ class Header extends Component {
 
           <header>
 
-            <img className="header-logo" src='https://www.pngitem.com/pimgs/m/543-5439153_transparent-javascript-icon-png-reddit-logo-hd-png.png' alt='site logo' />
+            <img className="header-logo" src='https://st2.depositphotos.com/3904401/6425/v/950/depositphotos_64255283-stock-illustration-tree-hand-logo-hand-tree.jpg' alt='site logo' />
 
             <Link className='site-title' to='/'>Post Tree</Link>
 
             <h3 className='welcome-text'>Hello, {this.state.currentUser.username}</h3>
 
-            <Link className='home-button' to="/">home</Link>
+            <Link className='home-button' to="/">Home</Link>
             <Link className='header-create-post-button' to="/posts/new">Create a post</Link>
             <button className='logout-button' onClick={this.props.handleLogout}>Logout</button>
 
@@ -39,9 +39,11 @@ class Header extends Component {
           </header>
 
           :
-          <header>
-            <Link to='/register'>register</Link>
+          <header className='login-header'>
+            <h1 className='login-page-header-title'>Post Tree</h1>
 
+            <Link className='register-button' to='/register'>Register Here</Link>
+            <Link className='register-button' to='/login'>Login</Link>
           </header>
 
       }
