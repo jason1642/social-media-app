@@ -53,7 +53,7 @@
   overflow: hidden;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
   .postfeed-section {
     flex-direction: column;
     width: 100%;
@@ -61,6 +61,18 @@
 
   .postfeed-card {
     width: 95%;
+    margin: 15px auto;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .postfeed-section {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .postfeed-card {
+    width: 45%;
     margin: 15px auto;
   }
 }
