@@ -1,33 +1,63 @@
 .post-info-image-container {
+  grid-row: 2/3;
   height: 300px;
   width: 400px;
   margin: 0 auto;
 }
 
-.postinfo-page-container {
+.postinfo-main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 15% 1fr 10%;
+
+}
+
+.post-info-main-description {
+  padding: 10px;
+  text-align: left;
+  font-size: 1.2em;
+  grid-row: 2/3;
+  grid-column: 2/3;
   border: 1px solid black;
+  margin: 0 auto;
+}
+
+.postinfo-main-content button {
+  grid-row: 3/4;
+  width: 50%;
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+.post-info-main-title {
+  grid-row: 1/2;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  font-size: 2.4em;
+  text-align: left;
+  grid-column: 1/2;
+}
+
+.postinfo-page-container {
   width: 90%;
   margin: 3% auto;
 }
 
-.postinfo-main-content {
-  border: 1px solid black;
-}
+
 
 .comment-section {
-  /* width: 75%; */
   margin: 0 auto;
 }
 
 .post-info-image {
   height: 100%;
   width: 100%;
+  grid-column: 1/2;
 }
 
 .comment-container {
   width: 75%;
   margin: 0 auto;
-  border: 1px solid black;
 }
 
 .comment-single-box {
@@ -38,11 +68,28 @@
 }
 
 .comment-input-box {
+  display: flex;
   height: 50px;
-
-  border: 1px solid black;
+  justify-content: left;
+  margin-bottom: 10px;
 }
 
 .comment-input-box>input {
+  padding-left: 20px;
+  margin: auto 0;
+  width: 85%;
   height: 100%;
+  background-color: rgb(221, 221, 221);
+
+}
+
+.comment-submit-button {
+  height: 100%;
+  width: 15%;
+  margin: auto 0;
+
+}
+
+.add-comment-title {
+  text-align: left;
 }

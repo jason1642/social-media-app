@@ -3,12 +3,9 @@ import { Route, Redirect } from 'react-router-dom';
 import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
-import { getAllComments, getAllPosts, postPost, putPost, destroyPost } from '../../Services/api-helper';
+import { getAllComments, getAllPosts, postPost, putPost, destroyPost, verifyUser } from '../../Services/api-helper';
 import PostEditPage from '../PostEditPage/PostEditPage.jsx';
-// import ShowFlavors from './ShowFlavors';
-// import ShowFoods from './ShowFoods';
-// import CreateFood from './CreateFood';
-// import FoodItem from './FoodItem';
+
 import PostFeed from '../PostFeed/PostFeed.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
 export default class Container extends Component {
@@ -20,10 +17,14 @@ export default class Container extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // this.readAllComments();
     this.readAllPosts();
-    console.log(this.state.posts)
+    const currUser = await verifyUser()
+    this.setState({
+      userExists: currUser
+    })
+    console.log(this.state.userExists)
   }
 
   readAllComments = async () => {
@@ -68,7 +69,7 @@ export default class Container extends Component {
     return (
       <main>
         {
-          this.props.currentUser ?
+          this.state.userExists ?
             <>
               <Route exact path='/login' render={(props) => (
                 <LoginPage
@@ -97,6 +98,7 @@ export default class Container extends Component {
                 const { id } = props.match.params
                 return <PostInfoPage
                   {...props}
+                  handlePostDelete={this.handlePostDelete}
                   postId={id}
                   currentUser={this.props.currentUser}
                 />

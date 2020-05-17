@@ -26,7 +26,7 @@ class Header extends Component {
 
             <img className="header-logo" src='https://www.pngitem.com/pimgs/m/543-5439153_transparent-javascript-icon-png-reddit-logo-hd-png.png' alt='site logo' />
 
-            <Link className='site-title' to='/'>Social media app</Link>
+            <Link className='site-title' to='/'>Post Tree</Link>
 
             <h3 className='welcome-text'>Hello, {this.props.currentUser.username}</h3>
 
