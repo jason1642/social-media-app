@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { getOneUser } from '../../Services/api-helper'
 import './PostFeed.css'
 
 class PostFeed extends Component {
