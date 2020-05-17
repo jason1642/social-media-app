@@ -84,12 +84,11 @@ export const destroyPost = async (id) => {
 
 export const addComment = async (commentData, postId) => {
   const resp = await api.post(`/posts/${postId}/comments`, commentData);
-
   return resp.data;
 }
 
 
 export const getOneUser = async (id) => {
   const resp = await api.get(`/users/${id}`);
-  return resp.data;
+  return resp;
 }
