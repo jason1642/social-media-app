@@ -39,16 +39,17 @@ header {
   justify-self: flex-end;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 500px) {
 
   .welcome-text,
   .site-title,
   .header-logo {
     display: none;
-
   }
 
-
+  .header-create-post-button {
+    font-size: 1em;
+  }
 
   header {
     width: 100vw;
