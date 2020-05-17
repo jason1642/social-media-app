@@ -6,8 +6,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentUser: null,
-      headerHTML: <header></header>
+      currentUser: null
     }
   }
   async componentDidMount() {
@@ -20,7 +19,7 @@ class Header extends Component {
 
     return (<>
       {
-        this.props.currentUser ?
+        this.state.currentUser ?
 
           <header>
 
@@ -28,7 +27,7 @@ class Header extends Component {
 
             <Link className='site-title' to='/'>Post Tree</Link>
 
-            <h3 className='welcome-text'>Hello, {this.props.currentUser.username}</h3>
+            <h3 className='welcome-text'>Hello, {this.state.currentUser.username}</h3>
 
             <Link className='home-button' to="/">home</Link>
             <Link className='header-create-post-button' to="/posts/new">Create a post</Link>

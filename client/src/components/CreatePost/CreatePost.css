@@ -1,3 +1,20 @@
-input {
-  border: black 1px solid
+.create-post-form {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.create-post-form>input {
+  width: 45%;
+  height: 30px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.create-post-form>textarea {
+  width: 45%;
+  height: 60px;
+  font-size: 1.2em;
 }
