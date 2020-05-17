@@ -4,6 +4,16 @@
   margin: 0 auto;
 }
 
+.postinfo-page-container {
+  border: 1px solid black;
+  width: 90%;
+  margin: 3% auto;
+}
+
+.postinfo-main-content {
+  border: 1px solid black;
+}
+
 .comment-section {
   /* width: 75%; */
   margin: 0 auto;

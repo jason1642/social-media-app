@@ -61,21 +61,22 @@ class PostInfoPage extends Component {
     const { post, commentText } = this.state;
     return (
 
-      <div>
+      <div className='postinfo-page-container'>
 
         {
           post &&
           <>
-            <>
+            <div className='postinfo-main-content'>
               <h1>{post.title}</h1>
               <div className='post-info-image-container'><img className='post-info-image' src={post.image_url} alt="awrimaw" />
               </div>
               <p>{post.description}</p>
-            </>
 
-            <button onClick={() => {
-              this.props.history.push(`/posts/${post.id}/edit`);
-            }}>Edit</button>
+
+              <button onClick={() => {
+                this.props.history.push(`/posts/${post.id}/edit`);
+              }}>Edit</button>
+            </div>
             {/* <button onClick={() => {
               this.props.handlePostDelete(post.id);
             }}>Delete</button> */}
