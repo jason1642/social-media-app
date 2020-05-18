@@ -22,8 +22,9 @@ class Header extends Component {
         this.state.currentUser ?
 
           <header>
-
-            <img className="header-logo" src='https://st2.depositphotos.com/3904401/6425/v/950/depositphotos_64255283-stock-illustration-tree-hand-logo-hand-tree.jpg' alt='site logo' />
+            <Link className="header-logo" to='/'>
+              <img className="header-logo" src='https://st2.depositphotos.com/3904401/6425/v/950/depositphotos_64255283-stock-illustration-tree-hand-logo-hand-tree.jpg' alt='site logo' />
+            </Link>
 
             <Link className='site-title' to='/'>Post Tree</Link>
 
