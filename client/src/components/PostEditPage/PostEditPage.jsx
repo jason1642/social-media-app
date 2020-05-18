@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getOnePost } from '../../Services/api-helper';
+import './PostEditPage.css'
 
 export default class UpdateFood extends Component {
   state = {
@@ -32,31 +33,39 @@ export default class UpdateFood extends Component {
   render() {
     const { title, description, image_url } = this.state
     return (
-      <form onSubmit={(e) => {
+      <form className='post-edit-page-form' onSubmit={(e) => {
         e.preventDefault();
         this.props.handlePostUpdate(this.props.postId, this.state);
         this.props.history.push(`/posts/${this.props.postId}`);
       }}>
-        <h3>Edit Post</h3>
+        <h1>Edit Post</h1>
+        <h3 className='post-edit-page-form-label'>Title</h3>
         <input
           type="text"
           value={title}
           name="title"
           onChange={this.handleChange}
+          placeholder='Title'
         />
-        <input
+        <h3 className='post-edit-page-form-label'>Description</h3>
+
+        <textarea
           type="text"
           value={description}
           name="description"
           onChange={this.handleChange}
+          placeholder='Description'
         />
+        <h3 className='post-edit-page-form-label'>Image Url</h3>
+
         <input
           type="text"
           value={image_url}
           name="image_url"
           onChange={this.handleChange}
+          placeholder='image URL'
         />
-        <button>Submit</button>
+        <button className='login-submit-button'>Submit</button>
 
       </form>
     )

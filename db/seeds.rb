@@ -23,24 +23,17 @@ User.create(username: "jason16umjthnbgvr42", email: "smallfrytbvrce19112@email.c
 
 p "#{User.count} user(s) created"
 
+Post.create(title: "The Promised Neverland Review", description: "
+The first episode clearly defines the characters for you, and gives you a glimpse into their world. A world which is relatively peaceful and happy, but something seems a little off. Near the end of the first episode, you learn the horrible truth about their world, at the same time as the characters. That they are cattle waiting to be slaughtered, and death is coming for them. This will be a dark tale of survival. The drawing is a little unique, but is well done. The animation quality is good as well. It's very well written and worth watching.", image_url: "https://eric-koenig.com/wp-content/uploads/2019/01/e102393ffa754c90b919e01c3a194091.jpg", user_id: 4) 
+
+Post.create(title: "The eagles draft Jalen Hurts....", description: "WTF are the eagles doing!!!!!!????????!!!!!!!!", image_url: "https://scontent-ort2-2.xx.fbcdn.net/v/t1.15752-9/95392787_255676968966630_7495242548890304512_n.jpg?_nc_cat=108&_nc_sid=b96e70&_nc_ohc=I15wsCmU278AX_zB3WX&_nc_ht=scontent-ort2-2.xx&oh=e1b4dc0f10a659fe2690096a7ff158d5&oe=5EE6FD0A", user_id: 1)
 
 
-Post.create(title: "My first post", description: "This is a summary of my post belonging to jason1642", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 1)
+
+Post.create(title: "The Tomb of Ramesses VI, The Valley of Kings, Egypt", description: "", image_url: "https://preview.redd.it/2kbhga2phbz41.jpg?width=960&crop=smart&auto=webp&s=82728f642d30b29fa005b196140da22bdaa86b05", user_id: 1)
 
 
-Post.create(title: "post number one", description: "This is a summary of my post belonging to jason1642", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 2) 
 
-
-Post.create(title: "post number two", description: "This is a summary of my post belonging to user2", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 3) 
-
-
-Post.create(title: "post number three", description: "This is a summary of my post belonging to user3Core Features
-A user can create a post,containing a title, description, and an optional image. That post will be added to the home page global post section, where any other user can see the post aswell. Users can also add comments to a post, but only the person who created the post is able to delete any comment. A post can also be edited or deleted. All of the users posts will be saved on their account, they can view a list of all their posts on the 'my posts' page
-
-Posts using crud
-Comment section
-Users personal list of post
-Goals", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 4) 
 p "#{Post.count} posts created"
 
 
