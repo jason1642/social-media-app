@@ -20,6 +20,7 @@ class PostInfoPage extends Component {
     currentUser1 && this.setState({
       currentUserId: currentUser1.id
     })
+    console.log(currentUser1)
     this.setPost()
     if (this.setPost()) {
       this.setComments();
