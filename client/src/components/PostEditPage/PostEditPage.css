@@ -1,0 +1,29 @@
+.post-edit-page-form>input,
+textarea {
+  width: 40%;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  height: 50px;
+  border-radius: 12px;
+  border: none;
+}
+
+.post-edit-page-form-label {
+  text-align: left;}
+
+.post-edit-page-form>textarea {
+  height: 70px;
+}
+
+.post-edit-page-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-submit-button {
+  margin: 10px 0;
+  padding: 20px 30px;
+  font-size: 1.5em;
+  border-radius: 15px;
+}
