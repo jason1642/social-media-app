@@ -34,7 +34,13 @@ Post.create(title: "post number one", description: "This is a summary of my post
 Post.create(title: "post number two", description: "This is a summary of my post belonging to user2", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 3) 
 
 
-Post.create(title: "post number three", description: "This is a summary of my post belonging to user3", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 4) 
+Post.create(title: "post number three", description: "This is a summary of my post belonging to user3Core Features
+A user can create a post,containing a title, description, and an optional image. That post will be added to the home page global post section, where any other user can see the post aswell. Users can also add comments to a post, but only the person who created the post is able to delete any comment. A post can also be edited or deleted. All of the users posts will be saved on their account, they can view a list of all their posts on the 'my posts' page
+
+Posts using crud
+Comment section
+Users personal list of post
+Goals", image_url: "https://cdn.mos.cms.futurecdn.net/XFL6HquyTYfQH5L7ztttp3.jpg", user_id: 4) 
 p "#{Post.count} posts created"
 
 
@@ -46,3 +52,5 @@ Comment.create(comment_text: "t12312weqweq12312qweqweqw!", user_id: 3, post_id: 
 
 
 p "#{Comment.count} comments created"
+
+
