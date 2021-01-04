@@ -26,7 +26,7 @@ class Header extends Component {
               <img className="header-logo" src='https://st2.depositphotos.com/3904401/6425/v/950/depositphotos_64255283-stock-illustration-tree-hand-logo-hand-tree.jpg' alt='site logo' />
             </Link>
 
-            <Link className='site-title' to='/'>Post Tree</Link>
+            <Link className='site-title' to='/'>Post Tree!</Link>
 
             <h3 className='welcome-text'>Hello, {this.state.currentUser.username}</h3>
 
@@ -41,7 +41,7 @@ class Header extends Component {
 
           :
           <header className='login-header'>
-            <h1 className='login-page-header-title'>Post Tree</h1>
+            <h1 className='login-page-header-title'>Post Tree!</h1>
 
             <Link className='register-button' to='/register'>Register Here</Link>
             <Link className='register-button' to='/login'>Login</Link>
