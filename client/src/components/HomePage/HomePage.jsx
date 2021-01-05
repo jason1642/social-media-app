@@ -1,15 +1,13 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import './PostFeed.css'
+import './HomePage.css'
 
-class PostFeed extends Component {
+class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
     }
   }
-
-
 
 
   render() {
@@ -60,4 +58,4 @@ class PostFeed extends Component {
   }
 }
 
-export default PostFeed
+export default HomePage
