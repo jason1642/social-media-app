@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import React, { Component, useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
 import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
@@ -8,6 +8,8 @@ import PostEditPage from '../PostEditPage/PostEditPage.jsx';
 
 import PostFeed from '../PostFeed/PostFeed.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
+
+
 export default class Container extends Component {
   constructor(props) {
     super(props)
@@ -62,63 +64,64 @@ export default class Container extends Component {
       })
     }))
   }
-
+  componentWillMount() {
+  }
   render() {
     return (
       <main>
-        {/* {
+        {
           this.state.userExists ?
-            <> */}
-        <Route exact path='/login' render={(props) => (
-          <LoginPage
-            {...props}
-            handleLogin={this.props.handleLogin}
-          />
-        )} />
+            <>
+              <Route exact path='/login' render={(props) => (
+                <LoginPage
+                  {...props}
+                  handleLogin={this.props.handleLogin}
+                />
+              )} />
 
-        <Route exact path="/" render={(props) => (
-          <PostFeed
-            {...props}
-            handlePostDelete={this.handlePostDelete}
-            postList={this.state.posts}
-          />
-        )} />
+              <Route exact path="/" render={(props) => (
+                <PostFeed
+                  {...props}
+                  handlePostDelete={this.handlePostDelete}
+                  postList={this.state.posts}
+                />
+              )} />
 
-        <Route exact path="/posts/new" render={(props) => (
-          <CreatePost
-            {...props}
-            currentUser={this.props.currentUser}
-            handlePostSubmit={this.handlePostSubmit}
-          />
-        )} />
+              <Route exact path="/posts/new" render={(props) => (
+                <CreatePost
+                  {...props}
+                  currentUser={this.props.currentUser}
+                  handlePostSubmit={this.handlePostSubmit}
+                />
+              )} />
 
-        <Route exact path="/posts/:id" render={(props) => {
-          const { id } = props.match.params
-          return <PostInfoPage
-            {...props}
-            handlePostDelete={this.handlePostDelete}
-            postId={id}
-            currentUser={this.props.currentUser}
-          />
-        }
-        } />
+              <Route exact path="/posts/:id" render={(props) => {
+                const { id } = props.match.params
+                return <PostInfoPage
+                  {...props}
+                  handlePostDelete={this.handlePostDelete}
+                  postId={id}
+                  currentUser={this.props.currentUser}
+                />
+              }
+              } />
 
-        <Route exact path='/posts/:id/edit' render={(props) => {
-          const { id } = props.match.params
-          return <PostEditPage
-            {...props}
-            handlePostUpdate={this.handlePostUpdate}
-            postId={id}
-          />
-        }} />
+              <Route exact path='/posts/:id/edit' render={(props) => {
+                const { id } = props.match.params
+                return <PostEditPage
+                  {...props}
+                  handlePostUpdate={this.handlePostUpdate}
+                  postId={id}
+                />
+              }} />
 
-        <Route exact path='/register' render={(props) => (
-          <Register
-            {...props}
-            handleRegister={this.props.handleRegister}
-          />
-        )} />
-        {/* </>
+              <Route exact path='/register' render={(props) => (
+                <Register
+                  {...props}
+                  handleRegister={this.props.handleRegister}
+                />
+              )} />
+            </>
             : <>
               <Redirect to='/login' />
               <Route exact path='/login' render={(props) => (
@@ -128,7 +131,7 @@ export default class Container extends Component {
                 />
               )} />
             </>
-        } */}
+        }
       </main>
     )
   }

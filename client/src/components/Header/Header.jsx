@@ -14,7 +14,6 @@ class Header extends Component {
     this.setState({ currentUser })
 
   }
-  com
   render() {
 
     return (<>
