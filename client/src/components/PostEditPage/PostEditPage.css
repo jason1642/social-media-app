@@ -9,7 +9,8 @@ textarea {
 }
 
 .post-edit-page-form-label {
-  text-align: left;}
+  text-align: left;
+}
 
 .post-edit-page-form>textarea {
   height: 70px;
@@ -20,10 +21,4 @@ textarea {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.login-submit-button {
-  margin: 10px 0;
-  padding: 20px 30px;
-  font-size: 1.5em;
-  border-radius: 15px;
 }

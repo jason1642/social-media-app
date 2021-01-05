@@ -1,7 +1,10 @@
 .login-logo {
-  height: 200px;
-  width: 250px;
+  /* height: 200px;width: 250px; */
   margin-top: 14px;
+}
+
+.login-page-container {
+  margin: 0 auto;
 }
 
 .login-form-title {
@@ -33,16 +36,28 @@
 }
 
 .login-submit-button {
+  color: white;
+  background-color: #0079d3;
+  width: 18%;
+  height: 30px;
+  border: none;
   margin: 10px 0;
-  padding: 20px 30px;
-  font-size: 1.5em;
+  /* padding: 10px 30px; */
+  /* font-size: 1em; */
   border-radius: 15px;
+  cursor: pointer;
+}
+
+.sign-up-here-link {
+  color: #0079d3;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 @media screen and (max-width: 500px) {
   .login-page-header-title {
     display: none;
   }
-  
+
 
 }

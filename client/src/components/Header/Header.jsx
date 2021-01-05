@@ -39,12 +39,13 @@ class Header extends Component {
           </header>
 
           :
-          <header className='login-header'>
-            <h1 className='login-page-header-title'>Post Tree!</h1>
+          // <header className='login-header'>
+          //   <h1 className='login-page-header-title'>Post Tree!</h1>
 
-            <Link className='register-button' to='/register'>Register Here</Link>
-            <Link className='register-button' to='/login'>Login</Link>
-          </header>
+          //   <Link className='register-button' to='/register'>Register Here</Link>
+          //   <Link className='register-button' to='/login'>Login</Link>
+          // </header>
+          <></>
 
       }
 

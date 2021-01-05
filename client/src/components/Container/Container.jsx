@@ -112,12 +112,7 @@ export default class Container extends Component {
                 />
               }} />
 
-              <Route exact path='/register' render={(props) => (
-                <Register
-                  {...props}
-                  handleRegister={this.props.handleRegister}
-                />
-              )} />
+
             </>
             :
             <>
@@ -128,6 +123,13 @@ export default class Container extends Component {
                   handleLogin={this.props.handleLogin}
                 />
               )} />
+              <Route exact path='/register' render={(props) => (
+                <Register
+                  {...props}
+                  handleRegister={this.props.handleRegister}
+                />
+              )} />
+
             </>
         }
       </main>
