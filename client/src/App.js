@@ -23,7 +23,9 @@ class App extends Component {
 
   handleLogin = async (loginData) => {
     const currentUser = await loginUser(loginData);
+    console.log(currentUser)
     this.setState({ currentUser })
+    return this.state.currentUser ? true : false;
   }
 
   handleRegister = async (registerData) => {
