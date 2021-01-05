@@ -36,7 +36,7 @@ const Login = props => {
         // if user if valid, take user to home page
         console.log(validLogin)
       }}>
-        <h3>Sign in</h3>
+        <h3>Log in</h3>
         <label htmlFor="username"></label>
         <input
           id="username"

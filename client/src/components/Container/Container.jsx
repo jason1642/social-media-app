@@ -6,7 +6,7 @@ import Register from '../Register/Register';
 import { getAllComments, getAllPosts, postPost, putPost, destroyPost, verifyUser } from '../../Services/api-helper';
 import PostEditPage from '../PostEditPage/PostEditPage.jsx';
 
-import PostFeed from '../PostFeed/PostFeed.jsx'
+import HomePage from '../HomePage/HomePage.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
 
 
@@ -77,7 +77,7 @@ export default class Container extends Component {
               </Route>
 
               <Route exact path="/" render={(props) => (
-                <PostFeed
+                <HomePage
                   {...props}
                   handlePostDelete={this.handlePostDelete}
                   postList={this.state.posts}

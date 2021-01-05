@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Register.css'
+import Logo from '../../resources/images/post-tree-logo.png'
+
 
 export default class Register extends Component {
   state = {
@@ -22,6 +24,7 @@ export default class Register extends Component {
 
     return (
       <div>
+        <img className="login-logo" src={Logo} alt='site logo' />
         <form className='register-form' onSubmit={
           (e) => {
             e.preventDefault();
@@ -29,7 +32,7 @@ export default class Register extends Component {
             this.props.history.push('/');
 
           }
-        }> <h3 className='login-form-title'>Create an account</h3> <label htmlFor="username"></label> <input id="username"
+        }> <h3>Sign up</h3> <label htmlFor="username"></label> <input id="username"
           type="text"
           name="username"
           value={
