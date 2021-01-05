@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react'
 import { Link, Router } from 'react-router-dom'
 import './LoginPage.css'
-
+import Logo from '../../resources/images/post-tree-logo.png'
 
 const Login = props => {
 
@@ -23,8 +23,8 @@ const Login = props => {
     console.log(password)
   }
   return (
-    <>
-      <img className="login-logo" src='https://www.pngitem.com/pimgs/m/543-5439153_transparent-javascript-icon-png-reddit-logo-hd-png.png' alt='site logo' />
+    <div className='login-page-container'>
+      <img className="login-logo" src={Logo} alt='site logo' />
       <form className='login-form' onSubmit={async (e) => {
         e.preventDefault();
         let validLogin = false;
@@ -32,13 +32,9 @@ const Login = props => {
         await console.log(props.handleLogin({ "username": username, "password": password }))
 
         // changes variable from false to true if user has valid log-in information
-        // props.handleLogin({ "username": username, "password": password }) ? validLogin = true : validLogin = false;
         props.handleLogin({ "username": username, "password": password }).then((value) => window.location.href = "/", (error) => alert("Error"))
         // if user if valid, take user to home page
         console.log(validLogin)
-        // validLogin == true ? props.history.push('/') : alert('not valid log-in information');
-        // refresh to show changes to interface
-        // window.location.reload();
       }}>
         <h3>Sign in</h3>
         <label htmlFor="username"></label>
@@ -62,9 +58,15 @@ const Login = props => {
           placeholder='Password'
         />
         <br />
-        <button className='login-submit-button'>Sign In</button>
+        <button className='login-submit-button'>Log In</button>
       </form>
-    </>
+
+
+      <p>New to Post Tree?
+        <Link to='/register' className='sign-up-here-link'> Sign up here</Link>
+      </p>
+
+    </div>
   )
 }
 
