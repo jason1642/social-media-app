@@ -44,11 +44,13 @@ class App extends Component {
       currentUser: null
     })
     removeToken();
-    this.props.history.push('/login');
+    // this.props.history.push('/login');
+    window.location.reload()
     return <Redirect to='login' />
   }
-
   render() {
+    console.log(this.state.currentUser)
+
     return (
       <div className="App">
 
