@@ -64,20 +64,17 @@ export default class Container extends Component {
       })
     }))
   }
-  componentWillMount() {
-  }
+
   render() {
     return (
       <main>
         {
           this.state.userExists ?
             <>
-              <Route exact path='/login' render={(props) => (
-                <LoginPage
-                  {...props}
-                  handleLogin={this.props.handleLogin}
-                />
-              )} />
+
+              <Route exact path="/login">
+                {this.state.userExists ? <Redirect to="/" /> : < LoginPage />}
+              </Route>
 
               <Route exact path="/" render={(props) => (
                 <PostFeed
@@ -122,7 +119,8 @@ export default class Container extends Component {
                 />
               )} />
             </>
-            : <>
+            :
+            <>
               <Redirect to='/login' />
               <Route exact path='/login' render={(props) => (
                 <LoginPage
