@@ -11,7 +11,7 @@ Post.destroy_all
 Comment.destroy_all
 User.destroy_all
 
-User.create(username: "user1", email: "user1@email.com", password: "123")
+User.create(username: "user1", email: "user1@email.com", password: "pass123")
 User.create(username: "userTwo", email: "usertwo@email.com", password: "password222")
 User.create(username: "bryon", email: "bryon@email.com", password: "password333")
 User.create(username: "flip", email: "flip@email.com", password: "password444")

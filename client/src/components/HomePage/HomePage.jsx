@@ -16,21 +16,14 @@ class HomePage extends Component {
         <h3 className='latest-posts-title'>Latest Posts</h3>
 
         <div className='postfeed-section'>
+
           {
             this.props.postList.map(post => {
 
               return (
-
                 <React.Fragment key={post.id}>
-
-                  <div
-                    onClick={
-                      e =>
-                        this.props.history.push(`/posts/${post.id}`)
-
-                    }
+                  <div onClick={e => this.props.history.push(`/posts/${post.id}`)}
                     className='postfeed-card'>
-
                     <div className='postfeed-card-title'>
                       <Link
                         className='postfeed-card-title-link'
