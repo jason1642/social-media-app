@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { verifyUser } from '../../Services/api-helper'
 import './Header.css'
+import logo from '../../resources/images/post-tree-logo-notext.png'
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,7 @@ class Header extends Component {
 
           <header>
             <Link className="header-logo" to='/'>
-              <img className="header-logo" src='https://st2.depositphotos.com/3904401/6425/v/950/depositphotos_64255283-stock-illustration-tree-hand-logo-hand-tree.jpg' alt='site logo' />
+              <img className="header-logo" src={logo} alt='site logo' />
             </Link>
 
             <Link className='site-title' to='/'>Post Tree!</Link>
