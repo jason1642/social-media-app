@@ -1,54 +1,45 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import './HomePage.css'
-
-class HomePage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    }
-  }
+import styled from 'styled-components'
+import SideBar from './SideBar.jsx'
+import PostFeedSection from './PostFeedSection.jsx'
 
 
-  render() {
-    return (
-      <>
-        <h3 className='latest-posts-title'>Latest Posts</h3>
+const HomePage = props => {
 
-        <div className='postfeed-section'>
+  const Main = styled.div`
+      width: 70%;
+      margin: 0 auto;
+    `
 
-          {
-            this.props.postList.map(post => {
+  const Container = styled.div`
+    display : flex;
+    margin: 0 auto;
+    flex-direction: row;
+    width: 90%;
+  `;
 
-              return (
-                <React.Fragment key={post.id}>
-                  <div onClick={e => this.props.history.push(`/posts/${post.id}`)}
-                    className='postfeed-card'>
-                    <div className='postfeed-card-title'>
-                      <Link
-                        className='postfeed-card-title-link'
-                        to={`/posts/${post.id}`}>
-                        {post.title}
-                      </Link>
-                    </div>
-                    <div className='postfeed-card-image-container'>
-                      <img onError={"this.style.display='none'"} className='postfeed-card-image' src={post.image_url} />
-                    </div>
-                    <div className='postfeed-card-description'>{post.description}</div>
-                    {/* <p>Posted by: {post.user.name}</p> */}
 
-                    <br />
-                  </div>
-                </React.Fragment>
 
-              )
-            })
-          }
+  return (
+    <Main>
+      <h3 className='latest-posts-title'>Latest Posts</h3>
+      <Link>
+        <div>
+          <input placeholder='Create a post' />
+        </div>
+      </Link>
+      {/* Container to separate feed and sidebar */}
+      <Container >
 
-        </div >
-      </>
-    )
-  }
+        <PostFeedSection {...props} postList={props.postList} />
+
+        <SideBar />
+      </Container>
+    </Main>
+  )
+
 }
 
 export default HomePage
