@@ -28,10 +28,11 @@ class Header extends Component {
 
             <Link className='site-title' to='/'>Post Tree!</Link>
 
-            <h3 className='welcome-text'>Hello, {this.state.currentUser.username}</h3>
+
 
             <Link className='home-button' to="/">Home</Link>
-            <Link className='header-create-post-button' to="/posts/new">Create a post</Link>
+            {/* <Link className='header-create-post-button' to="/posts/new">Create a post</Link> */}
+            <h3 className='welcome-text'>Hello, {this.state.currentUser.username}</h3>
             <button className='logout-button' onClick={this.props.handleLogout}>Logout</button>
 
 

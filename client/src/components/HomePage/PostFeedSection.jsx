@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import CreatePostBox from './CreatePostBox.jsx'
 
 const PostFeedSection = props => {
   const Main = styled.div`
@@ -21,7 +22,7 @@ const PostFeedSection = props => {
 `;
 
   const PostFeedCard = styled.div`
-  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, .2);
+  /* box-shadow: 0 6px 16px 0 #acacac; */
   width: 100%;
   margin: 10px 0;
   background-color: white;
@@ -30,7 +31,7 @@ const PostFeedSection = props => {
   height: 60vh;
   flex-direction: column;
   &:hover{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 6px 16px 0 #acacac;
     transition: box-shadow .5s;
     cursor: pointer;
   }
@@ -50,6 +51,7 @@ const PostFeedSection = props => {
   return (
 
     <Main>
+      <CreatePostBox />
       {
         props.postList.map(post => {
 
