@@ -30,7 +30,7 @@
 }
 
 .postfeed-card-description {
-  overflow: scroll;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 500px) {
@@ -40,5 +40,5 @@
     font-size: 2em;
   }
 
- 
+
 }

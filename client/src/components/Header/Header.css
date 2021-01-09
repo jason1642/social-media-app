@@ -8,6 +8,9 @@ header {
   flex-direction: row;
   height: 5vh;
   padding: 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
 }
 
 
@@ -15,6 +18,7 @@ header {
   text-decoration: none;
   align-self: left;
   font-size: 2em;
+  margin-left: 3px;
   color: rgb(0, 0, 0);
 }
 
@@ -36,12 +40,16 @@ header {
   font-size: 1.8em;
   height: 100%;
   padding: 0px 20px;
-  background-color: white;
+  /* background-color: white; */
   color: rgb(13, 89, 124);
-  justify-self: flex-end;
+  justify-self: flex-start;
   border: none;
   color: black;
-  
+
+}
+
+.logout-button {
+  align-self: end;
 }
 
 @media screen and (max-width: 500px) {

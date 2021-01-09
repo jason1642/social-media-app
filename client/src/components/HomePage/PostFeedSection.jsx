@@ -22,7 +22,7 @@ const PostFeedSection = props => {
 `;
 
   const PostFeedCard = styled.div`
-  /* box-shadow: 0 6px 16px 0 #acacac; */
+  /* box-shadow: 0 6px 16px 0 # acacac; */
   width: 100%;
   margin: 10px 0;
   background-color: white;

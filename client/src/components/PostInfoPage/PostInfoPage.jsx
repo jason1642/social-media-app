@@ -128,6 +128,7 @@ class PostInfoPage extends Component {
                 {this.state.comments &&
                   this.state.comments.map(comment => (
                     <React.Fragment key={comment.id}>
+                      {console.log(comment)}
                       <div className='comment-single-box'>
                         <h3>{comment.post.user.username} says:</h3>
                         <p>{comment.comment_text}</p>
