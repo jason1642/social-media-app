@@ -22,18 +22,19 @@ class Header extends Component {
         this.state.currentUser ?
 
           <header>
-            <Link className="header-logo" to='/'>
-              <img className="header-logo" src={logo} alt='site logo' />
-            </Link>
+            <div style={{ alignSelf: 'left', display: 'flex', justifyContent: 'center' }}>
+              <Link className="header-logo" to='/'>
+                <img className="header-logo" src={logo} alt='site logo' />
+              </Link>
 
-            <Link className='site-title' to='/'>Post Tree!</Link>
+              <Link className='site-title' to='/'>Post Tree!</Link>
+            </div>
 
 
-
-            <Link className='home-button' to="/">Home</Link>
+            {/* <Link className='home-button' to="/">Home</Link> */}
             {/* <Link className='header-create-post-button' to="/posts/new">Create a post</Link> */}
             <h3 className='welcome-text'>Hello, {this.state.currentUser.username}</h3>
-            <button className='logout-button' onClick={this.props.handleLogout}>Logout</button>
+            <Link className='logout-button' onClick={this.props.handleLogout}>Logout</Link>
 
 
 
