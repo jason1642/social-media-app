@@ -71,6 +71,7 @@ const PostFeedSection = props => {
                 </div>
                 <div className='postfeed-card-description'>{post.description}</div>
                 {/* <p>Posted by: {post.user.name}</p> */}
+                {console.log(post)}
 
                 <br />
               </PostFeedCard>

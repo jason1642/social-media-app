@@ -22,7 +22,7 @@ const CreatePostBox = () => {
     background-color: #ffffff;
     margin-bottom: 16px;
     height: 90%;
-    width: 80%;
+    width: 96%;
     padding-left: 10px;
     align-self: left;
   `;
@@ -30,6 +30,7 @@ const CreatePostBox = () => {
     width: 100%;
     display: flex;
     justify-self: left;
+    text-decoration: none;
   `;
   const Icon = styled.img`
     height: 90%;
