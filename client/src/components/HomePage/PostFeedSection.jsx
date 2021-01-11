@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import CreatePostBox from './CreatePostBox.jsx'
+import { getOneUser } from '../../Services/api-helper'
 
 const PostFeedSection = props => {
   const Main = styled.div`
@@ -71,7 +72,7 @@ const PostFeedSection = props => {
                 </div>
                 <div className='postfeed-card-description'>{post.description}</div>
                 {/* <p>Posted by: {post.user.name}</p> */}
-                {console.log(post)}
+                {/* {console.log(post)} */}
 
                 <br />
               </PostFeedCard>

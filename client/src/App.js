@@ -49,7 +49,7 @@ class App extends Component {
     return <Redirect to='login' />
   }
   render() {
-    console.log(this.state.currentUser)
+    // console.log(this.state.currentUser)
 
     return (
       <div className="App">
