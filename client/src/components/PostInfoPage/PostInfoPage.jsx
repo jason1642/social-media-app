@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { getOnePost, addComment, getAllComments, verifyUser, getOneUser } from '../../Services/api-helper'
 import './PostInfoPage.css'
+import CommentSection from './CommentSection'
 
 
 class PostInfoPage extends Component {
@@ -22,10 +23,6 @@ class PostInfoPage extends Component {
     })
     console.log(currentUser1)
     this.setPost()
-    if (this.setPost()) {
-      this.setComments();
-    }
-
 
   }
 
@@ -39,12 +36,6 @@ class PostInfoPage extends Component {
     console.log(this.state.postedBy)
   }
 
-  setComments = async () => {
-
-    const comments = await getAllComments(this.props.postId)
-    this.setState({ comments })
-    console.log(this.state.comments)
-  }
 
   handleChange = (e) => {
     const { value } = e.target;
@@ -63,6 +54,12 @@ class PostInfoPage extends Component {
     this.setState(prevState => ({
       comments: [...prevState.comments, newComment]
     }))
+  }
+
+  getCommentUser = async (comment1) => {
+    const commentUser = await getOneUser(comment1.user_id)
+    console.log(commentUser.data)
+    return commentUser.data.username
   }
 
   render() {
@@ -122,22 +119,22 @@ class PostInfoPage extends Component {
                 />
                 <button className='submit-button comment-submit-button'>Add comment</button>
               </form>
-              <div className="comment-section">
 
 
-                {this.state.comments &&
-                  this.state.comments.map(comment => (
-                    <React.Fragment key={comment.id}>
-                      {console.log(comment)}
-                      <div className='comment-single-box'>
-                        <h3>{comment.post.user.username} says:</h3>
-                        <p>{comment.comment_text}</p>
 
-                        <br />
-                      </div>
-                    </React.Fragment>
-                  ))}
-              </div>
+
+
+
+              <CommentSection currentPost={this.state.post} postId={this.props.postId} />
+
+
+
+
+
+
+
+
+
             </div>
           </>
         }
