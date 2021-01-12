@@ -4,45 +4,54 @@ import styled from 'styled-components'
 
 const CommentSection = props => {
 
-  // const [postedBy, setPostedBy] = useState()
-
-  // const [currentPost, setCurrentPost] = useState(setPost())
-
-
-
   const [comments, setComments] = useState()
-  const getComments = async () => {
+  const [mappedCommentSection, setMappedCommentSection] = useState()
+  let commentsUser = undefined
 
-    const comments = await getAllComments(props.postId)
-    setComments(comments)
-    // console.log(comments)
+  const getComments = async () => {
+    let test1 = await getAllComments(props.postId).then(value => commentsUser = value)
+    return test1
   }
-  useEffect(() => {
-    console.log(props.currentPost)
+
+
+
+  const renderComments = () =>
+    comments.map(comment =>
+      <React.Fragment key={comment.id}>
+        <div className='comment-single-box'>
+          <h3>
+
+            {(async () => {
+              console.log(await getOneUser(comment).then(value => commentsUser = value.data.username))
+              await getOneUser(comment).then(value => commentsUser = value.data.username)
+              return await commentsUser
+            })()}
+
+           says:</h3>
+          <p>{comment.comment_text}</p>
+
+          <br />
+        </div>
+      </React.Fragment>
+    )
+
+
+  useEffect(async () => {
     if (props.currentPost) {
-      getComments();
+      const myfunc1 = async () => await getComments().then(ele => ele)
+      // console.log(await myfunc1())
+      // setComments(await myfunc1())
     }
-    // return null
+
+
   }, [])
-  console.log(props)
+  console.log(mappedCommentSection)
+  console.log(comments)
   return (
     <div className="comment-section">
 
 
-      {comments &&
-        comments.map(comment => (
-          <React.Fragment key={comment.id}>
-            {console.log(comment)}
-            <div className='comment-single-box'>
-              <h3>
-                {/* {this.getCommentUser(comment)} */}
-             says:</h3>
-              <p>{comment.comment_text}</p>
-
-              <br />
-            </div>
-          </React.Fragment>
-        ))}
+      {comments && renderComments()}
     </div>
   )
 }

@@ -21,7 +21,7 @@ class PostInfoPage extends Component {
     currentUser1 && this.setState({
       currentUserId: currentUser1.id
     })
-    console.log(currentUser1)
+    // console.log(currentUser1)
     this.setPost()
 
   }
@@ -56,11 +56,7 @@ class PostInfoPage extends Component {
     }))
   }
 
-  getCommentUser = async (comment1) => {
-    const commentUser = await getOneUser(comment1.user_id)
-    console.log(commentUser.data)
-    return commentUser.data.username
-  }
+
 
   render() {
     const { post, commentText, currentUserId } = this.state;
