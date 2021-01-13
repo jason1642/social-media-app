@@ -5,13 +5,10 @@ import styled from 'styled-components'
 const CommentSection = props => {
 
   const [comments, setComments] = useState()
-  const [mappedCommentSection, setMappedCommentSection] = useState()
   let commentsUser = undefined
 
-  const getComments = async () => {
-    let test1 = await getAllComments(props.postId).then(value => commentsUser = value)
-    return test1
-  }
+  const getComments = async () =>
+    await getAllComments(props.postId).then(value => value)
 
 
 
@@ -21,15 +18,12 @@ const CommentSection = props => {
         <div className='comment-single-box'>
           <h3>
 
-            {(async () => {
-              console.log(await getOneUser(comment).then(value => commentsUser = value.data.username))
-              await getOneUser(comment).then(value => commentsUser = value.data.username)
-              return await commentsUser
-            })()}
+            {
+              // getOneUser(comment)
+            }
 
            says:</h3>
           <p>{comment.comment_text}</p>
-
           <br />
         </div>
       </React.Fragment>
@@ -39,14 +33,12 @@ const CommentSection = props => {
   useEffect(async () => {
     if (props.currentPost) {
       const myfunc1 = async () => await getComments().then(ele => ele)
-      // console.log(await myfunc1())
-      // setComments(await myfunc1())
+      setComments(await myfunc1())
     }
 
 
   }, [])
-  console.log(mappedCommentSection)
-  console.log(comments)
+  console.log('pop')
   return (
     <div className="comment-section">
 
