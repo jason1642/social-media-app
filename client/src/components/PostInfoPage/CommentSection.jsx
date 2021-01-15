@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { getOnePost, addComment, getAllComments, verifyUser, getOneUser } from '../../Services/api-helper'
-import styled from 'styled-components'
+import { getOnePost, addComment, getAllComments, getOneUser } from '../../Services/api-helper'
 
 const CommentSection = props => {
 
   const [comments, setComments] = useState()
-  let commentsUser = undefined
+  const [allHTML, setAllHTML] = useState()
 
   const getComments = async () =>
     await getAllComments(props.postId).then(value => value)
 
+  const getUserName = async (x) => {
+    return await getOneUser(x.user_id)
+  }
 
-
-  const renderComments = () =>
-    comments.map(comment =>
+  const renderComments = async () =>
+    await getAllComments(props.postId).then(value => value.map(comment =>
       <React.Fragment key={comment.id}>
         <div className='comment-single-box'>
           <h3>
 
             {
-              // getOneUser(comment)
+              // console.log(getUserName(comment).then(v2 => console.log(v2)))
             }
 
            says:</h3>
@@ -28,22 +29,24 @@ const CommentSection = props => {
         </div>
       </React.Fragment>
     )
+    )
 
 
   useEffect(async () => {
     if (props.currentPost) {
-      const myfunc1 = async () => await getComments().then(ele => ele)
-      setComments(await myfunc1())
+      // const myfunc1 = async () => await getComments().then(ele => ele)
+      // setComments(await myfunc1())
+      renderComments().then(value => setAllHTML(value))
     }
 
 
   }, [])
-  console.log('pop')
+  console.log(allHTML)
   return (
     <div className="comment-section">
 
 
-      {comments && renderComments()}
+      {allHTML && allHTML}
     </div>
   )
 }
