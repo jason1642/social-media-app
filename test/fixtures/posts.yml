@@ -2,12 +2,18 @@
 
 one:
   title: MyString
-  description: MyText
-  image_url: MyString
-  user: one
+  description: MyString
+  user_id: 
+  image: MyString
+  total_comments: 
+  total_votes: 
+  group: 
 
 two:
   title: MyString
-  description: MyText
-  image_url: MyString
-  user: two
+  description: MyString
+  user_id: 
+  image: MyString
+  total_comments: 
+  total_votes: 
+  group: 

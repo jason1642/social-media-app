@@ -1,39 +1,26 @@
 class CommentsController < ApplicationController
-  before_action :set_comment
-  before_action :set_post
+  before_action :set_comment, only: [:show, :update, :destroy]
 
   # GET /comments
   def index
-    # @comments = Comment.all
+    @comments = Comment.all
 
-    # render json: @comments
-
-
-    @comments = Comment.where(post_id: @post.id)
-    render json: @comments.as_json(include:{
-      post:{
-        include: :user
- 
-      }
-    }),status: :ok
+    render json: @comments
   end
 
   # GET /comments/1
   def show
-    # render json: @comment
-
-    render json: @comment.as_json(include:{post:{
-      include: :user
-    }}), status: :ok
+    render json: @comment
   end
 
   # POST /comments
   def create
-    @comments = @post.comments.create(params.require(:comment).permit(:comment_text, :user_id, :post_id))
-    if @comments.save
-      render json: @comments
+    @comment = Comment.new(comment_params)
+
+    if @comment.save
+      render json: @comment, status: :created, location: @comment
     else
-      render json: @comments.errors, status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
@@ -54,18 +41,11 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
-      # p Comment.find(params[:id])
-      @comment = Comment.find(params[:post_id])
+      @comment = Comment.find(params[:id])
     end
-
-    def set_post
-      @post = Post.find(params[:post_id])
-    end
-
-  
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:comment_text, :user_id, :post_id)
+      params.require(:comment).permit(:user_id_id, :content, :post_id_id)
     end
 end

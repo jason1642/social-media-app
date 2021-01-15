@@ -12,7 +12,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create comment" do
     assert_difference('Comment.count') do
-      post comments_url, params: { comment: { comment_text: @comment.comment_text, post_id: @comment.post_id, user_id: @comment.user_id } }, as: :json
+      post comments_url, params: { comment: { content: @comment.content, post_id_id: @comment.post_id_id, user_id_id: @comment.user_id_id } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update comment" do
-    patch comment_url(@comment), params: { comment: { comment_text: @comment.comment_text, post_id: @comment.post_id, user_id: @comment.user_id } }, as: :json
+    patch comment_url(@comment), params: { comment: { content: @comment.content, post_id_id: @comment.post_id_id, user_id_id: @comment.user_id_id } }, as: :json
     assert_response 200
   end
 

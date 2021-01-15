@@ -1,11 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
+  name: MyString
   email: MyString
-  password_digest: MyString
+  status: false
+  profile_picture: MyString
+  groups_joined: one
+  comments: one
+  posts_made: one
 
 two:
-  username: MyString
+  name: MyString
   email: MyString
-  password_digest: MyString
+  status: false
+  profile_picture: MyString
+  groups_joined: two
+  comments: two
+  posts_made: two
