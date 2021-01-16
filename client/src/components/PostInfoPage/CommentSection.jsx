@@ -20,7 +20,9 @@ const CommentSection = props => {
           <h3>
 
             {
-              // console.log(getUserName(comment).then(v2 => console.log(v2)))
+              getUserName(comment) !== null
+              &&
+              getUserName(comment).then(v => console.log(v))
             }
 
            says:</h3>
@@ -32,7 +34,7 @@ const CommentSection = props => {
     )
 
 
-  useEffect(async () => {
+  useEffect(() => {
     if (props.currentPost) {
       // const myfunc1 = async () => await getComments().then(ele => ele)
       // setComments(await myfunc1())
@@ -41,7 +43,6 @@ const CommentSection = props => {
 
 
   }, [])
-  console.log(allHTML)
   return (
     <div className="comment-section">
 

@@ -12,7 +12,9 @@ class User < ApplicationRecord
       username: username,
       email: email,
       created_at: created_at,
-      updated_at: updated_at
+      updated_at: updated_at,
+      comments_posted: comments,
+      posts_made: Post.where(user_id: id)
     }
   end
 end

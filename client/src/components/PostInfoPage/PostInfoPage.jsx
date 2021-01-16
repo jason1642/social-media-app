@@ -28,6 +28,7 @@ class PostInfoPage extends Component {
 
   setPost = async () => {
     const post = await getOnePost(this.props.postId);
+    console.log(post)
     this.setState({ post })
     const poster = this.state.post && await getOneUser(this.state.post.user_id).then(v => v.data.username)
     this.setState({
@@ -60,6 +61,7 @@ class PostInfoPage extends Component {
 
   render() {
     const { post, commentText, currentUserId } = this.state;
+    console.log(post)
     return (
 
       <div className='postinfo-page-container'>
