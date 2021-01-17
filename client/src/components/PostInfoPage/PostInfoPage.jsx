@@ -58,7 +58,6 @@ class PostInfoPage extends Component {
   }
 
 
-
   render() {
     const { post, commentText, currentUserId } = this.state;
     console.log(post)

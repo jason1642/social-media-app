@@ -19,9 +19,10 @@ User.create(username: "flip", email: "flip@email.com", password: "password444")
 
 
 
-
+    
 
 p "#{User.count} user(s) created"
+
 
 Post.create(title: "Beach", description: "Palm trees, sand, and the ocean", image_url: "https://wallpaperaccess.com/full/1275976.jpg", user_id: 4) 
 
