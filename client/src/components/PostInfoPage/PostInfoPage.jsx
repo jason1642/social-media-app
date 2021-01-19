@@ -59,7 +59,7 @@ class PostInfoPage extends Component {
 
   render() {
     const { post, commentText, currentUserId } = this.state;
-    // console.log(post)
+    console.log(post)
     return (
 
       <div className='postinfo-page-container'>
