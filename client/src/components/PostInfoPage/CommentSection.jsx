@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getOnePost, addComment, getAllComments, getOneUser } from '../../Services/api-helper'
+import { getAllUsersPosts, getOnePost, getAllPosts, addComment, getAllComments, getOneUser } from '../../Services/api-helper'
 
 const CommentSection = props => {
 
   const [comments, setComments] = useState()
+  const commentsUsersArray = []
   const [allHTML, setAllHTML] = useState()
 
   const getComments = async () =>
@@ -13,6 +14,9 @@ const CommentSection = props => {
     return await getOneUser(x.user_id)
   }
 
+  const getPosts = async () =>
+    await getAllPosts()
+
   const renderComments = async () =>
     await getAllComments(props.postId).then(value => value.map(comment =>
       <React.Fragment key={comment.id}>
@@ -20,9 +24,9 @@ const CommentSection = props => {
           <h3>
 
             {
-              getUserName(comment) !== null
-              &&
-              getUserName(comment).then(v => console.log(v))
+              // console.log(getUserName(comment).then(v => v))
+              console.log(comment)
+
             }
 
            says:</h3>
@@ -33,9 +37,11 @@ const CommentSection = props => {
     )
     )
 
-
+  console.log(getOneUser(2))
+  console.log(getPosts())
   useEffect(() => {
     if (props.currentPost) {
+      getAllComments(props.postId).then(value => value.map(comment => commentsUsersArray.push(getUserName(comment).then(v => 'string'))))
       // const myfunc1 = async () => await getComments().then(ele => ele)
       // setComments(await myfunc1())
       renderComments().then(value => setAllHTML(value))
@@ -43,6 +49,8 @@ const CommentSection = props => {
 
 
   }, [])
+
+  // console.log(allHTML)
   return (
     <div className="comment-section">
 

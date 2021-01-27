@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get '/auth/verify', to: 'authentication#verify'
 
   
-  resources :users 
+  resources :users do
+    member do
+      get :posts, :comments
+    end
+  end
   resources :posts do 
     resources :comments
   end
@@ -11,7 +15,7 @@ Rails.application.routes.draw do
 
   
 
-
-  get '/posts/:id/comments', to: 'posts#add_comment'
+  get '/users/:id/posts', to: 'users#posts'
+  # get '/posts/:id/comments', to: 'posts#add_comment'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
 
     @comments = Comment.where(post_id: @post.id)
     render json: @comments.as_json(include:{
+      user:{},
       post:{
         include: :user
  
@@ -22,9 +23,14 @@ class CommentsController < ApplicationController
   def show
     # render json: @comment
 
-    render json: @comment.as_json(include:{post:{
-      include: :user
-    }}), status: :ok
+    render json: @comment.as_json(
+      include:{
+        post:{
+          include: :user
+        }
+      }
+    
+    ), status: :ok
   end
 
   # POST /comments

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :posts
   has_many :comments, through: :posts
 
   validates :username, presence: true, uniqueness: true
@@ -12,9 +13,7 @@ class User < ApplicationRecord
       username: username,
       email: email,
       created_at: created_at,
-      updated_at: updated_at,
-      comments_posted: comments,
-      posts_made: Post.where(user_id: id)
+      updated_at: updated_at
     }
   end
 end
