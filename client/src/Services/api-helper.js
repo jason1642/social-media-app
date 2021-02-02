@@ -58,7 +58,7 @@ export const getAllPosts = async () => {
   const resp = await api.get('/posts');
   return resp.data;
 }
-
+// Gets all posts belonging to a specific user
 export const getAllUsersPosts = async id => {
   const resp = await api.get(`/users/${id}/posts`);
   return resp.data;

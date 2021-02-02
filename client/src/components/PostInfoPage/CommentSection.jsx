@@ -21,15 +21,7 @@ const CommentSection = props => {
     await getAllComments(props.postId).then(value => value.map(comment =>
       <React.Fragment key={comment.id}>
         <div className='comment-single-box'>
-          <h3>
-
-            {
-              // console.log(getUserName(comment).then(v => v))
-              console.log(comment)
-
-            }
-
-           says:</h3>
+          <h3>{comment.user.username} says:</h3>
           <p>{comment.comment_text}</p>
           <br />
         </div>

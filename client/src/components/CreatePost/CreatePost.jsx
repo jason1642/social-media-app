@@ -53,14 +53,14 @@ class CreatePost extends Component {
           placeholder="Description"
           onChange={this.handleChange}
         />
-        <input
+        {/* <input
           id="image_url"
           type="text"
           name="image_url"
           value={image_url}
           placeholder="Image_url Link"
           onChange={this.handleChange}
-        />
+        /> */}
         <button className='createpost-submit-button'>Submit</button>
 
       </form>

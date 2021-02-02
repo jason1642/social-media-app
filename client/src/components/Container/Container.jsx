@@ -5,7 +5,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
 import { getAllComments, getAllPosts, postPost, putPost, destroyPost, verifyUser } from '../../Services/api-helper';
 import PostEditPage from '../PostEditPage/PostEditPage.jsx';
-
+import ProfilePage from '../ProfilePage/ProfilePage.jsx'
 import HomePage from '../HomePage/HomePage.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
 
@@ -64,8 +64,8 @@ export default class Container extends Component {
       })
     }))
   }
-
   render() {
+    console.log(this.state.userExists)
     return (
       <main>
         {
@@ -83,6 +83,15 @@ export default class Container extends Component {
                   postList={this.state.posts}
                 />
               )} />
+
+
+              <Route exact path="/profile" render={(props) => (
+                <ProfilePage
+                  {...props}
+                  currentUser={this.state.userExists}
+                />
+              )} />
+
 
               <Route exact path="/posts/new" render={(props) => (
                 <CreatePost

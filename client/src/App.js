@@ -3,7 +3,7 @@ import { withRouter } from 'react-router';
 import './App.css'
 import { Redirect, Route } from 'react-router-dom'
 import Container from './components/Container/Container'
-import Header from './components/Header/Header';
+import SiteHeader from './components/SiteHeader/SiteHeader';
 import {
   loginUser,
   registerUser,
@@ -54,7 +54,7 @@ class App extends Component {
     return (
       <div className="App">
 
-        <Header
+        <SiteHeader
           handleLogout={this.handleLogout}
           currentUser={this.state.currentUser}
         />
