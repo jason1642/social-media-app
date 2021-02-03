@@ -8,6 +8,8 @@ const ProfilePage = props => {
     width: 100px;
     background-color: grey;
     color: black;
+    margin: 3% auto;
+
   `;
 
   const [posts, setPosts] = useState()

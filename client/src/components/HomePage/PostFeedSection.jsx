@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import CreatePostBox from './CreatePostBox.jsx'
+import PostCard from '../PostCard/PostCard'
 import { getOneUser } from '../../Services/api-helper'
 
 const PostFeedSection = props => {
@@ -58,7 +59,7 @@ const PostFeedSection = props => {
 
           return (
             <React.Fragment key={post.id}>
-              <PostFeedCard onClick={e => props.history.push(`/posts/${post.id}`)}
+              {/* <PostFeedCard onClick={e => props.history.push(`/posts/${post.id}`)}
                 className='postfeed-card'>
                 <div className='postfeed-card-title'>
                   <Link
@@ -71,11 +72,13 @@ const PostFeedSection = props => {
                   <img onError={"this.style.display='none'"} className='postfeed-card-image' src={post.image_url} />
                 </div>
                 <div className='postfeed-card-description'>{post.description}</div>
-                {/* <p>Posted by: {post.user.name}</p> */}
-                {/* {console.log(post)} */}
 
                 <br />
-              </PostFeedCard>
+              </PostFeedCard> */}
+
+              <PostCard {...props} postData={post} />
+
+
             </React.Fragment>
 
           )

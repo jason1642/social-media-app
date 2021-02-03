@@ -16,6 +16,23 @@ class PostsController < ApplicationController
     render json: @post
 
   end
+
+
+
+
+  def comments 
+    @title = "Comments"
+    @user = User.find(params[:id])
+    @comments = Comment.all.where(user_id: @user)
+    render json: @comments
+  end
+
+
+
+
+
+
+
   
   # POST /posts
   def create
