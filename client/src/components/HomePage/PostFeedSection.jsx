@@ -56,29 +56,10 @@ const PostFeedSection = props => {
       <CreatePostBox />
       {
         props.postList.map(post => {
-
+          console.log(post)
           return (
             <React.Fragment key={post.id}>
-              {/* <PostFeedCard onClick={e => props.history.push(`/posts/${post.id}`)}
-                className='postfeed-card'>
-                <div className='postfeed-card-title'>
-                  <Link
-                    className='postfeed-card-title-link'
-                    to={`/posts/${post.id}`}>
-                    {post.title}
-                  </Link>
-                </div>
-                <div className='postfeed-card-image-container'>
-                  <img onError={"this.style.display='none'"} className='postfeed-card-image' src={post.image_url} />
-                </div>
-                <div className='postfeed-card-description'>{post.description}</div>
-
-                <br />
-              </PostFeedCard> */}
-
               <PostCard {...props} postData={post} />
-
-
             </React.Fragment>
 
           )

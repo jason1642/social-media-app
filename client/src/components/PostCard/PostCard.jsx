@@ -55,18 +55,18 @@ const PostCard = props => {
     font-size: 12px;
     padding-bottom: 5px;
   `;
-  console.log(props.postData)
+  // console.log(props.postData)
   return (
     <Container onClick={e => props.history.push(`/posts/${props.postData.id}`)}>
       <UpvoteSide>
         UP
       </UpvoteSide>
       <Main>
-        <TopRow>Posted by: {props.postData.username}</TopRow>
-        {/* title min chars: 15 */}
+        <TopRow>Posted by: {props.postData.user.username}</TopRow>
+        {/* title min chars: 35 */}
         <Title>{props.postData.title}</Title>
         {/* Number of comments */}
-        <Footer>{'2.3k'} Comments</Footer>
+        <Footer>{props.postData.comments.length} Comments</Footer>
       </Main>
     </Container>
   );

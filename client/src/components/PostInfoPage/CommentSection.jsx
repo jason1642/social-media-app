@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getAllUsersPosts, getOnePost, getAllPosts, addComment, getAllComments, getOneUser } from '../../Services/api-helper'
+import { getAllPosts, addComment, getAllComments, getOneUser } from '../../Services/api-helper'
 
 const CommentSection = props => {
 
@@ -7,17 +7,13 @@ const CommentSection = props => {
   const commentsUsersArray = []
   const [allHTML, setAllHTML] = useState()
 
-  const getComments = async () =>
-    await getAllComments(props.postId).then(value => value)
 
   const getUserName = async (x) => {
     return await getOneUser(x.user_id)
   }
 
-  const getPosts = async () =>
-    await getAllPosts()
-
   const renderComments = async () =>
+
     await getAllComments(props.postId).then(value => value.map(comment =>
       <React.Fragment key={comment.id}>
         <div className='comment-single-box'>
@@ -29,8 +25,6 @@ const CommentSection = props => {
     )
     )
 
-  console.log(getOneUser(2))
-  console.log(getPosts())
   useEffect(() => {
     if (props.currentPost) {
       getAllComments(props.postId).then(value => value.map(comment => commentsUsersArray.push(getUserName(comment).then(v => 'string'))))

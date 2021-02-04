@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './HomePage.css'
 import styled from 'styled-components'
@@ -23,7 +23,10 @@ const HomePage = props => {
   `;
 
 
+  useEffect(() => {
+    document.title = 'Home Page'
 
+  }, [])
   return (
     <Main>
 

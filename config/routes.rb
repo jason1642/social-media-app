@@ -8,9 +8,15 @@ Rails.application.routes.draw do
       get :posts, :comments
     end
   end
+
+
+
   resources :posts do 
     resources :comments
+    resources :users
+    get :comments, :users
   end
+
   
 
   

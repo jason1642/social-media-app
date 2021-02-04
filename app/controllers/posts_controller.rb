@@ -1,31 +1,41 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
-  # before_action :set_user
+  # before_action :set_user, only: [:show, :update, :destroy]
   before_action :authorize_request, only: [:create, :update, :destroy]
 
   # GET /posts
   def index
     @posts = Post.all
 
-    render json: @posts
+    render json: @posts.as_json(include:{
+      user:{},
+      comments:{}
+    }),status: :ok
 
   end
+
+
+# /posts/:id/comments
+def comments 
+  @title = "Comments"
+  @user = User.find(params[:id])
+  @comments = Comment.all.where(user_id: @user)
+  render json: @comments
+end
+
+
 
   # GET /posts/1
   def show
-    render json: @post
+    render json: @post.as_json(include:{
+      user:{},
+      comments:{}
+    }),status: :ok
 
   end
 
 
 
-
-  def comments 
-    @title = "Comments"
-    @user = User.find(params[:id])
-    @comments = Comment.all.where(user_id: @user)
-    render json: @comments
-  end
 
 
 
@@ -69,7 +79,8 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
-   
+
+    
     # Only allow a trusted parameter "white list" through.
     def post_params
       params.require(:post).permit(:title, :description, :image_url, :user_id, :comment_id)

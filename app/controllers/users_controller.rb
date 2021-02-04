@@ -1,17 +1,15 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
+  
+  
   # GET /users
   def index
     @users = User.all
 
-    render json: @users
+    render json: @users.as_json(include:
+    :posts
+),status: :ok
   end
-
-
-
-
-
-
 
 # Show posts made by user
   # /users/:id/posts
@@ -19,11 +17,11 @@ class UsersController < ApplicationController
     @title = "Posts"
     @user = User.find(params[:id])
     @posts = Post.where(user_id: @user)
-    render json: @posts
+    render json: @posts.as_json(include:{
+      user:{},
+      comments:{}
+    }),status: :ok
   end
-
-
-
 
   # GET /users/1
   def show
