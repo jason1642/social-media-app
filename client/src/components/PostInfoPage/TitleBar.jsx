@@ -3,12 +3,12 @@ import styled from 'styled-components'
 
 const TitleBar = props => {
   const Container = styled.div`
-    width: 90%;
+    width: 80%;
     height: 40px;
     display: flex;
     justify-content: space-around;
     border: 1px solid black;
-    background-color: #000000;
+    background-color: #504f4f;
     position: fixed;
     margin: 0;
   `;
@@ -27,8 +27,11 @@ const TitleBar = props => {
     border: none;
     border-radius: 8px;
     font-size: 22px;
-    background-color: #b4b4b4;
-
+    color: black;
+    /* background-color: #ffffff; */
+    &:hover{ 
+      cursor: pointer;
+    }
   `;
   return (
     <Container>

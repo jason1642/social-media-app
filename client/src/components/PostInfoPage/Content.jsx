@@ -14,46 +14,63 @@ const Content = props => {
     display: flex;
     flex-direction: row;
     border-radius: 4px;
-    &:hover{
-      box-shadow: 0 6px 16px 0 #acacac;
-      transition: box-shadow .5s;
-      cursor: pointer;
-    }
+    
   `;
   const Main = styled.div`
-display: flex;
-width: 100%;
-margin: 1px 8px;
-padding-top: 8px;
-justify-content: space-between;
-flex-direction: column;
-& > div{
-  width: 100%;
-  /* border: 1px solid black; */
-  text-align: left;
-}
-`
+    display: flex;
+    width: 100%;
+    margin: 1px 8px;
+    padding-top: 8px;
+    flex-direction: column;
+    & > div{
+     width: 100%;
+      /* border: 1px solid black; */
+      text-align: left;
+    }
+    `
   const UsernameRow = styled.div`
-  
+    /* border: 1px solid black; */
+    margin: 0 4px;
+    font-size: 11px;
+    line-height: 20px;
+    margin: 0 8px 8px;
+
   `;
   const UpvoteSide = styled.div`
-  border-right: .5px solid black;
+  /* border-right: .5px solid black; */
   width: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: green;
+  border-radius: 5px 0 0 5px;
 `;
-  console.log(props)
+
+  const Title = styled.div`
+    display: flex;
+    font-weight: bold;
+    /* border: 1px solid black; */
+    margin: 0 8px 8px;
+    font-size: 25px;
+  `;
+  const Description = styled.div`
+    margin: 0 8px 8px;
+
+  `;
   return (
     <Container>
       <UpvoteSide>
-        UP
+
       </UpvoteSide>
       <Main>
         <UsernameRow>
           Posted by: {props.postData.user.username}
           {'created x days ago'}
         </UsernameRow>
+        <Title>{props.postData.title}</Title>
+        <Description>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus porro architecto pariatur voluptatem officia quisquam ea iusto a quidem. Possimus eveniet nemo aliquam non asperiores repellendus temporibus quo earum ex.
+        </Description>
       </Main>
     </Container>
   );

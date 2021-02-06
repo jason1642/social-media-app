@@ -8,28 +8,9 @@
 }
 
 
-.comment-section {
-  margin: 0 auto;
-}
-
-.post-info-image {
-  height: 100%;
-  width: 100%;
-  grid-column: 1/2;
-}
 
 
-.comment-container {
-  width: 75%;
-  margin: 0 auto;
-}
 
-.comment-single-box {
-  border: 1px solid black;
-  margin: 5px 0;
-  text-align: left;
-  padding-left: 50px;
-}
 
 .comment-input-box {
   display: flex;
@@ -53,9 +34,9 @@
   margin: auto 0;
 }
 
-.add-comment-title {
-  text-align: left;
-}
+
+
+
 
 @media screen and (max-width: 500px) {
   .postinfo-page-container {

@@ -24,6 +24,8 @@ const PostCard = props => {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: green;
+  border-radius: 5px 0 0 5px;
   `;
   const Main = styled.div`
     display: flex;
@@ -59,7 +61,7 @@ const PostCard = props => {
   return (
     <Container onClick={e => props.history.push(`/posts/${props.postData.id}`)}>
       <UpvoteSide>
-        UP
+
       </UpvoteSide>
       <Main>
         <TopRow>Posted by: {props.postData.user.username}</TopRow>

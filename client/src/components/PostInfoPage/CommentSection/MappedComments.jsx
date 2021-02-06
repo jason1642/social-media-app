@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from 'react';
-import { getAllPosts, addComment, getAllComments, getOneUser } from '../../Services/api-helper'
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components'
+import { getAllPosts, addComment, getAllComments, getOneUser } from '../../../Services/api-helper'
 
-const CommentSection = props => {
 
-  const [comments, setComments] = useState()
-  const commentsUsersArray = []
+
+const MappedComments = props => {
+  const Comment = styled.div`
+    border: 1px solid black;
+    margin: 5px 0;
+    text-align: left;
+    padding-left: 50px;
+  `;
+
+
+
   const [allHTML, setAllHTML] = useState()
-
+  const commentsUsersArray = []
 
   const getUserName = async (x) => {
     return await getOneUser(x.user_id)
@@ -16,15 +25,14 @@ const CommentSection = props => {
 
     await getAllComments(props.postId).then(value => value.map(comment =>
       <React.Fragment key={comment.id}>
-        <div className='comment-single-box'>
+        <Comment>
           <h3>{comment.user.username} says:</h3>
           <p>{comment.comment_text}</p>
           <br />
-        </div>
+        </Comment>
       </React.Fragment>
     )
     )
-
   useEffect(() => {
     if (props.currentPost) {
       getAllComments(props.postId).then(value => value.map(comment => commentsUsersArray.push(getUserName(comment).then(v => 'string'))))
@@ -36,14 +44,11 @@ const CommentSection = props => {
 
   }, [])
 
-  // console.log(allHTML)
   return (
-    <div className="comment-section">
-
-
+    <>
       {allHTML && allHTML}
-    </div>
-  )
+    </>
+  );
 }
 
-export default CommentSection
+export default MappedComments;
