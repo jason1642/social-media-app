@@ -6,6 +6,10 @@ import moment from 'moment';
 
 
 const MappedComments = props => {
+  const Container = styled.div`
+    width: 85%;
+    margin: 0 auto;
+  `;
   const Comment = styled.div`
     border: 1px solid black;
     margin: 5px 0;
@@ -14,7 +18,7 @@ const MappedComments = props => {
   `;
   const DateCreated = styled.span`
     font-size: 0.7em;
-    margin-left: 9px;
+    margin-left: 7px;
   `;
 
   const UsernameText = styled.h2`
@@ -54,9 +58,9 @@ const MappedComments = props => {
 
   }, [])
   return (
-    <>
+    <Container>
       {allHTML && allHTML}
-    </>
+    </Container>
   );
 }
 

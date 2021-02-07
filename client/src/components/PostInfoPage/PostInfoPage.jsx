@@ -14,16 +14,11 @@ const PostInfoPage = props => {
   const [currentUserId, setCurrentUserId] = useState()
   const [currentUser, setCurrentUser] = useState()
 
-
   const setCurrentPost = async () => {
     const post = await getOnePost(props.postId);
     setPost(post)
 
   }
-
-
-
-
   useEffect(() => {
     const currentUser1 = verifyUser();
     currentUser1.then(v => setCurrentUser(v))
@@ -31,26 +26,29 @@ const PostInfoPage = props => {
     setCurrentPost()
 
     // document.title = post.title
-
   }, [])
 
 
   const Container = styled.div`
     width: 80%;
     margin: 3% auto;
-    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
   `;
   const Main = styled.div`
     display: flex;
     flex-grow: 1;
     flex-direction: column;
+    margin: 4% 0;
     margin-right: 14px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+
   `;
 
   const SidesContainer = styled.div`
     display: flex;
-    margin-top: 55px;
+    margin-top: 18px;
     justify-content: space-between;
   `;
   return (
@@ -60,10 +58,11 @@ const PostInfoPage = props => {
 
         <Container>
 
+
           <TitleBar title={post.title} />
 
-
           <SidesContainer>
+
             <Main>
 
               <Content postData={post} />

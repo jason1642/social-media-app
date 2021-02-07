@@ -1,0 +1,44 @@
+.comment-input-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  /* border: 1px solid red; */
+  margin-bottom: 10px;
+  min-height: 122px;
+}
+
+.comment-input-box>textarea {
+  margin: auto auto;
+  padding: 10px 0 0 10px;
+  min-height: 122px;
+  width: 85%;
+  height: 100%;
+  border: none;
+  border-radius: 4px 4px 0 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.comment-submit-button {
+  /* margin: auto 0; */
+  border-radius: 10px;
+  margin: 4px 8px;
+  min-width: 96px;
+  height: 24px;
+  background-color: #316ebb;
+  color: white;
+  border: none;
+
+}
+
+.comment-input-footer {
+  padding: 2px 0 2px 10px;
+
+  width: 85%;
+  margin: 0 auto;
+  background-color: rgb(182, 182, 182);
+  /* border: 1px solid black; */
+  border-radius: 0 0 4px 4px;
+  display: flex;
+  justify-content: flex-end;
+  /* border: 1px solid black; */
+}

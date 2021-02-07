@@ -4,20 +4,19 @@ import styled from 'styled-components'
 const TitleBar = props => {
   const Container = styled.div`
     width: 80%;
-    height: 40px;
+    height: 46px;
     display: flex;
     justify-content: space-around;
-    border: 1px solid black;
     background-color: #504f4f;
     position: fixed;
-    margin: 0;
+    align-items: center;
 
   `;
 
   const Title = styled.div`
     text-align: left;
     font-size: 27px;
-    margin-left: 20%;
+    margin-left: 15%;
     /* border: 1px solid black; */
     overflow-x: hidden;
     width: 55%;
@@ -28,7 +27,8 @@ const TitleBar = props => {
     border: none;
     border-radius: 8px;
     font-size: 22px;
-    color: black;
+    color: white;
+    background-color: transparent;
     /* background-color: #ffffff; */
     &:hover{ 
       cursor: pointer;

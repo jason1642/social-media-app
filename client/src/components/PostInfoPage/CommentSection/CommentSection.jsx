@@ -8,6 +8,7 @@ import './CommentSection.css'
 // Using React Hooks with onchange functions to create comment submission
 // functionality creates bugs with unwanted rerenders of this component
 
+// If user input in empty, reject post request
 export default class CommentSection extends Component {
   constructor(props) {
     super(props)
@@ -16,16 +17,21 @@ export default class CommentSection extends Component {
     }
 
     this.Container = styled.div`
-    margin: 0 auto;
-    border: 1px solid black;
-    width: 100%;
-    margin: 0 auto;
+      margin: 0 auto;
+      /* border: 1px solid black; */
+      width: 100%;
+      margin: 0 auto;
   `;
     this.AddCommentTitle = styled.div`
-    text-align: left;
+      text-align: left;
+      width: 85%;
+      margin: auto auto;
+      padding: 8px 0 8px 0;
   `;
 
   }
+
+
 
   handleChange = e => {
     const { value } = e.target;
@@ -34,9 +40,6 @@ export default class CommentSection extends Component {
     });
   }
   handleSubmit = async () => {
-    console.log(
-      this.state.commentText,
-      this.state.currentUser);
     //comment post request reqires post_id, comment_id, string
     await addComment({
       comment_text: this.state.commentText,
@@ -60,25 +63,27 @@ export default class CommentSection extends Component {
       <>
         <this.Container>
 
-          <this.AddCommentTitle>
-            Comment as {this.props.currentUserData.username}
-          </this.AddCommentTitle>
+
 
           <form className='comment-input-box' onSubmit={
             (e) => {
               this.handleSubmit()
               return <Redirect to={`/posts/${this.props.post.id}`} />
-              // return props.history.push(`/posts/${props.post.id}`)
             }
           }>
-            <input
-              type='text'
+            <this.AddCommentTitle>
+              Comment as {this.props.currentUserData.username}
+            </this.AddCommentTitle>
+            <textarea
+              type='textarea'
               value={this.state.commentText}
               name='commentText'
               onChange={this.handleChange}
               placeholder='Write a comment'
             />
-            <button className='submit-button comment-submit-button'>Add comment</button>
+            <div className='comment-input-footer'>
+              <button className='submit-button comment-submit-button'>Comment</button>
+            </div>
           </form>
 
           <MappedComments currentPost={this.props.currentPost} postId={this.props.postId} />
