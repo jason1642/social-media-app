@@ -8,14 +8,14 @@ const SiteHeader = (props) => {
 
   const [currentUser, setCurrentUser] = useState()
 
-
+  const setUser = async () => {
+    const thisUser = await verifyUser();
+    setCurrentUser(thisUser)
+  }
 
   useEffect(() => {
-    const thisUser = verifyUser();
-    setCurrentUser(thisUser)
-    console.log(currentUser)
+    setUser()
   }, [])
-  console.log(props.currentUser)
   return (<>
     {
       currentUser ?
@@ -29,21 +29,7 @@ const SiteHeader = (props) => {
             <Link className='site-title' to='/'>Post Tree!</Link>
           </div>
 
-
-          {/* <Link className='home-button' to="/">Home</Link> */}
-          {/* <Link className='header-create-post-button' to="/posts/new">Create a post</Link> */}
-
-
-
-
-          {/* <h3 className='welcome-text'>Hello, {this.state.currentUser.username}</h3>
-            <Link className='logout-button'
-              to='/profile'
-            >My Profile</Link>
-
-            <Link className='logout-button' onClick={this.props.handleLogout}>Logout</Link> */}
-
-          <DropDownContainer handleLogout={props.handleLogout} />
+          <DropDownContainer currentUser={props.currentUser} handleLogout={props.handleLogout} />
 
         </header>
 

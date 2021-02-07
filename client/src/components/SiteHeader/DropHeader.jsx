@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 
 
-const DropHeader = () => {
+const DropHeader = props => {
   const Header = styled.div`
     margin-bottom: 0em;
     height: 100%;
@@ -19,6 +19,7 @@ const DropHeader = () => {
     font-size: 12px;
     color: black;
     border: 1px solid lightgray;
+
     /* background-color: #ff9914; */
   `;
   const ProfilePicture = styled.img`
@@ -48,7 +49,7 @@ const DropHeader = () => {
         <ProfilePicture src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_devouringplague.jpg" alt='profile pic' />
       </ImageContainer>
       <UsernameContainer>
-        USERNAME
+        {props.currentUser.username}
       </UsernameContainer>
       <div>
         <Icon icon={faAngleDown} />

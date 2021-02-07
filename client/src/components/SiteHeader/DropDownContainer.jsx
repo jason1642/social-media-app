@@ -8,7 +8,6 @@ const DropDownContainer = props => {
 
   const Container = styled("div")`
     height:inherit;
-    /* width: 10%; */
     &:hover{
       cursor: pointer;
     }`;
@@ -20,12 +19,13 @@ const DropDownContainer = props => {
     display: block;
     width: 100%;
     text-decoration: none;
-    color: white;
+    color: black;
     width: 100%;
     padding-bottom: 5px;
     margin-bottom: 0.8em;
     &:hover{
-      background-color: #6e7288;
+      background-color: #9ca8f0;
+      
     }
   `;
   const DropDownList = styled.ul`
@@ -38,35 +38,25 @@ const DropDownContainer = props => {
     border-radius: 0 0 15px 15px;
     box-sizing: border-box;
     color: white;
-    background-color: #4d505f;
+    background-color: #ffffff;
     font-size: 12px;
     text-align: center;
     font-weight: 500;
     &:first-child {
       padding-top: 0.8em;
     }`;
-  // const ListItem = styled.li`
-  //   list-style: none;
-  //   width: 100%;
-  //   padding-bottom: 5px;
-  //   margin-bottom: 0.8em;
-  //   &:hover{
-  //     background-color: #6e7288;
-  //   }`;
+
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
-
   return (
     <Container onClick={toggling}>
-      <DropHeader />
+      <DropHeader currentUser={props.currentUser} />
       {isOpen && (
         <DropDownListContainer>
           <DropDownList>
 
-            {/* <ListItem > */}
             <DropDownLink to='/profile'>Profile</DropDownLink>
             <DropDownLink onClick={props.handleLogout}>Logout</DropDownLink>
-            {/* </ListItem> */}
 
           </DropDownList>
         </DropDownListContainer>

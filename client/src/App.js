@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from 'react-router';
 import './App.css'
 import { Redirect, Route } from 'react-router-dom'
@@ -11,64 +11,62 @@ import {
   removeToken
 } from './Services/api-helper';
 
-class App extends Component {
-  state = {
-    currentUser: null
+const App = () => {
+  const [currentUser, setCurrentUser] = useState()
+
+
+
+  useEffect(() => {
+    confirmUser();
+  }, [])
+
+
+  const handleLogin = async (loginData) => {
+    const currentUser1 = await loginUser(loginData);
+    // console.log(currentUser1)
+    setCurrentUser(currentUser1)
+    return currentUser ? true : false;
   }
 
-  componentDidMount() {
-    this.confirmUser();
-    console.log(this.state.currentUser)
+  const handleRegister = async (registerData) => {
+    const currentUser1 = await registerUser(registerData);
+    setCurrentUser(currentUser1)
   }
 
-  handleLogin = async (loginData) => {
-    const currentUser = await loginUser(loginData);
-    console.log(currentUser)
-    this.setState({ currentUser })
-    return this.state.currentUser ? true : false;
+  const confirmUser = () => {
+    const currentUser1 = verifyUser();
+    currentUser1.then(v => setCurrentUser(v))
   }
 
-  handleRegister = async (registerData) => {
-    const currentUser = await registerUser(registerData);
-    this.setState({ currentUser })
-  }
-
-  confirmUser = async () => {
-    const currentUser1 = await verifyUser();
-    this.setState({ currentUser1 })
-  }
-
-  handleLogout = () => {
+  const handleLogout = () => {
     localStorage.clear();
-    this.setState({
-      currentUser: null
-    })
+    setCurrentUser(null)
     removeToken();
     // this.props.history.push('/login');
     window.location.reload()
     return <Redirect to='login' />
   }
-  render() {
-    console.log(this.state.currentUser)
 
-    return (
-      <div className="App">
 
+  return (
+    <div className="App">
+      {
+        currentUser &&
         <SiteHeader
-          handleLogout={this.handleLogout}
-          currentUser={this.state.currentUser}
+          handleLogout={handleLogout}
+          currentUser={currentUser}
         />
+      }
+      <Container
+        currentUser={currentUser}
+        handleRegister={handleRegister}
+        handleLogin={handleLogin}
+      />
 
-        <Container
-          currentUser={this.state.currentUser}
-          handleRegister={this.handleRegister}
-          handleLogin={this.handleLogin}
-        />
 
-
-      </div>
-    )
-  }
+    </div>
+  )
 }
+
 
 export default withRouter(App);

@@ -8,7 +8,6 @@ const Content = props => {
   const Container = styled.div`
     width: 100%;
     min-height: 100px;
-    max-height: 118px;
     margin: 10px 0;
     background-color: white;
     display: flex;

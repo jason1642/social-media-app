@@ -26,7 +26,6 @@ export default class Container extends Component {
     this.setState({
       userExists: currUser
     })
-    console.log(this.state.userExists)
   }
 
   readAllComments = async () => {
@@ -65,7 +64,6 @@ export default class Container extends Component {
     }))
   }
   render() {
-    console.log(this.state.userExists)
     return (
       <main>
         {

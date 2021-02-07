@@ -33,7 +33,11 @@ class CommentsController < ApplicationController
 
   # POST /comments
   def create
+
     @comments = @post.comments.create(params.require(:comment).permit(:comment_text, :user_id, :post_id))
+
+    # @comments = @post.comments.create(params.require(:comment_text).permit(:user_id, :post_id))
+
     if @comments.save
       render json: @comments
     else

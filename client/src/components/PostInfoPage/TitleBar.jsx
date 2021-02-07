@@ -11,6 +11,7 @@ const TitleBar = props => {
     background-color: #504f4f;
     position: fixed;
     margin: 0;
+
   `;
 
   const Title = styled.div`
