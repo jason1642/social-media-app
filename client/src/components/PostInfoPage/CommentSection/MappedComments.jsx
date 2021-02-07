@@ -14,6 +14,7 @@ const MappedComments = props => {
   `;
   const DateCreated = styled.span`
     font-size: 0.7em;
+    margin-left: 9px;
   `;
 
   const UsernameText = styled.h2`

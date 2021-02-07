@@ -3,7 +3,10 @@ import { Redirect } from 'react-router-dom'
 import { addComment, verifyUser } from '../../../Services/api-helper'
 import styled from 'styled-components'
 import MappedComments from './MappedComments'
+import './CommentSection.css'
 
+// Using React Hooks with onchange functions to create comment submission
+// functionality creates bugs with unwanted rerenders of this component
 
 export default class CommentSection extends Component {
   constructor(props) {
@@ -34,10 +37,10 @@ export default class CommentSection extends Component {
     console.log(
       this.state.commentText,
       this.state.currentUser);
-
+    //comment post request reqires post_id, comment_id, string
     await addComment({
       comment_text: this.state.commentText,
-      user_id: this.state.currentUser,
+      user_id: this.state.currentUser.id,
       post_id: this.props.postId
     });
   }
