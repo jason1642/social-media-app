@@ -35,14 +35,6 @@ end
   end
 
 
-
-
-
-
-
-
-
-
   
   # POST /posts
   def create

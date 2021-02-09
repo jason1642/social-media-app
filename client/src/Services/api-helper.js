@@ -50,6 +50,11 @@ export const getAllComments = async (postid) => {
   return resp.data;
 }
 
+// export const destroyComment = async (postid, commentid) => {
+//   const resp = await api.delete(`/posts/${posdtid}/comments/${commentid}`);
+//   return resp;
+// }
+
 // ========================================
 // ================ posts =================
 // ========================================

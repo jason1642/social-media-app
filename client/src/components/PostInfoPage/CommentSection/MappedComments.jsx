@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { getAllPosts, addComment, getAllComments, getOneUser } from '../../../Services/api-helper'
+import { addComment, verifyUser, getAllComments, getOneUser } from '../../../Services/api-helper'
 import moment from 'moment';
 
 
@@ -26,12 +26,27 @@ const MappedComments = props => {
     font-weight: 500;
   `;
 
+  const Footer = styled.div`
+    display: flex;
+    background-color: wheat;
+    align-items: center;
+    & > *{
+      margin-left: 7px;
+    }
+    `;
+
 
   const [allHTML, setAllHTML] = useState()
   const commentsUsersArray = []
+  const [verifiedUser, setVerifiedUser] = useState()
 
   const getUserName = async (x) => {
     return await getOneUser(x.user_id)
+  }
+
+  const getCurrentUser = async () => {
+    verifyUser().then(v => setVerifiedUser(v))
+    console.log(verifiedUser)
   }
 
   const renderComments = async () =>
@@ -44,15 +59,26 @@ const MappedComments = props => {
             </DateCreated>
           </UsernameText>
           <p>{comment.comment_text}</p>
-          <br />
+          <Footer>
+            <div>Upvote Box</div>
+            {
+              // comment.user.id === verifiedUser.id &&
+              <>
+                <button>Delete</button>
+                <button>Edit</button>
+              </>
+            }
+          </Footer>
         </Comment>
       </React.Fragment>
     )
     )
+
   useEffect(() => {
     if (props.currentPost) {
       getAllComments(props.postId).then(value => value.map(comment => commentsUsersArray.push(getUserName(comment).then(v => 'string'))))
       renderComments().then(value => setAllHTML(value))
+      getCurrentUser()
     }
 
 

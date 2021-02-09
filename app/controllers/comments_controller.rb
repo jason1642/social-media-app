@@ -12,11 +12,9 @@ class CommentsController < ApplicationController
       user:{},
       post:{
         include: :user
- 
       }
     }),status: :ok
   end
-
 
   # GET /comments/1
   def show
@@ -63,7 +61,7 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       # p Comment.find(params[:id])
-      @comment = Comment.find(params[:post_id])
+      @comment = Comment.find(params[:id])
     end
 
     def set_post
