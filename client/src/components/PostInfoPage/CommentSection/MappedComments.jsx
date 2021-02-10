@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { addComment, verifyUser, getAllComments, getOneUser } from '../../../Services/api-helper'
 import moment from 'moment';
 
-
-
 const MappedComments = props => {
   const Container = styled.div`
     width: 85%;
@@ -36,22 +34,19 @@ const MappedComments = props => {
     `;
 
 
-  const [allHTML, setAllHTML] = useState()
-  const commentsUsersArray = []
-  const [verifiedUser, setVerifiedUser] = useState()
+  const [allHTML, setAllHTML] = useState(undefined)
+  const [verifiedUser, setVerifiedUser] = useState(undefined)
 
-  const getUserName = async (x) => {
-    return await getOneUser(x.user_id)
-  }
 
   const getCurrentUser = async () => {
-    verifyUser().then(v => setVerifiedUser(v))
+    const theUser = await verifyUser()
+    console.log(theUser)
+    setVerifiedUser(theUser)
     console.log(verifiedUser)
   }
 
   const renderComments = async () =>
-
-    await getAllComments(props.postId).then(value => value.map(comment =>
+    await getAllComments(props.postId).then(value => setAllHTML(value.map(comment =>
       <React.Fragment key={comment.id}>
         <Comment>
           <UsernameText>{comment.user.username}
@@ -60,32 +55,34 @@ const MappedComments = props => {
           </UsernameText>
           <p>{comment.comment_text}</p>
           <Footer>
+            {console.log(verifiedUser)}
             <div>Upvote Box</div>
             {
-              // comment.user.id === verifiedUser.id &&
-              <>
-                <button>Delete</button>
-                <button>Edit</button>
-              </>
+              verifiedUser ?
+                comment.user.id === verifiedUser.id &&
+                <>
+                  <button>Delete</button>
+                  <button>Edit</button>
+                </>
+                : <></>
             }
+
           </Footer>
         </Comment>
       </React.Fragment>
-    )
+    ))
     )
 
   useEffect(() => {
+    getCurrentUser()
+    console.log(verifiedUser)
     if (props.currentPost) {
-      getAllComments(props.postId).then(value => value.map(comment => commentsUsersArray.push(getUserName(comment).then(v => 'string'))))
-      renderComments().then(value => setAllHTML(value))
-      getCurrentUser()
+      renderComments()
     }
-
-
   }, [])
   return (
     <Container>
-      {allHTML && allHTML}
+      {allHTML ? allHTML : <></>}
     </Container>
   );
 }

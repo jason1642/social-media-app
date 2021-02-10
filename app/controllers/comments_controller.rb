@@ -61,7 +61,7 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       # p Comment.find(params[:id])
-      @comment = Comment.find(params[:id])
+      @comment = Comment.where(params[:post_id])
     end
 
     def set_post
