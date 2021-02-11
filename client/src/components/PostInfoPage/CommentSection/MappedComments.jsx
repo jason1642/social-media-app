@@ -35,18 +35,18 @@ const MappedComments = props => {
 
 
   const [allHTML, setAllHTML] = useState(undefined)
-  const [verifiedUser, setVerifiedUser] = useState(undefined)
-
-
-  const getCurrentUser = async () => {
-    const theUser = await verifyUser()
-    console.log(theUser)
-    setVerifiedUser(theUser)
-    console.log(verifiedUser)
+  let verifiedUser = undefined;
+  const setUser = async () => {
+    verifiedUser = await verifyUser().then(v => v)
   }
 
-  const renderComments = async () =>
-    await getAllComments(props.postId).then(value => setAllHTML(value.map(comment =>
+  console.log(verifiedUser)
+  const renderComments = async () => {
+
+
+
+
+    return await getAllComments(props.postId).then(value => setAllHTML(value.map(comment =>
       <React.Fragment key={comment.id}>
         <Comment>
           <UsernameText>{comment.user.username}
@@ -73,13 +73,17 @@ const MappedComments = props => {
     ))
     )
 
+  }
+
+  // Setting verified user via useState causes a infinite loop
+  // Fix later, but this code works
   useEffect(() => {
-    getCurrentUser()
+    setUser()
     console.log(verifiedUser)
-    if (props.currentPost) {
-      renderComments()
-    }
+    renderComments()
   }, [])
+
+
   return (
     <Container>
       {allHTML ? allHTML : <></>}
