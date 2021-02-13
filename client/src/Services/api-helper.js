@@ -50,10 +50,10 @@ export const getAllComments = async (postid) => {
   return resp.data;
 }
 
-// export const destroyComment = async (postid, commentid) => {
-//   const resp = await api.delete(`/posts/${posdtid}/comments/${commentid}`);
-//   return resp;
-// }
+export const destroyComment = async (postid, commentid) => {
+  const resp = await api.delete(`/posts/${postid}/comments/${commentid}`);
+  return resp;
+}
 
 // ========================================
 // ================ posts =================
@@ -98,6 +98,10 @@ export const addComment = async (commentData) => {
   return resp.data;
 }
 
+export const patchComment = async (text, postId, commentId) => {
+  const resp = await api.put(`/posts/${postId}/comments/${commentId}`, text);
+  return resp.data;
+}
 
 export const getOneUser = async (id) => {
   const resp = await api.get(`/users/${id}`);

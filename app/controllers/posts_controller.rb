@@ -6,7 +6,6 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     @posts = Post.all
-
     render json: @posts.as_json(include:{
       user:{},
       comments:{}

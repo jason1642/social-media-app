@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :set_comment
-  before_action :set_post
+  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_post, only: [:index,:show, :update, :destroy, :create]
 
   # GET /comments
   def index
@@ -32,14 +32,14 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
 
-    @comments = @post.comments.create(params.require(:comment).permit(:comment_text, :user_id, :post_id))
+    @comment_create = @post.comments.create(params.require(:comment).permit(:comment_text, :user_id, :post_id))
 
     # @comments = @post.comments.create(params.require(:comment_text).permit(:user_id, :post_id))
 
-    if @comments.save
-      render json: @comments
+    if @comment_create.save
+      render json: @comment_create
     else
-      render json: @comments.errors, status: :unprocessable_entity
+      render json: @comment_create.errors, status: :unprocessable_entity
     end
   end
 
@@ -54,14 +54,14 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    @comment.destroy
+    Comment.destroy(params[:id])
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       # p Comment.find(params[:id])
-      @comment = Comment.where(params[:post_id])
+      @comment = Comment.find(params[:id])
     end
 
     def set_post

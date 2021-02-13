@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { getAllUsersPosts, getOnePost } from '../../Services/api-helper'
+import { getAllUsersPosts, getOnePost, verifyUser } from '../../Services/api-helper'
 import PostCard from '../PostCard/PostCard'
 
 const ProfilePage = props => {
@@ -11,32 +11,37 @@ const ProfilePage = props => {
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    background-color: grey;
     color: black;
     margin: 3% auto;
-    margin-right: 25px;
   `;
 
   const [posts, setPosts] = useState()
 
-  const getAllCurrentUsersPosts = async () => {
+
+  const getAllCurrentUsersPosts = async userId => {
     // change '2' to current user
-    const HTMLPosts = await getAllUsersPosts(2).then(ele => ele.map(v =>
+    const HTMLPosts = await getAllUsersPosts(userId).then(ele => ele.map(v =>
       // console.log(v)
       < PostCard {...props} postData={v} />
     ))
     setPosts(HTMLPosts)
-
   }
 
   useEffect(() => {
-    getAllCurrentUsersPosts()
-  }
-    , [])
+    // Must have async function within useEffect, or else promise wont be resolved
+    // Create async function so the promise can be used to pass data into the other function, then 
+    // call the entire function after
+    const getCurrentUser = async () => {
+      const textx = await verifyUser().then(v => v.id)
+      getAllCurrentUsersPosts(textx)
+    }
+    getCurrentUser()
+  }, [])
 
-  console.log(posts)
+  // console.log(posts)
   return (
     <Container>
+      <h2>These are all your Posts!</h2>
       {posts && posts}
 
     </Container>
