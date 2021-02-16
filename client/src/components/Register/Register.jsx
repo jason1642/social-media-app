@@ -30,6 +30,7 @@ export default class Register extends Component {
             e.preventDefault();
             this.props.handleRegister(this.state);
             this.props.history.push('/');
+            window.location.reload()
 
           }
         }> <h3>Sign up</h3> <label htmlFor="username"></label> <input id="username"
