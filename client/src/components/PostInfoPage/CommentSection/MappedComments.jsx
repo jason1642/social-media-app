@@ -39,71 +39,115 @@ const MappedComments = props => {
     `;
 
 
-  const [isEditing, setIsEditing] = useState(false)
-  const handleEdit = () =>
-    isEditing ? setIsEditing(false) : setIsEditing(true)
-
-
-
-
 
   const [allHTML, setAllHTML] = useState(undefined)
-  let verifiedUser = undefined;
-  const setUser = async () => {
-    verifiedUser = await verifyUser().then(v => v)
+  const [shouldUpdate, setShouldUpdate] = useState(false)
+  const [reRendered, setReRendered] = useState(false)
+  const [isEditing, setIsEditing] = useState(undefined)
+  const [verifiedUser, setVerifiedUser] = useState(undefined)
+
+  const handleEdit = async (index) => {
+    await isEditing ? setIsEditing(false) : setIsEditing(true)
+    // console.log(renderedHTML)
+    // console.log(isEditing)
+    let testx = allHTML
+
+    reRendered[index].isEditing = true
+    setReRendered(testx)
+    setShouldUpdate(true)
+    console.log(isEditing)
+    // console.log(testx)
+    // console.log(renderedHTML[index])
   }
+
 
   const renderComments = async () => {
-    return await getAllComments(props.postId).then(value => setAllHTML(value.map(comment =>
-      <React.Fragment key={comment.id}>
-        <Comment>
-          <UsernameText>{comment.user.username}
-            <DateCreated>{moment(comment.created_at).fromNow()}
-            </DateCreated>
-          </UsernameText>
+    let testHTML
+    await getAllComments(props.postId).then(async value => testHTML = await value.map((comment, i) => {
+      return {
+        index: i,
+        isEditing: false,
+        text: <React.Fragment key={comment.id}>
+          <Comment>
+            <UsernameText>{comment.user.username}
+              <DateCreated>{moment(comment.created_at).fromNow()}
+              </DateCreated>
+            </UsernameText>
 
-          {
-            isEditing ?
-              <><input key={comment.id} value={comment.comment_text} />{
-                // console.log(this.key)
+            <p>{comment.comment_text}</p>
+
+            <Footer>
+              <div>Upvote Boxxx</div>
+              {
+                verifiedUser ?
+                  comment.user.id === verifiedUser.id &&
+                  <>
+                    <DeleteButton postId={props.postId} comment={comment} />
+                    {/* <EditButton handleEdit={() =>
+                      handleEdit(i)}
+                      postId={props.postId}
+                      comment={comment}
+                    >Edit</EditButton> */}
+                  </>
+                  : <></>
+              }
+            </Footer>
+          </Comment>
+        </React.Fragment>,
+        input: <React.Fragment key={comment.id}>
+          <Comment>
+            <UsernameText>{comment.user.username}
+              <DateCreated>{moment(comment.created_at).fromNow()}
+              </DateCreated>
+            </UsernameText>
+            <><input
+              name={i}
+              key={comment.id}
+              value={comment.comment_text} />{
               }</>
-              :
-              <p>{comment.comment_text}</p>
-          }
-
-          <Footer>
-            <div>Upvote Box</div>
-            {
-              verifiedUser ?
-                comment.user.id === verifiedUser.id &&
-                <>
-                  <DeleteButton postId={props.postId} comment={comment} />
-                  <EditButton handleEdit={handleEdit} postId={props.postId} comment={comment}>Edit</EditButton>
-                </>
-                : <></>
-            }
-
-          </Footer>
-        </Comment>
-      </React.Fragment >
-    ))
+            <Footer>
+              <div>Upvote Box</div>
+              <DeleteButton postId={props.postId} comment={comment} />
+              {/* <EditButton handleEdit={() => handleEdit(i)} postId={props.postId} comment={comment}>Edit</EditButton> */}
+            </Footer>
+          </Comment>
+        </React.Fragment>
+      }
+    })
     )
 
+
+    // setAllHTML(testHTML)
+
+
+    return testHTML
   }
 
-  // Setting verified user via useState causes a infinite loop
-  // Fix later, but this code works
+
+  // setUser()
   useEffect(() => {
-    setUser()
-    renderComments()
-  }, [isEditing])
+    const setUser = async () =>
+      await verifyUser().then(v => v)
+    setUser().then(v => setVerifiedUser(v))
+    console.log('used effect!!01!')
+
+  }, [])
+
+  useEffect(() => {
+    renderComments().then(ele => {
+      setAllHTML(ele)
+    })
+  }, [verifiedUser])
 
 
+  // rerenders if state (isediting variable) is changed
   return (
     <Container>
-      {allHTML ? allHTML : <></>}
+      {
+        allHTML && allHTML.map(ele => ele.isEditing ? ele.input : ele.text)}
     </Container>
   );
+
 }
 
 export default MappedComments;

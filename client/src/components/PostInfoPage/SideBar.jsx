@@ -21,7 +21,7 @@ const SideBar = () => {
     /* border-bottom: 1px solid black; */
     padding-bottom: 10px;
     color: white;
-    background-color: #6c6cfd;
+    background-color: #3f3f8a;
     border-radius: 5px 5px 0 0;
   `;
   return (

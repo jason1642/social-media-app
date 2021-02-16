@@ -40,6 +40,7 @@ class CreatePost extends Component {
           id="title"
           type="text"
           name="title"
+          minLength='10'
           maxLength='22'
           value={title}
           onChange={this.handleChange}
@@ -49,6 +50,7 @@ class CreatePost extends Component {
           id="description"
           type="text"
           name="description"
+          maxLength='300'
           value={description}
           placeholder="Description"
           onChange={this.handleChange}

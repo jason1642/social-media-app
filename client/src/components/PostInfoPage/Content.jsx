@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
-
+import moment from 'moment'; // library to display how long ago comment was posted
 
 
 const Content = props => {
@@ -63,8 +63,7 @@ const Content = props => {
       </UpvoteSide>
       <Main>
         <UsernameRow>
-          Posted by: {props.postData.user.username}
-          {'created x days ago'}
+          Posted by: {props.postData.user.username} - {moment(props.postData.created_at).fromNow()}
         </UsernameRow>
         <Title>{props.postData.title}</Title>
         <Description>

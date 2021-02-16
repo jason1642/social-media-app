@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components'
 
 const PostCard = props => {
@@ -19,12 +19,12 @@ const PostCard = props => {
     /* border: 1px solid black; */
   `;
   const UpvoteSide = styled.div`
-    border-right: .5px solid black;
+    /* border-right: .5px solid black; */
     width: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: green;
+    background-color: #e6e6e6;
   border-radius: 5px 0 0 5px;
   `;
   const Main = styled.div`
@@ -58,19 +58,28 @@ const PostCard = props => {
     padding-bottom: 5px;
   `;
   // console.log(props.postData)
-  return (
-    <Container onClick={e => props.history.push(`/posts/${props.postData.id}`)}>
-      <UpvoteSide>
 
-      </UpvoteSide>
-      <Main>
-        <TopRow>Posted by: {props.postData.user.username}</TopRow>
-        {/* title min chars: 35 */}
-        <Title>{props.postData.title}</Title>
-        {/* Number of comments */}
-        <Footer>{props.postData.comments.length} Comments</Footer>
-      </Main>
-    </Container>
+  // useEffect(() => {
+
+  // },[props.postData])
+
+  return (<>
+    {props.postData.user ?
+      <Container onClick={e => props.history.push(`/posts/${props.postData.id}`)}>
+        <UpvoteSide>
+
+        </UpvoteSide>
+        <Main>
+          <TopRow>Posted by: {props.postData.user.username}</TopRow>
+          {/* title min chars: 35 */}
+          <Title>{props.postData.title}</Title>
+          {/* Number of comments */}
+          <Footer>{props.postData.comments.length} Comments</Footer>
+        </Main>
+      </Container>
+      : <></>
+    }
+  </>
   );
 }
 
