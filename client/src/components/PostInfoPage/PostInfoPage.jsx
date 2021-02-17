@@ -55,18 +55,11 @@ const PostInfoPage = props => {
     <>
       {
         post &&
-
         <Container>
-
-
           <TitleBar title={post.title} />
-
           <SidesContainer>
-
             <Main>
-
               <Content postData={post} />
-
               {/* Comment section */}
               <CommentSection post={post}
                 currentPost={post}
@@ -74,15 +67,10 @@ const PostInfoPage = props => {
                 currentUser={currentUserId}
                 postId={props.postId}
               />
-
             </Main>
-
             <SideBar />
           </SidesContainer>
-
         </Container>
-
-
       }
     </>
   )

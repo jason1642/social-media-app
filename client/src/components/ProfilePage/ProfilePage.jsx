@@ -2,17 +2,27 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { getAllUsersPosts, getOnePost, verifyUser } from '../../Services/api-helper'
 import PostCard from '../PostCard/PostCard'
+import SideBar from './SideBar'
 
 const ProfilePage = props => {
   const Container = styled.div`
     /* height: 100px; */
-    width: 75%;
+    width: 80%;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
     justify-content: space-evenly;
     color: black;
     margin: 3% auto;
+  `;
+
+  const PostsSide = styled.div`
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    margin: 4% 0;
+    margin-right: 14px;
+    width: 80%; 
   `;
 
   const [posts, setPosts] = useState()
@@ -41,8 +51,13 @@ const ProfilePage = props => {
   // console.log(posts)
   return (
     <Container>
-      <h2>These are all your Posts!</h2>
-      {posts && posts}
+      <PostsSide>
+        <h2>These are all your Posts!</h2>
+        {posts && posts}
+      </PostsSide>
+      <>
+        <SideBar />
+      </>
 
     </Container>
   )

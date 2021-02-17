@@ -39,7 +39,13 @@ export const removeToken = () => {
   api.defaults.headers.common.authorization = null;
 }
 
-
+// ========================================
+// ================ avatars ===============
+// ========================================
+export const getAllAvatars = async () => {
+  const resp = await api.get('/avatars');
+  return resp.data;
+}
 
 // ========================================
 // ================ comments ===============
@@ -107,3 +113,4 @@ export const getOneUser = async (id) => {
   const resp = await api.get(`/users/${id}`);
   return resp;
 }
+

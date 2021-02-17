@@ -67,7 +67,6 @@ const PostCard = props => {
     {props.postData.user ?
       <Container onClick={e => props.history.push(`/posts/${props.postData.id}`)}>
         <UpvoteSide>
-
         </UpvoteSide>
         <Main>
           <TopRow>Posted by: {props.postData.user.username}</TopRow>

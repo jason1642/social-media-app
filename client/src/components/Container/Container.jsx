@@ -8,7 +8,7 @@ import PostEditPage from '../PostEditPage/PostEditPage.jsx';
 import ProfilePage from '../ProfilePage/ProfilePage.jsx'
 import HomePage from '../HomePage/HomePage.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
-
+import ChangeAvatar from '../ProfilePage/ChangeAvatar/ChangeAvatar'
 
 export default class Container extends Component {
   constructor(props) {
@@ -89,6 +89,10 @@ export default class Container extends Component {
                   currentUser={this.state.userExists}
                 />
               )} />
+
+              <Route exact path='/profile/change_avatar' render={() =>
+                <ChangeAvatar />}
+              />
 
 
               <Route exact path="/posts/new" render={(props) => (

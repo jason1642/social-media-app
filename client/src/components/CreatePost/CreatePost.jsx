@@ -41,7 +41,7 @@ class CreatePost extends Component {
           type="text"
           name="title"
           minLength='10'
-          maxLength='22'
+          maxLength='150'
           value={title}
           onChange={this.handleChange}
           placeholder="Title"
