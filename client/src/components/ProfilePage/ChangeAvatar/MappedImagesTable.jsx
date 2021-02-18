@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import { patchUser } from '../../../Services/api-helper'
 
 
 const MappedImagesTable = props => {
@@ -18,6 +19,10 @@ const MappedImagesTable = props => {
     cursor: pointer;
   }
 `;
+  const handleUserUpdate = async (id, userData) => {
+    await patchUser(id, userData)
+    window.location.reload()
+  }
   const SubmitButton = styled.div`
     display: flex;
     align-items: center;
@@ -34,10 +39,15 @@ const MappedImagesTable = props => {
         props.imageList.map(ele => <>
           <div onClick={() => props.handleClickImage(ele.source, ele.name)}>
             <Image src={ele.source} />
+            <p>{ele.name}</p>
           </div>
         </>)
       }
-      <SubmitButton onClick={() => console.log('submitted!')}>Submit!</SubmitButton>
+      <SubmitButton onClick={() => {
+        console.log(`Submitting ${props.mainImage.source}`)
+        handleUserUpdate(1, { image: props.mainImage.source })
+      }
+      }>Submit!</SubmitButton>
     </Container>
   );
 }

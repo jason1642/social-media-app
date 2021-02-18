@@ -19,20 +19,26 @@ const DropDownContainer = props => {
     display: block;
     width: 100%;
     text-decoration: none;
+    height: 100%;
     color: black;
-    width: 100%;
-    padding-bottom: 5px;
-    margin-bottom: 0.8em;
+    padding-bottom: 0.9em;
+    padding-top: 0.9em;
+    font-size: 14px;
+    /* margin-bottom: 0.8em; */
     &:hover{
       background-color: #9ca8f0;
-      
+    }
+    &:last-child{
+      &:hover{
+        border-radius: 0 0 15px 15px;
+        background-color: #9ca8f0;
+      }
     }
   `;
   const DropDownList = styled.ul`
     padding: 0;
     margin: 0;
     width: 100%;
-    /* height: 100%;  */
     background: #ffffff;
     border: none;
     border-radius: 0 0 15px 15px;
@@ -43,7 +49,7 @@ const DropDownContainer = props => {
     text-align: center;
     font-weight: 500;
     &:first-child {
-      padding-top: 0.8em;
+      /* padding-top: 0.8em; */
     }`;
 
   const [isOpen, setIsOpen] = useState(false);

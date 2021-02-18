@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 import { verifyUser, getAllComments, destroyComment } from '../../../Services/api-helper'
 import moment from 'moment'; // library to display how long ago comment was posted
 import DeleteButton from './DeleteButton'
@@ -54,10 +55,17 @@ const MappedComments = props => {
 
     reRendered[index].isEditing = true
     setReRendered(testx)
-    setShouldUpdate(true)
     console.log(isEditing)
     // console.log(testx)
     // console.log(renderedHTML[index])
+  }
+
+  const handleDeleteComment = async (postId, commentId) => {
+    // const askToDelete = confirm("are you sure?")
+
+    await destroyComment(postId, commentId)
+    setShouldUpdate(true)
+    return <Redirect to={`/posts/${postId}`} />
   }
 
 
@@ -82,7 +90,7 @@ const MappedComments = props => {
                 verifiedUser ?
                   comment.user.id === verifiedUser.id &&
                   <>
-                    <DeleteButton postId={props.postId} comment={comment} />
+                    <DeleteButton handleDeleteComment={handleDeleteComment} postId={props.postId} comment={comment} />
                     {/* <EditButton handleEdit={() =>
                       handleEdit(i)}
                       postId={props.postId}
@@ -134,10 +142,11 @@ const MappedComments = props => {
   }, [])
 
   useEffect(() => {
+    setShouldUpdate(false)
     renderComments().then(ele => {
       setAllHTML(ele)
     })
-  }, [verifiedUser])
+  }, [verifiedUser, shouldUpdate])
 
 
   // rerenders if state (isediting variable) is changed

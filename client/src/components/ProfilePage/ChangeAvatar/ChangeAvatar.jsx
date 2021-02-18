@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import MappedImagesTable from './MappedImagesTable'
-import { Route } from 'react-router-dom'
-import { getAllAvatars } from '../../../Services/api-helper'
+import { getAllAvatars, patchUser } from '../../../Services/api-helper'
 
-const ChangeAvatar = () => {
+const ChangeAvatar = props => {
   const Container = styled.div`
     /* height: 500px; */
     width: 75%;
@@ -20,24 +19,31 @@ const ChangeAvatar = () => {
 
   const handleClickImage = (url, name) => {
     console.log(`selected ${name}`)
-    setMainImage(<MainImage src={url} />)
+    setMainImage({
+      source: url,
+      html: <MainImage src={url} />
+    })
   }
 
   const [allImages, setAllImages] = useState()
   // current profile picture is default mainImage
-  const [mainImage, setMainImage] = useState(<MainImage src='https://visualidentity.columbia.edu/sites/default/files/styles/cu_crop/public/content/Colors/pms285e.jpg?itok=5OGYBqMQ' />
-  )
+  const [mainImage, setMainImage] = useState({
+    source: props.currentUser.image,
+    html: <MainImage src={props.currentUser.image} />
+  })
 
 
   useEffect(() => {
     getAllAvatars().then(ele => setAllImages(ele))
-
+    // setMainImage({})
+    // const setUser = 
+    console.log(props)
   }, [])
-
+  console.log(mainImage)
   return (
     <Container>
-      {mainImage}
-      {allImages && <MappedImagesTable handleClickImage={handleClickImage} imageList={allImages} />}
+      {mainImage.html}
+      {allImages && <MappedImagesTable mainImage={mainImage} patchUser={patchUser} handleClickImage={handleClickImage} imageList={allImages} />}
 
     </Container>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const SideBar = () => {
+const SideBar = props => {
 
   const Container = styled.div`
     display: flex;
@@ -27,7 +27,7 @@ const SideBar = () => {
 
   return (
     <Container>
-      <Avatar src='https://visualidentity.columbia.edu/sites/default/files/styles/cu_crop/public/content/Colors/pms285e.jpg?itok=5OGYBqMQ' alt='avatar' />
+      {props.currentUser && <Avatar src={props.currentUser.image} alt={props.currentUser.image} />}
       <Link to="/profile/change_avatar">Change Avatar</Link>
     </Container>
   );

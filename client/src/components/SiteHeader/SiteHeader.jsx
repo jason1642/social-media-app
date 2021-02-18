@@ -6,15 +6,12 @@ import logo from '../../resources/images/post-tree-logo-notext.png';
 import DropDownContainer from './DropDownContainer.jsx';
 const SiteHeader = (props) => {
 
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState(props.currentUser)
 
-  const setUser = async () => {
-    const thisUser = await verifyUser();
-    setCurrentUser(thisUser)
-  }
+
 
   useEffect(() => {
-    setUser()
+    console.log(props)
   }, [])
   return (<>
     {

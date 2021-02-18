@@ -114,3 +114,14 @@ export const getOneUser = async (id) => {
   return resp;
 }
 
+
+
+// ========================================
+// ================ users =================
+// ========================================
+
+
+export const patchUser = async (userId, url) => {
+  const resp = await api.put(`/users/${userId}`, url);
+  return resp.data;
+}

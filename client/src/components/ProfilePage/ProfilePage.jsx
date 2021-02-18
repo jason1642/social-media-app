@@ -26,13 +26,13 @@ const ProfilePage = props => {
   `;
 
   const [posts, setPosts] = useState()
-
+  const [currentUser, setCurrentUser] = useState()
 
   const getAllCurrentUsersPosts = async userId => {
     // change '2' to current user
     const HTMLPosts = await getAllUsersPosts(userId).then(ele => ele.map(v =>
       // console.log(v)
-      < PostCard {...props} postData={v} />
+      <PostCard {...props} postData={v} />
     ))
     setPosts(HTMLPosts)
   }
@@ -42,6 +42,7 @@ const ProfilePage = props => {
     // Create async function so the promise can be used to pass data into the other function, then 
     // call the entire function after
     const getCurrentUser = async () => {
+      await verifyUser().then(v => setCurrentUser(v))
       const textx = await verifyUser().then(v => v.id)
       getAllCurrentUsersPosts(textx)
     }
@@ -56,7 +57,7 @@ const ProfilePage = props => {
         {posts && posts}
       </PostsSide>
       <>
-        <SideBar />
+        <SideBar currentUser={currentUser} />
       </>
 
     </Container>

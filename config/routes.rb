@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :avatars
   post '/auth/login', to: 'authentication#login'
   get '/auth/verify', to: 'authentication#verify'
 
@@ -10,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :avatar, only: [:index, :show]
+  resources :avatars, only: [:index, :show]
 
   resources :posts do 
     resources :comments

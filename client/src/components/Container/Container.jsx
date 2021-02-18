@@ -22,9 +22,9 @@ export default class Container extends Component {
   async componentDidMount() {
     // this.readAllComments();
     this.readAllPosts();
-    const currUser = await verifyUser()
+    const currentUser = await verifyUser()
     this.setState({
-      userExists: currUser
+      userExists: currentUser
     })
   }
 
@@ -91,7 +91,7 @@ export default class Container extends Component {
               )} />
 
               <Route exact path='/profile/change_avatar' render={() =>
-                <ChangeAvatar />}
+                <ChangeAvatar currentUser={this.state.userExists} />}
               />
 
 

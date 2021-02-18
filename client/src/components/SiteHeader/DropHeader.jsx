@@ -46,7 +46,7 @@ const DropHeader = props => {
   return (
     <Header>
       <ImageContainer>
-        <ProfilePicture src="https://wow.zamimg.com/images/wow/icons/large/spell_shadow_devouringplague.jpg" alt='profile pic' />
+        <ProfilePicture src={props.currentUser.image} alt='profile pic' />
       </ImageContainer>
       <UsernameContainer>
         {props.currentUser.username}

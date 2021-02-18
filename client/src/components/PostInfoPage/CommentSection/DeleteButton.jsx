@@ -8,10 +8,7 @@ const DeleteButton = props => {
   //props = [postId, comment]
   let timerInterval
 
-  const handleDeleteComment = async (postId, commentId) => {
-    // const askToDelete = confirm("are you sure?")
-    return await destroyComment(postId, commentId)
-  }
+
 
   return (
     <>
@@ -27,7 +24,7 @@ const DeleteButton = props => {
               cancelButtonText: 'No, keep it'
             }).then((result) => {
               if (result.value) {
-                handleDeleteComment(props.postId, props.comment.id)
+                props.handleDeleteComment(props.postId, props.comment.id)
                 Swal.fire({
                   title: 'Deleting',
                   html: '<b></b>',

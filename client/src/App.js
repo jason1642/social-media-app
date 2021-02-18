@@ -33,10 +33,9 @@ const App = () => {
     setCurrentUser(currentUser1)
   }
 
-  const confirmUser = () => {
-    const currentUser1 = verifyUser();
-    currentUser1.then(v => setCurrentUser(v))
-  }
+  const confirmUser = async () =>
+    verifyUser().then(v => setCurrentUser(v))
+
 
   const handleLogout = () => {
     localStorage.clear();
