@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from 'react'
-import { getOnePost, addComment, getAllComments, verifyUser, getOneUser } from '../../Services/api-helper'
+import React, { useEffect, useState } from 'react'
+import { getOnePost } from '../../Services/api-helper'
 import './PostInfoPage.css'
 import CommentSection from './CommentSection/CommentSection'
 import styled from 'styled-components'
@@ -11,8 +11,6 @@ import SideBar from './SideBar'
 const PostInfoPage = props => {
 
   const [post, setPost] = useState()
-  const [currentUserId, setCurrentUserId] = useState()
-  const [currentUser, setCurrentUser] = useState()
 
   const setCurrentPost = async () => {
     const post = await getOnePost(props.postId);
@@ -20,9 +18,6 @@ const PostInfoPage = props => {
 
   }
   useEffect(() => {
-    const currentUser1 = verifyUser();
-    currentUser1.then(v => setCurrentUser(v))
-    currentUser1 && setCurrentUserId(currentUser1.id)
     setCurrentPost()
 
     // document.title = post.title
@@ -63,8 +58,7 @@ const PostInfoPage = props => {
               {/* Comment section */}
               <CommentSection post={post}
                 currentPost={post}
-                currentUserData={currentUser}
-                currentUser={currentUserId}
+                currentUser={props.currentUser}
                 postId={props.postId}
               />
             </Main>

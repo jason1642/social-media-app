@@ -1,22 +1,18 @@
 import React, { Component } from 'react'
 import './CreatePost.css'
-import { verifyUser } from '../../Services/api-helper'
+
+
 class CreatePost extends Component {
   constructor(props) {
     super(props)
     this.state = {
       title: '',
-      image_url: '',
-      description: ''
+      description: '',
+      user_id: props.currentUser.id
     }
   }
-  async componentDidMount() {
-    const currentUser1 = await verifyUser();
-    currentUser1 && this.setState({
-      user_id: currentUser1.id
-    })
 
-  }
+
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
@@ -26,7 +22,7 @@ class CreatePost extends Component {
   }
 
   render() {
-    const { title, description, image_url } = this.state;
+    const { title, description } = this.state;
 
     return (
       <form className='create-post-form' onSubmit={(e) => {

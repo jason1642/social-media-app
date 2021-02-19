@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
-import { verifyUser, getAllComments, destroyComment } from '../../../Services/api-helper'
+import { getAllComments, destroyComment } from '../../../Services/api-helper'
 import moment from 'moment'; // library to display how long ago comment was posted
 import DeleteButton from './DeleteButton'
 import EditButton from './EditButton'
@@ -45,19 +45,15 @@ const MappedComments = props => {
   const [shouldUpdate, setShouldUpdate] = useState(false)
   const [reRendered, setReRendered] = useState(false)
   const [isEditing, setIsEditing] = useState(undefined)
-  const [verifiedUser, setVerifiedUser] = useState(undefined)
+  const [verifiedUser, setVerifiedUser] = useState(props.currentUser)
 
   const handleEdit = async (index) => {
     await isEditing ? setIsEditing(false) : setIsEditing(true)
-    // console.log(renderedHTML)
-    // console.log(isEditing)
+
     let testx = allHTML
 
     reRendered[index].isEditing = true
     setReRendered(testx)
-    console.log(isEditing)
-    // console.log(testx)
-    // console.log(renderedHTML[index])
   }
 
   const handleDeleteComment = async (postId, commentId) => {
@@ -134,9 +130,7 @@ const MappedComments = props => {
 
   // setUser()
   useEffect(() => {
-    const setUser = async () =>
-      await verifyUser().then(v => v)
-    setUser().then(v => setVerifiedUser(v))
+
     console.log('used effect!!01!')
 
   }, [])
@@ -146,7 +140,7 @@ const MappedComments = props => {
     renderComments().then(ele => {
       setAllHTML(ele)
     })
-  }, [verifiedUser, shouldUpdate])
+  }, [shouldUpdate])
 
 
   // rerenders if state (isediting variable) is changed

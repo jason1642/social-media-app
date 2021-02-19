@@ -1,104 +1,73 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom'
-import { addComment, verifyUser } from '../../../Services/api-helper'
+import React, { useState, useEffect } from 'react';
+import { addComment } from '../../../Services/api-helper'
 import styled from 'styled-components'
 import MappedComments from './MappedComments'
 import './CommentSection.css'
-
+import CommentInput from './CommentInput'
 // Using React Hooks with onchange functions to create comment submission
 // functionality creates bugs with unwanted rerenders of this component
 
 // If user input in empty, reject post request
-export default class CommentSection extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      commentText: ''
-    }
+const CommentSection = props => {
 
-    this.Container = styled.div`
+  const Container = styled.div`
       margin: 0 auto;
       /* border: 1px solid black; */
       width: 100%;
       margin: 0 auto;
   `;
-    this.AddCommentTitle = styled.div`
+  const AddCommentTitle = styled.div`
       text-align: left;
       width: 85%;
       margin: auto auto;
       padding: 8px 0 8px 0;
   `;
 
-  }
-
-
-
-  handleChange = e => {
-    const { value } = e.target;
-    this.setState({
-      commentText: value
-    });
-  }
-  handleSubmit = async () => {
+  const handleSubmit = async (commentText) => {
     //comment post request reqires post_id, comment_id, string
+    console.log("SUBMITTED")
     await addComment({
-      comment_text: this.state.commentText,
-      user_id: this.state.currentUser.id,
-      post_id: this.props.postId
+      comment_text: commentText,
+      user_id: props.currentUser.id,
+      post_id: props.postId
     });
   }
-  async componentDidMount() {
-    const loggedInUser = await verifyUser()
-    this.setState({
-      currentUser: loggedInUser
-    })
-  }
+
+
+
   // const [commentText, setCommentText] = useState('')
 
   // Submits the completed form to api-helper create
 
 
-  render() {
-    return (
-      <>
-        <this.Container>
+  return (
+    <>
+      <Container>
+
+        <div className='comment-input-box'>
+          <AddCommentTitle>
+            Comment as {props.currentUser.username}
+          </AddCommentTitle>
+          <CommentInput
+            submitComment={handleSubmit} />
+          <div className='comment-input-footer'>
+
+            {/* <button className='submit-button comment-submit-button'>Comment</button> */}
+          </div>
+        </div>
+
+        <MappedComments
+          currentPost={props.currentPost}
+          postId={props.postId}
+          currentUser={props.currentUser} />
 
 
+      </Container>
 
-          <form className='comment-input-box' onSubmit={
-            (e) => {
-              this.handleSubmit()
-              return <Redirect to={`/posts/${this.props.post.id}`} />
-            }
-          }>
-            <this.AddCommentTitle>
-              Comment as {this.props.currentUserData.username}
-            </this.AddCommentTitle>
-            <textarea
-              type='textarea'
-              value={this.state.commentText}
-              name='commentText'
-              onChange={this.handleChange}
-              placeholder='Write a comment'
-            />
-            <div className='comment-input-footer'>
-              <button className='submit-button comment-submit-button'>Comment</button>
-            </div>
-          </form>
+    </>
+  )
 
-          <MappedComments currentPost={this.props.currentPost} postId={this.props.postId} />
-
-
-        </this.Container>
-
-      </>
-    )
-  }
 }
 
 
-
-
-
-
-
+export default CommentSection

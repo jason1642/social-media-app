@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { verifyUser } from '../../Services/api-helper';
 import './SiteHeader.css';
 import logo from '../../resources/images/post-tree-logo-notext.png';
 import DropDownContainer from './DropDownContainer.jsx';
@@ -13,6 +12,7 @@ const SiteHeader = (props) => {
   useEffect(() => {
     console.log(props)
   }, [])
+
   return (<>
     {
       currentUser ?

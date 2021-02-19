@@ -18,9 +18,6 @@ const DropHeader = props => {
     font-weight: 500;
     font-size: 12px;
     color: black;
-    /* border: 1px solid lightgray; */
-
-    /* background-color: #ff9914; */
   `;
   const ProfilePicture = styled.img`
     height: 100%;

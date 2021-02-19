@@ -14,12 +14,9 @@ import {
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
 
-
-
   useEffect(() => {
     confirmUser();
   }, [])
-
 
   const handleLogin = async (loginData) => {
     const currentUser1 = await loginUser(loginData);

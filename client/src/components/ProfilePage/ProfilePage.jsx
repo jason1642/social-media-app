@@ -26,11 +26,11 @@ const ProfilePage = props => {
   `;
 
   const [posts, setPosts] = useState()
-  const [currentUser, setCurrentUser] = useState()
+  const [currentUser, setCurrentUser] = useState(props.currentUser)
 
-  const getAllCurrentUsersPosts = async userId => {
+  const getAllCurrentUsersPosts = async currentUser => {
     // change '2' to current user
-    const HTMLPosts = await getAllUsersPosts(userId).then(ele => ele.map(v =>
+    const HTMLPosts = await getAllUsersPosts(currentUser.id).then(ele => ele.map(v =>
       // console.log(v)
       <PostCard {...props} postData={v} />
     ))
@@ -41,12 +41,9 @@ const ProfilePage = props => {
     // Must have async function within useEffect, or else promise wont be resolved
     // Create async function so the promise can be used to pass data into the other function, then 
     // call the entire function after
-    const getCurrentUser = async () => {
-      await verifyUser().then(v => setCurrentUser(v))
-      const textx = await verifyUser().then(v => v.id)
-      getAllCurrentUsersPosts(textx)
-    }
-    getCurrentUser()
+
+    getAllCurrentUsersPosts(currentUser)
+
   }, [])
 
   // console.log(posts)
