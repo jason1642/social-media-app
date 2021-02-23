@@ -2,15 +2,23 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Register.css'
 import Logo from '../../resources/images/post-tree-logo.png'
-
+import {
+  loginUser,
+  registerUser,
+  getAllPosts,
+  verifyUser,
+  removeToken
+} from '../../Services/api-helper';
 
 export default class Register extends Component {
-  state = {
-    username: '',
-    email: '',
-    password: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: '',
+      email: '',
+      password: ''
+    }
   }
-
   handleChange = (e) => {
     const { name, value } = e.target;
     this.setState({
@@ -18,17 +26,23 @@ export default class Register extends Component {
     }
     );
   }
-
+  handleRegister = async (registerData) => {
+    const currentUser1 = await registerUser(registerData);
+    console.log(currentUser1)
+    // setCurrentUser(currentUser1)
+  }
   render() {
+    console.log(this.props)
     const { username, email, password } = this.state;
 
     return (
+
       <div>
         <img className="login-logo" src={Logo} alt='site logo' />
         <form className='register-form' onSubmit={
           (e) => {
             e.preventDefault();
-            this.props.handleRegister(this.state);
+            this.handleRegister(this.state);
             this.props.history.push('/');
             window.location.reload()
 

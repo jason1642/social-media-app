@@ -5,7 +5,6 @@ import { getAllAvatars, patchUser } from '../../../Services/api-helper'
 
 const ChangeAvatar = props => {
   const Container = styled.div`
-    /* height: 500px; */
     width: 75%;
     background-color: grey;
     margin: 0 auto;
@@ -19,32 +18,36 @@ const ChangeAvatar = props => {
 
   const handleClickImage = (url, name) => {
     console.log(`selected ${name}`)
-    setMainImage({
-      source: url,
-      html: <MainImage src={url} />
-    })
+    setMainImage(url)
   }
 
   const [allImages, setAllImages] = useState()
   // current profile picture is default mainImage
-  const [mainImage, setMainImage] = useState({
-    source: props.currentUser.image,
-    html: <MainImage src={props.currentUser.image} />
-  })
+  const [mainImage, setMainImage] = useState(props.currentUser.image)
 
 
   useEffect(() => {
     getAllAvatars().then(ele => setAllImages(ele))
-    // setMainImage({})
-    // const setUser = 
-    console.log(props)
+    console.log(allImages)
   }, [])
-  console.log(mainImage)
   return (
     <Container>
-      {mainImage.html}
-      {allImages && <MappedImagesTable mainImage={mainImage} patchUser={patchUser} handleClickImage={handleClickImage} imageList={allImages} />}
+      {
+        allImages &&
+        <>
+          {
+            mainImage === null ?
+              <MainImage src={allImages[Math.floor(Math.random() * allImages.length)].source} />
+              :
+              <>
+                {console.log(mainImage)}
+                <MainImage src={mainImage} /></>
 
+          }
+          {allImages &&
+            <MappedImagesTable currentUser={props.currentUser} mainImage={mainImage} patchUser={patchUser} handleClickImage={handleClickImage} imageList={allImages} />}
+        </>
+      }
     </Container>
 
   );

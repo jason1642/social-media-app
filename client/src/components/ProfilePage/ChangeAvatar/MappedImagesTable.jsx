@@ -21,6 +21,7 @@ const MappedImagesTable = props => {
 `;
   const handleUserUpdate = async (id, userData) => {
     await patchUser(id, userData)
+    console.log(props)
     window.location.reload()
   }
   const SubmitButton = styled.div`
@@ -45,7 +46,7 @@ const MappedImagesTable = props => {
       }
       <SubmitButton onClick={() => {
         console.log(`Submitting ${props.mainImage.source}`)
-        handleUserUpdate(1, { image: props.mainImage.source })
+        handleUserUpdate(props.currentUser.id, { image: props.mainImage.source })
       }
       }>Submit!</SubmitButton>
     </Container>

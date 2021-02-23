@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 import CreatePostBox from './CreatePostBox.jsx'
 import PostCard from '../PostCard/PostCard'
-import { getOneUser } from '../../Services/api-helper'
 
 const PostFeedSection = props => {
   const Main = styled.div`
@@ -15,12 +13,13 @@ const PostFeedSection = props => {
   width: 75%;
 `;
 
+
   return (
 
     <Main>
       <CreatePostBox />
       {
-        props.postList.map(post => {
+        props.posts.map(post => {
           return (
             <React.Fragment key={post.id}>
               <PostCard {...props} postData={post} />

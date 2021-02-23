@@ -1,149 +1,144 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx'
 import LoginPage from '../LoginPage/LoginPage';
 import Register from '../Register/Register';
-import { getAllComments, getAllPosts, postPost, putPost, destroyPost, verifyUser } from '../../Services/api-helper';
+import { getAllComments, getAllPosts, postPost, putPost, destroyPost, loginUser, verifyUser } from '../../Services/api-helper';
 import PostEditPage from '../PostEditPage/PostEditPage.jsx';
 import ProfilePage from '../ProfilePage/ProfilePage.jsx'
 import HomePage from '../HomePage/HomePage.jsx'
 import CreatePost from '../CreatePost/CreatePost.jsx'
 import ChangeAvatar from '../ProfilePage/ChangeAvatar/ChangeAvatar'
 
-export default class Container extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      comments: [],
-      posts: []
-    }
+const Container = props => {
+
+
+
+  const [currentUser, setCurrentUser] = useState(undefined)
+  const [posts, setPosts] = useState()
+  const [rerenderPosts, setRerenderPosts] = useState(false)
+  // const [comments, setComments] = useState()
+
+
+  // const readAllComments = async () => {
+  //   const comments = await getAllComments();
+  //   setComments(comments)
+
+  // }
+  const handleLogin = async (loginData) => {
+    const currentUser1 = await loginUser(loginData);
+    setCurrentUser(currentUser1)
+    return currentUser ? true : false;
   }
 
-  async componentDidMount() {
-    // this.readAllComments();
-    this.readAllPosts();
-    const currentUser = await verifyUser()
-    this.setState({
-      userExists: currentUser
-    })
+  const handlePostSubmit = async (postData) => {
+    await postPost(postData)
+    setRerenderPosts(true)
   }
+  const handlePostUpdate = async (id, postData) =>
+    await putPost(id, postData);
 
-  readAllComments = async () => {
-    const comments = await getAllComments();
-    this.setState({ comments })
-  }
-
-  readAllPosts = async () => {
-    const posts = await getAllPosts();
-    this.setState({ posts })
-
-  }
-
-  handlePostSubmit = async (postData) => {
-    const newPost = await postPost(postData);
-    this.setState(prevState => ({
-      posts: [...prevState.posts, newPost]
-    }))
-  }
-
-  handlePostUpdate = async (id, postData) => {
-    const updatedPost = await putPost(id, postData);
-    this.setState(prevState => ({
-      posts: prevState.posts.map(post => {
-        return post.id === id ? updatedPost : post
-      })
-    }))
-  }
-
-  handlePostDelete = async (id) => {
+  const handlePostDelete = async (id) =>
     await destroyPost(id);
-    this.setState(prevState => ({
-      posts: prevState.posts.filter(post => {
-        return post.id !== id
-      })
-    }))
-  }
-  render() {
-    return (
-      <main>
-        {
-          this.state.userExists ?
-            <>
-
-              <Route exact path="/login">
-                {this.state.userExists ? <Redirect to="/" /> : < LoginPage />}
-              </Route>
-
-              <Route exact path="/" render={(props) => (
-                <HomePage
-                  {...props}
-                  handlePostDelete={this.handlePostDelete}
-                  postList={this.state.posts}
-                />
-              )} />
 
 
-              <Route exact path="/profile" render={(props) => (
-                <ProfilePage
-                  {...props}
-                  currentUser={this.state.userExists}
-                />
-              )} />
-
-              <Route exact path='/profile/change_avatar' render={() =>
-                <ChangeAvatar currentUser={this.state.userExists} />}
-              />
+  useEffect(() => {
+    setRerenderPosts(false)
+  }, [rerenderPosts])
 
 
-              <Route exact path="/posts/new" render={(props) => (
-                <CreatePost
-                  {...props}
-                  currentUser={this.props.currentUser}
-                  handlePostSubmit={this.handlePostSubmit}
-                />
-              )} />
 
-              <Route exact path="/posts/:id" render={(props) => {
-                const { id } = props.match.params
-                return <PostInfoPage
-                  {...props}
-                  handlePostDelete={this.handlePostDelete}
-                  postId={id}
-                  currentUser={this.props.currentUser}
-                />
-              }
-              } />
-
-              <Route exact path='/posts/:id/edit' render={(props) => {
-                const { id } = props.match.params
-                return <PostEditPage
-                  {...props}
-                  handlePostUpdate={this.handlePostUpdate}
-                  postId={id}
-                />
-              }} />
+  useEffect(() => {
+    const setUser = async () => await verifyUser().then((v) => setCurrentUser(v))
+    setUser()
+    console.log(currentUser)
+  }, [])
 
 
-            </>
+
+  const renderedHTML = () => {
+    return currentUser ?
+      <>
+        <Route exact path="/login" >
+          {currentUser ?
+            <Redirect to="/" />
             :
-            <>
-              <Redirect to='/login' />
-              <Route exact path='/login' render={(props) => (
-                <LoginPage
-                  {...props}
-                  handleLogin={this.props.handleLogin}
-                />
-              )} />
-              <Route exact path='/register' render={(props) => (
-                <Register
-                  {...props}
-                  handleRegister={this.props.handleRegister}
-                />
-              )} />
+            <LoginPage {...props} handleLogin={props.handleLogin} />}
+        </Route>
 
-            </>
+        <Route exact path="/" render={(props) => (
+          <HomePage
+            {...props}
+            handlePostDelete={handlePostDelete}
+            postList={posts}
+            rerenderPosts={rerenderPosts}
+          />
+        )} />
+
+
+        <Route exact path="/profile" render={(props) => (
+          <ProfilePage
+            {...props}
+            currentUser={currentUser}
+          />
+        )} />
+
+        <Route exact path='/profile/change_avatar' render={() =>
+          <ChangeAvatar currentUser={currentUser} />}
+        />
+
+        <Route exact path="/posts/new" render={(props) => (
+          <CreatePost
+            {...props}
+            currentUser={currentUser}
+            handlePostSubmit={handlePostSubmit}
+          />
+        )} />
+
+        <Route exact path="/posts/:id" render={(props) => {
+          const { id } = props.match.params
+          return <PostInfoPage
+            {...props}
+            handlePostDelete={handlePostDelete}
+            postId={id}
+            currentUser={currentUser}
+          />
         }
-      </main>
-    )
+        } />
+
+        <Route exact path='/posts/:id/edit' render={(props) => {
+          const { id } = props.match.params
+          return <PostEditPage
+            {...props}
+            handlePostUpdate={handlePostUpdate}
+            postId={id}
+          />
+        }} />
+      </>
+      :
+      <>
+        <Redirect to='/login' />
+        <Route exact path='/login' render={(props) => (
+          <LoginPage
+            {...props}
+            handleLogin={handleLogin}
+          />
+        )} />
+        <Route exact path='/register' render={(props) => (
+          <Register
+            {...props}
+            handleRegister={props.handleRegister}
+          />
+        )} />
+
+      </>
   }
+  return (
+    <main>
+      {renderedHTML()}
+    </main>
+  )
 }
+
+
+export default Container

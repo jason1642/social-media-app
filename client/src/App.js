@@ -7,6 +7,7 @@ import SiteHeader from './components/SiteHeader/SiteHeader';
 import {
   loginUser,
   registerUser,
+  getAllPosts,
   verifyUser,
   removeToken
 } from './Services/api-helper';
@@ -14,9 +15,13 @@ import {
 const App = () => {
   const [currentUser, setCurrentUser] = useState()
 
+
   useEffect(() => {
     confirmUser();
+
+
   }, [])
+
 
   const handleLogin = async (loginData) => {
     const currentUser1 = await loginUser(loginData);
@@ -27,12 +32,14 @@ const App = () => {
 
   const handleRegister = async (registerData) => {
     const currentUser1 = await registerUser(registerData);
+    console.log(currentUser1)
     setCurrentUser(currentUser1)
   }
 
-  const confirmUser = async () =>
-    verifyUser().then(v => setCurrentUser(v))
-
+  const confirmUser = () => {
+    const currentUser1 = verifyUser();
+    currentUser1.then(v => setCurrentUser(v))
+  }
 
   const handleLogout = () => {
     localStorage.clear();

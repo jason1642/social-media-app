@@ -50,8 +50,13 @@ const ProfilePage = props => {
   return (
     <Container>
       <PostsSide>
-        <h2>These are all your Posts!</h2>
-        {posts && posts}
+
+        {posts && posts.length > 0 ?
+          <><h2>These are all your Posts!</h2>
+            {posts}
+          </>
+          :
+          <h2>You have no posts</h2>}
       </PostsSide>
       <>
         <SideBar currentUser={currentUser} />

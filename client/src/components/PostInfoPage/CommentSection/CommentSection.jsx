@@ -26,19 +26,24 @@ const CommentSection = props => {
   const handleSubmit = async (commentText) => {
     //comment post request reqires post_id, comment_id, string
     console.log("SUBMITTED")
+    console.log(props)
     await addComment({
       comment_text: commentText,
       user_id: props.currentUser.id,
       post_id: props.postId
     });
+    setShouldUpdate(true)
   }
 
+  const [shouldUpdate, setShouldUpdate] = useState(false)
 
-
+  useEffect(() => {
+    setShouldUpdate(false)
+  }, [])
   // const [commentText, setCommentText] = useState('')
 
   // Submits the completed form to api-helper create
-
+  console.log(props)
 
   return (
     <>
@@ -59,8 +64,9 @@ const CommentSection = props => {
         <MappedComments
           currentPost={props.currentPost}
           postId={props.postId}
-          currentUser={props.currentUser} />
-
+          currentUser={props.currentUser}
+          shouldUpdate={shouldUpdate}
+        />
 
       </Container>
 
