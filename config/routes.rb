@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :avatars, only: [:index, :show, :delete]
+  resources :avatars, only: [:index, :show]
 
   resources :posts do 
     resources :comments
