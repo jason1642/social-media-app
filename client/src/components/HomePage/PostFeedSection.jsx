@@ -13,7 +13,6 @@ const PostFeedSection = props => {
   width: 75%;
 `;
 
-
   return (
 
     <Main>
