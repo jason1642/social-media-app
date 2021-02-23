@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components'
 import { patchUser } from '../../../Services/api-helper'
 
-
 const MappedImagesTable = props => {
 
   const Container = styled.div`
