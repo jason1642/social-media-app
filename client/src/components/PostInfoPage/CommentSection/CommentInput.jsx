@@ -6,13 +6,16 @@ const CommentInput = props => {
 
   const Container = styled.button`
     background-color: white;
-  
+    width: 85%;
+    margin: 0 auto;
   `;
 
-  const TextInput = styled.input`
+  const TextInput = styled.textarea`
     width: 100%;
     min-height: 90px;
     overflow-y: visible;
+    text-align: left;
+    padding: 5px 0 0 5px;
   `;
 
   const [userInput, setUserInput] = useState()

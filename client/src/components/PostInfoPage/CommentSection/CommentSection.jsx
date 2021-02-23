@@ -55,10 +55,9 @@ const CommentSection = props => {
           </AddCommentTitle>
           <CommentInput
             submitComment={handleSubmit} />
-          <div className='comment-input-footer'>
+          {/* <div className='comment-input-footer'> */}
 
-            {/* <button className='submit-button comment-submit-button'>Comment</button> */}
-          </div>
+          {/* </div> */}
         </div>
 
         <MappedComments

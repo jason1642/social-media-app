@@ -30,10 +30,13 @@ p "#{Avatar.count} avatars created"
 
 
 
-User.create(username: "user1", email: "user1@email.com", password: "pass123")
-User.create(username: "userTwo", email: "usertwo@email.com", password: "password222")
-User.create(username: "bryon", email: "bryon@email.com", password: "password333")
-User.create(username: "flip", email: "flip@email.com", password: "password444")
+User.create(username: "Karethel", email: "karethel@email.com", password: "pass123")
+User.create(username: "Flip82", email: "flip@email.com", password: "password222")
+User.create(username: "BryonSH321", email: "bryon@email.com", password: "password333")
+User.create(username: "Lorinda", email: "lorinda@email.com", password: "password444")
+User.create(username: "Alianda191", email: "jason@email.com", password: "password444")
+User.create(username: "Brand", email: "brand@email.com", password: "password444")
+User.create(username: "Exit", email: "exit@email.com", password: "password444")
 
 
 
@@ -43,25 +46,78 @@ User.create(username: "flip", email: "flip@email.com", password: "password444")
 p "#{User.count} user(s) created"
 
 
-Post.create(title: "Beach", description: "Palm trees, sand, and the ocean", image_url: "https://wallpaperaccess.com/full/1275976.jpg", user_id: 4) 
+Post.create(title: "What life changing item can you buy for less than $100?",
+ description: "",
+   user_id: 7) 
 
-Post.create(title: "Cave", description: "A cave in the forest", image_url: "https://i.pinimg.com/originals/72/a5/47/72a547cca0f6c30e4d0e521fb4116d2e.jpg", user_id: 2)
+# Post 1 Comments
+Comment.create(comment_text: "Another monitor. Your productivity will increase dramatically.",
+user_id: 1,
+ post_id: 1)
+Comment.create(comment_text: "A nasal irrigation kit - either the electronic pump or simply the squeeze bottles. I started using them both leading up to surgery on my sinuses, and I haven't stopped using them since. It takes some getting used to, but the relief and clean feeling is amazing.",
+user_id: 2,
+ post_id: 1)
+Comment.create(comment_text: "AeroPress coffee maker. The thing broke my wife of her $200(?) monthly Starbucks habit. The unit costs maybe $25 or so.",
+user_id: 3,
+ post_id: 1)
+Comment.create(comment_text: "House plants. They will make you happy looking after them. I recently bought a venus fly trap, she caught her first fly today. So proud.",
+user_id: 4,
+ post_id: 1)
+
+
+# Post 2
+Post.create(title: "What is something free from the internet everyone should take advantage of?",
+ description: "",
+   user_id: 3) 
+
+Comment.create(comment_text: "Libby is an app you can use to borrow audiobooks and ebooks for free as long as you have a library card (also free).",
+ user_id: 5,
+  post_id: 2)
+Comment.create(comment_text: "Stackoverflow because I wouldn’t be a developer without it",
+user_id: 6,
+ post_id: 2)
+Comment.create(comment_text: "If you’re a student or are really trying to stay focused at work there’s and app called The Forest: Stay Focused (I could be wrong but it’s definitely The Forest). It’s a free app that’s available as an extension on Google Chrome or the Apple AppStore. Basically, you plant a tree, set a time limit and you can only go on the sites that you’ve added to the whitelist or your tree will die. It’s designed to stop you from always being in social media while you’re supposed to be studying or doing something productive.",
+user_id: 7,
+ post_id: 2)
+
+
+# Post 3
+Post.create(title: "What do you use to remind yourself that everything isn't that bad?",
+ description: "",
+   user_id: 6) 
+Comment.create(comment_text: "I remember that Yahoo hasn't given up, so why should I?",
+ user_id: 5,
+  post_id: 3)
+Comment.create(comment_text: "I text a friend and see if they want to have dinner. We plan something and cook it with a good drink, then another, repeat as necessary. Life feels pretty good after a few drinks and dinner with friends. Also I get to try out a lot of new recipes.",
+ user_id: 2,
+  post_id: 3)
+Comment.create(comment_text: "I think of the soldiers in the trenches in WWI. It puts things in perspective on when I'm getting up early for a stressful day in the office.",
+ user_id: 3,
+  post_id: 3)
+
+# Post 4
+Post.create(title: "What is the fastest you have ever seen a new co-worker get fired?",
+ description: "",
+   user_id: 4) 
+Comment.create(comment_text: "During their onboarding training, they stole my bosses wallet on camera.... 1 hour in..",
+   user_id: 1,
+    post_id: 4)
+Comment.create(comment_text: "This is the opposite route here but I found it amusing. My boss was out of town and I managed a tea shop near a Starbucks years ago. This kid came in (foreign) and said he was supposed to start today. We were hiring and I trained him etc. My boss came back two days later and had no idea. The kid was in the wrong place but he stayed with us. Hired on the spot without even applying.",
+   user_id: 3,
+    post_id: 4)
+Comment.create(comment_text: "I work construction. We had 2 new hires that were friends starting the same day. Boss told one take a coffee order and come back. Took everyone's money and said he needed his friend to go with him cause it was a big order. They never came back.",
+   user_id: 2,
+    post_id: 4)
 
 
 
-Post.create(title: "Pharoh Tomb", description: "", image_url: "https://preview.redd.it/2kbhga2phbz41.jpg?width=960&crop=smart&auto=webp&s=82728f642d30b29fa005b196140da22bdaa86b05", user_id: 2)
+
+
+
 
 
 
 p "#{Post.count} posts created"
-
-
-Comment.create(comment_text: "this is so cool!", user_id: 1, post_id: 1)
-Comment.create(comment_text: "8765432", user_id: 1, post_id: 1)
-Comment.create(comment_text: "tkjhgfds", user_id: 2, post_id: 1)
-Comment.create(comment_text: "This is why we never win!!!", user_id: 3, post_id: 3)
-
-
 
 p "#{Comment.count} comments created"
 

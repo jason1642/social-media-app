@@ -45,7 +45,7 @@ const MappedImagesTable = props => {
       }
       <SubmitButton onClick={() => {
         console.log(`Submitting ${props.mainImage.source}`)
-        handleUserUpdate(props.currentUser.id, { image: props.mainImage.source })
+        handleUserUpdate(props.currentUser.id, { image: props.mainImage })
       }
       }>Submit!</SubmitButton>
     </Container>

@@ -36,6 +36,7 @@ const PostInfoPage = props => {
     flex-grow: 1;
     flex-direction: column;
     margin: 4% 0;
+    width: 100%;
     margin-right: 14px;
     /* border: 1px solid black; */
 

@@ -81,7 +81,7 @@ const MappedComments = props => {
             <p>{comment.comment_text}</p>
 
             <Footer>
-              <div>Upvote Boxxx</div>
+              {/* <div>Upvote Boxxx</div> */}
               {
                 verifiedUser ?
                   comment.user.id === verifiedUser.id &&
@@ -110,7 +110,7 @@ const MappedComments = props => {
               value={comment.comment_text} />{
               }</>
             <Footer>
-              <div>Upvote Box</div>
+              {/* <div>Upvote Box</div> */}
               <DeleteButton postId={props.postId} comment={comment} />
               {/* <EditButton handleEdit={() => handleEdit(i)} postId={props.postId} comment={comment}>Edit</EditButton> */}
             </Footer>

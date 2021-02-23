@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const TitleBar = props => {
@@ -14,16 +15,21 @@ const TitleBar = props => {
   `;
 
   const Title = styled.div`
+    display: flex;
+    align-items: center;
     text-align: left;
-    font-size: 27px;
-    margin-left: 15%;
+    font-size: 22px;
+    margin-left: 0%;
     /* border: 1px solid black; */
     overflow-x: hidden;
-    width: 55%;
+    white-space: nowrap;    
+    height: 100%;
+    width: 70%;
     color: white;
   `;
 
-  const BackButton = styled.button`
+  const BackButton = styled(Link)`
+    text-decoration: none;
     border: none;
     border-radius: 8px;
     font-size: 22px;
@@ -37,7 +43,7 @@ const TitleBar = props => {
   return (
     <Container>
       <Title>{props.title}</Title>
-      <BackButton>Back</BackButton>
+      <BackButton to='/'>Back</BackButton>
     </Container>
   );
 }

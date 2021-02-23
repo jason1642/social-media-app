@@ -67,7 +67,6 @@ const Content = props => {
         </UsernameRow>
         <Title>{props.postData.title}</Title>
         <Description>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus porro architecto pariatur voluptatem officia quisquam ea iusto a quidem. Possimus eveniet nemo aliquam non asperiores repellendus temporibus quo earum ex.
         </Description>
       </Main>
     </Container>

@@ -3,11 +3,11 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, through: :posts
 
-  validate :username, presence: true, uniqueness: true
-  validate :email, presence: true, uniqueness: true
-  validate :image, presence: true, uniqueness: true
-  validate :email, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validate :password, length: { minimum: 6 }
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :image, allow_nil: true
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :password, length: { minimum: 6 }
   def return_data
     {
       id: id,
