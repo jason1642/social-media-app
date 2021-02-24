@@ -20,6 +20,7 @@ const MappedImagesTable = props => {
 `;
   const handleUserUpdate = async (id, userData) => {
     console.log(id, props.mainImage)
+
     await patchUser(id, userData)
     console.log(props)
     window.location.reload()

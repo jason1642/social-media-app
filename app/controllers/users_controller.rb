@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
   # before_action :authorize_request, only: [:create, :update, :destroy]
+   
 
   
 
@@ -40,14 +41,21 @@ class UsersController < ApplicationController
 
 
 
-
   # POST /users
   def create
     @user = User.new(user_params)
     
     if @user.save
       @token = encode({user_id: @user.id});
-      render json: {user: @user.return_data, token: @token}, status: :created, location: @user
+      payload  = { user_id: user.id }
+      session = JWTSessions::Session.new(payload: payload, refresh_by_access_allowed: true)
+      tokens = session.login
+      response.set_cookie(JWTSessions.access_cookie,
+                                value: tokens[:access],
+                                httponly: true,
+                                secure: Rails.env.production?)
+
+      render json: tokens
     else
       render json: @user.errors, status: :unprocessable_entity
     end
