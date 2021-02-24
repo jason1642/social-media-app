@@ -3,8 +3,24 @@ import styled from 'styled-components'
 
 
 const CommentInput = props => {
+  const useInput = initialValue => {
+    const [value, setValue] = useState(initialValue);
 
-  const Container = styled.button`
+    return {
+      value,
+      setValue,
+      reset: () => setValue(""),
+      bind: {
+        value,
+        onChange: event => {
+          setValue(event.target.value);
+        }
+      }
+    };
+  };
+
+
+  const Container = styled.div`
     background-color: white;
     width: 85%;
     margin: 0 auto;
@@ -13,35 +29,35 @@ const CommentInput = props => {
   const TextInput = styled.textarea`
     width: 100%;
     min-height: 90px;
-    overflow-y: visible;
+    /* overflow: scroll; */
     text-align: left;
-    padding: 5px 0 0 5px;
+    padding: 5px 0 50px 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   `;
 
   const [userInput, setUserInput] = useState()
-  const [HTML, setHTML] = useState()
 
-  const renderHTML = () => {
-    const test = <TextInput
-      type='textarea'
-      value={userInput}
-      name='commentText'
-      onChange={(e) => setUserInput(e.target.value)}
-      placeholder='Write a comment'
-      autoFocus
-    />
-    setHTML(test)
-    return test
-  }
+
   useEffect(() => {
-    console.log("USE EFFECT")
-    renderHTML()
+    console.log(userInput)
   }, [userInput])
 
   console.log("RERENDERED")
   return (
     <Container>
-      {HTML}
+      <TextInput
+        key="12er"
+        value={userInput}
+        onChange={(e) => setUserInput(e.target.value)}
+        placeholder='Write a comment'
+        onFocus={function (e) {
+          var val = e.target.value;
+          e.target.value = '';
+          e.target.value = val;
+        }}
+        autoFocus
+      />
+      {console.log("string")}
       <button
         onClick={() => props.submitComment(userInput)}>submit</button>
     </Container>
