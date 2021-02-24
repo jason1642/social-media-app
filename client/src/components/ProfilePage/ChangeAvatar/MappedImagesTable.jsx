@@ -52,7 +52,7 @@ const MappedImagesTable = props => {
         console.log(`Submitting ${props.mainImage}`)
         handleUserUpdate(props.currentUser.id, { image: props.mainImage })
         props.history.push('/');
-        return <Redirect to='/' />
+
       }
       }>Submit!</SubmitButton>
     </Container>
