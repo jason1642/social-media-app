@@ -27,8 +27,11 @@ const ChangeAvatar = props => {
 
 
   useEffect(() => {
-    getAllAvatars().then(ele => setAllImages(ele))
-    console.log(allImages)
+    getAllAvatars().then(ele => {
+      setAllImages(ele)
+      mainImage === null && setMainImage(ele[Math.floor(Math.random() * ele.length)].source)
+    })
+    console.log(props)
   }, [])
   return (
     <Container>
@@ -44,7 +47,7 @@ const ChangeAvatar = props => {
                 <MainImage src={mainImage} /></>
 
           }
-          {allImages &&
+          {allImages && mainImage &&
             <MappedImagesTable currentUser={props.currentUser} mainImage={mainImage} patchUser={patchUser} handleClickImage={handleClickImage} imageList={allImages} />}
         </>
       }
