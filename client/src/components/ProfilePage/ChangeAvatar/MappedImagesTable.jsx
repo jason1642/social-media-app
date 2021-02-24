@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 import styled from 'styled-components'
 import { patchUser } from '../../../Services/api-helper'
 
@@ -52,6 +53,8 @@ const MappedImagesTable = props => {
       <SubmitButton onClick={() => {
         console.log(`Submitting ${props.mainImage}`)
         handleUserUpdate(props.currentUser.id, { image: props.mainImage })
+        window.location.reload()
+        return <Redirect to='/' />
       }
       }>Submit!</SubmitButton>
     </Container>
