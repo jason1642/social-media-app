@@ -19,13 +19,9 @@ const MappedImagesTable = props => {
     cursor: pointer;
   }
 `;
-  const handleUserUpdate = async (id, userData) => {
-    console.log(id, props.mainImage)
-
+  const handleUserUpdate = async (id, userData) =>
     await patchUser(id, userData)
-    console.log(props)
-    window.location.reload()
-  }
+
   const SubmitButton = styled.div`
     display: flex;
     align-items: center;
@@ -53,7 +49,7 @@ const MappedImagesTable = props => {
       <SubmitButton onClick={() => {
         console.log(`Submitting ${props.mainImage}`)
         handleUserUpdate(props.currentUser.id, { image: props.mainImage })
-        window.location.reload()
+        props.history.push('/');
         return <Redirect to='/' />
       }
       }>Submit!</SubmitButton>
