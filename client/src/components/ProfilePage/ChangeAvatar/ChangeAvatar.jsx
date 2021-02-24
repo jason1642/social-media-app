@@ -48,7 +48,7 @@ const ChangeAvatar = props => {
 
           }
           {allImages && mainImage &&
-            <MappedImagesTable currentUser={props.currentUser} mainImage={mainImage} patchUser={patchUser} handleClickImage={handleClickImage} imageList={allImages} />}
+            <MappedImagesTable {...props} currentUser={props.currentUser} mainImage={mainImage} patchUser={patchUser} handleClickImage={handleClickImage} imageList={allImages} />}
         </>
       }
     </Container>

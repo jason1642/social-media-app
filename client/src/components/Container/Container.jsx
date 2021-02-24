@@ -76,8 +76,10 @@ const Container = props => {
           />
         )} />
 
-        <Route exact path='/profile/change_avatar' render={() =>
-          <ChangeAvatar currentUser={currentUser} />}
+        <Route exact path='/profile/change_avatar' render={(props) =>
+          <ChangeAvatar
+            {...props}
+            currentUser={currentUser} />}
         />
 
         <Route exact path="/posts/new" render={(props) => (
