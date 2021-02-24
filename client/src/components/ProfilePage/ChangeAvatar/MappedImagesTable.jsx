@@ -46,7 +46,9 @@ const MappedImagesTable = props => {
         </>)
       }
 
-      <SubmitButton onClick={() => {
+      <SubmitButton onClick={(e) => {
+        e.preventDefault();
+
         console.log(`Submitting ${props.mainImage}`)
         handleUserUpdate(props.currentUser.id, { image: props.mainImage })
         props.history.push('/');

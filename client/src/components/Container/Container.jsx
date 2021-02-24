@@ -17,14 +17,7 @@ const Container = props => {
   const [currentUser, setCurrentUser] = useState(undefined)
   const [posts, setPosts] = useState()
   const [rerenderPosts, setRerenderPosts] = useState(false)
-  // const [comments, setComments] = useState()
 
-
-  // const readAllComments = async () => {
-  //   const comments = await getAllComments();
-  //   setComments(comments)
-
-  // }
   const handleLogin = async (loginData) => {
     const currentUser1 = await loginUser(loginData);
     setCurrentUser(currentUser1)
