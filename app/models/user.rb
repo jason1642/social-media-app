@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   # validates :image, allow_nil: true, uniqueness: false
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_nil: true
-  validatez :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }
   def return_data
     {
       id: id,
