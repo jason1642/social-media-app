@@ -31,7 +31,6 @@ const ChangeAvatar = props => {
       setAllImages(ele)
       mainImage === null && setMainImage(ele[Math.floor(Math.random() * ele.length)].source)
     })
-    console.log(props)
   }, [])
   return (
     <Container>
@@ -43,7 +42,6 @@ const ChangeAvatar = props => {
               <MainImage src={allImages[Math.floor(Math.random() * allImages.length)].source} />
               :
               <>
-                {console.log(mainImage)}
                 <MainImage src={mainImage} /></>
 
           }

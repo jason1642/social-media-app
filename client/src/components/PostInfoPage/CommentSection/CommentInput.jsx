@@ -39,7 +39,7 @@ const CommentInput = props => {
 
 
   useEffect(() => {
-    console.log(userInput)
+    // console.log(userInput)
   }, [userInput])
 
   console.log("RERENDERED")
@@ -57,7 +57,6 @@ const CommentInput = props => {
         }}
         autoFocus
       />
-      {console.log("string")}
       <button
         onClick={() => props.submitComment(userInput)}>submit</button>
     </Container>
