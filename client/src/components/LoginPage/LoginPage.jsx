@@ -50,7 +50,7 @@ const LoginPage = props => {
         <br />
         <button className='login-submit-button'>Log In</button>
       </form>
-      <p>Guest Loging - User: tester | Password: abc123</p>
+      <p>Guest Login - User: tester | Password: abc123</p>
       <p>
         New to Post Tree?
         <Link to='/register' className='sign-up-here-link'> Sign up here</Link>
