@@ -3,21 +3,21 @@ import styled from 'styled-components'
 
 
 const CommentInput = props => {
-  const useInput = initialValue => {
-    const [value, setValue] = useState(initialValue);
+  // const useInput = initialValue => {
+  //   const [value, setValue] = useState(initialValue);
 
-    return {
-      value,
-      setValue,
-      reset: () => setValue(""),
-      bind: {
-        value,
-        onChange: event => {
-          setValue(event.target.value);
-        }
-      }
-    };
-  };
+  //   return {
+  //     value,
+  //     setValue,
+  //     reset: () => setValue(""),
+  //     bind: {
+  //       value,
+  //       onChange: event => {
+  //         setValue(event.target.value);
+  //       }
+  //     }
+  //   };
+  // };
 
 
   const Container = styled.div`

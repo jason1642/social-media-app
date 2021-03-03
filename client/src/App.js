@@ -7,7 +7,6 @@ import SiteHeader from './components/SiteHeader/SiteHeader';
 import {
   loginUser,
   registerUser,
-  getAllPosts,
   verifyUser,
   removeToken
 } from './Services/api-helper';
