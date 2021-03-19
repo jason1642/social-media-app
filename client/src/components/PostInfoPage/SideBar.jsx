@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 
-const SideBar = () => {
-
-  const Main = styled.div`
+const Main = styled.div`
     /* border: 1px solid black; */
     width: 40%;
     height: 100%;
@@ -12,7 +10,7 @@ const SideBar = () => {
     margin: 5% 0;
 
   `;
-  const Title = styled.div`
+const Title = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     font-size: 1.4em;
@@ -24,6 +22,9 @@ const SideBar = () => {
     background-color: #3f3f8a;
     border-radius: 5px 5px 0 0;
   `;
+
+const SideBar = () => {
+
   return (
     <Main>
       <Title>About PostTree</Title>

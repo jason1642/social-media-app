@@ -6,12 +6,12 @@ import moment from 'moment'; // library to display how long ago comment was post
 import DeleteButton from './DeleteButton'
 import EditButton from './EditButton'
 
-const MappedComments = props => {
-  const Container = styled.div`
+
+const Container = styled.div`
     width: 85%;
     margin: 0 auto;
   `;
-  const Comment = styled.div`
+const Comment = styled.div`
     border: 1px solid black;
     background-color: white;
     border-radius: 4px;
@@ -19,17 +19,17 @@ const MappedComments = props => {
     text-align: left;
     padding-left: 20px;
   `;
-  const DateCreated = styled.span`
+const DateCreated = styled.span`
     font-size: 0.7em;
     margin-left: 7px;
   `;
 
-  const UsernameText = styled.h2`
+const UsernameText = styled.h2`
     font-size: .8em; 
     font-weight: 500;
   `;
 
-  const Footer = styled.div`
+const Footer = styled.div`
     display: flex;
     margin-bottom: 5px;
     /* background-color: wheat; */
@@ -38,6 +38,8 @@ const MappedComments = props => {
       margin-left: 7px;
     }
     `;
+
+const MappedComments = props => {
 
 
 

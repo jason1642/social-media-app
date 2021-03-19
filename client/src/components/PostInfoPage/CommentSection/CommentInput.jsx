@@ -2,6 +2,21 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 
 
+const Container = styled.div`
+    background-color: white;
+    width: 85%;
+    margin: 0 auto;
+  `;
+
+const TextInput = styled.textarea`
+    width: 100%;
+    min-height: 90px;
+    /* overflow: scroll; */
+    text-align: left;
+    padding: 5px 0 50px 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  `;
+
 const CommentInput = props => {
   // const useInput = initialValue => {
   //   const [value, setValue] = useState(initialValue);
@@ -20,20 +35,7 @@ const CommentInput = props => {
   // };
 
 
-  const Container = styled.div`
-    background-color: white;
-    width: 85%;
-    margin: 0 auto;
-  `;
 
-  const TextInput = styled.textarea`
-    width: 100%;
-    min-height: 90px;
-    /* overflow: scroll; */
-    text-align: left;
-    padding: 5px 0 50px 5px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  `;
 
   const [userInput, setUserInput] = useState()
 

@@ -3,22 +3,24 @@ import { Redirect } from 'react-router';
 import styled from 'styled-components'
 import { patchUser } from '../../../Services/api-helper'
 
-const MappedImagesTable = props => {
-
-  const Container = styled.div`
+const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-content: flex-start;
     background-color: white;
   `;
-  const Image = styled.img`
+const Image = styled.img`
   margin-top: 100px;
   height: 190px;
   &:hover{
     cursor: pointer;
   }
 `;
+
+const MappedImagesTable = props => {
+
+
   const handleUserUpdate = async (id, userData) =>
     await patchUser(id, userData)
 

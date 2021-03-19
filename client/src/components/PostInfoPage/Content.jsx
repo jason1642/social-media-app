@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import moment from 'moment'; // library to display how long ago comment was posted
 
 
-const Content = props => {
-
-  const Container = styled.div`
+const Container = styled.div`
     width: 100%;
     min-height: 100px;
     margin: 10px 0;
@@ -15,7 +13,7 @@ const Content = props => {
     border-radius: 4px;
     
   `;
-  const Main = styled.div`
+const Main = styled.div`
     display: flex;
     width: 100%;
     margin: 1px 8px;
@@ -27,7 +25,7 @@ const Content = props => {
       text-align: left;
     }
     `
-  const UsernameRow = styled.div`
+const UsernameRow = styled.div`
     /* border: 1px solid black; */
     margin: 0 4px;
     font-size: 11px;
@@ -35,7 +33,7 @@ const Content = props => {
     margin: 0 8px 8px;
 
   `;
-  const UpvoteSide = styled.div`
+const UpvoteSide = styled.div`
   /* border-right: .5px solid black; */
   width: 40px;
   display: flex;
@@ -45,17 +43,21 @@ const Content = props => {
   border-radius: 5px 0 0 5px;
 `;
 
-  const Title = styled.div`
+const Title = styled.div`
     display: flex;
     font-weight: bold;
     /* border: 1px solid black; */
     margin: 0 8px 8px;
     font-size: 25px;
   `;
-  const Description = styled.div`
+const Description = styled.div`
     margin: 0 8px 8px;
 
   `;
+
+
+const Content = props => {
+
   return (
     <Container>
       <UpvoteSide>

@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-const TitleBar = props => {
-  const Container = styled.div`
+const Container = styled.div`
     width: 80%;
     height: 46px;
     display: flex;
@@ -14,7 +13,7 @@ const TitleBar = props => {
 
   `;
 
-  const Title = styled.div`
+const Title = styled.div`
     display: flex;
     align-items: center;
     text-align: left;
@@ -28,7 +27,7 @@ const TitleBar = props => {
     color: white;
   `;
 
-  const BackButton = styled(Link)`
+const BackButton = styled(Link)`
     text-decoration: none;
     border: none;
     border-radius: 8px;
@@ -40,6 +39,9 @@ const TitleBar = props => {
       cursor: pointer;
     }
   `;
+
+const TitleBar = props => {
+
   return (
     <Container>
       <Title>{props.title}</Title>

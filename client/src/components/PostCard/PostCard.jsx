@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components'
 
-const PostCard = props => {
-  const Container = styled.div`
+
+const Container = styled.div`
     width: 100%;
     min-height: 100px;
     max-height: 118px;
@@ -18,7 +18,7 @@ const PostCard = props => {
     }
     /* border: 1px solid black; */
   `;
-  const UpvoteSide = styled.div`
+const UpvoteSide = styled.div`
     /* border-right: .5px solid black; */
     width: 40px;
     display: flex;
@@ -27,7 +27,7 @@ const PostCard = props => {
     background-color: #e6e6e6;
   border-radius: 5px 0 0 5px;
   `;
-  const Main = styled.div`
+const Main = styled.div`
     display: flex;
     width: 100%;
     margin: 1px 8px;
@@ -41,22 +41,26 @@ const PostCard = props => {
     }
   `
 
-  const Title = styled.div`
+const Title = styled.div`
     font-size: 18px;
     overflow: hidden;
   `;
 
-  const TopRow = styled.div`
+const TopRow = styled.div`
     /* color: #414141; */
     font-size: 12px;
   `;
 
-  const Footer = styled.div`
+const Footer = styled.div`
     /* color: #3b3b3b; */
     font-weight: bold;
     font-size: 12px;
     padding-bottom: 5px;
   `;
+
+
+const PostCard = props => {
+
   // console.log(props.postData)
 
   // useEffect(() => {

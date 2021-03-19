@@ -7,21 +7,23 @@ import { getAllComments, getAllPosts, postPost, putPost, destroyPost, loginUser,
 import PostFeedSection from './PostFeedSection.jsx'
 import CreatePostBox from './CreatePostBox.jsx'
 
-const HomePage = props => {
 
-  const Main = styled.div`
+const Main = styled.div`
     width: 70%;
     margin: 0 auto;
     margin-top: 60px;
     `
 
-  const Container = styled.div`
+const Container = styled.div`
     display : flex;
     margin: 0 auto;
     margin-top: 16px;
     flex-direction: row;
     width: 90%;
   `;
+
+
+const HomePage = props => {
 
   const [posts, setPosts] = useState()
 

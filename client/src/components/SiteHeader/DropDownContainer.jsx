@@ -3,19 +3,16 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import DropHeader from './DropHeader'
 
-
-const DropDownContainer = props => {
-
-  const Container = styled("div")`
+const Container = styled("div")`
     height:inherit;
     &:hover{
       cursor: pointer;
     }`;
-  const DropDownListContainer = styled("div")`
+const DropDownListContainer = styled("div")`
     height: 100%;
     width: 100%;
 `;
-  const DropDownLink = styled(Link)`
+const DropDownLink = styled(Link)`
     display: block;
     width: 100%;
     text-decoration: none;
@@ -35,7 +32,7 @@ const DropDownContainer = props => {
       }
     }
   `;
-  const DropDownList = styled.ul`
+const DropDownList = styled.ul`
     padding: 0;
     margin: 0;
     width: 100%;
@@ -51,6 +48,10 @@ const DropDownContainer = props => {
     &:first-child {
       /* padding-top: 0.8em; */
     }`;
+
+const DropDownContainer = props => {
+
+
 
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);

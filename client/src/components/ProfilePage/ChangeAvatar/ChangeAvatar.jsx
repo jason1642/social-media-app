@@ -3,18 +3,20 @@ import styled from 'styled-components'
 import MappedImagesTable from './MappedImagesTable'
 import { getAllAvatars, patchUser } from '../../../Services/api-helper'
 
-const ChangeAvatar = props => {
-  const Container = styled.div`
+const Container = styled.div`
     width: 75%;
     background-color: grey;
     margin: 0 auto;
   `;
 
-  const MainImage = styled.img`
+const MainImage = styled.img`
     margin-top: 100px;
     border: 1px solid black;
     height: 190px;  
   `;
+
+const ChangeAvatar = props => {
+
 
   const handleClickImage = (url, name) => {
     console.log(`selected ${name}`)

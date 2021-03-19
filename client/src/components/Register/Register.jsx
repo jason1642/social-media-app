@@ -3,11 +3,7 @@ import { Link } from 'react-router-dom'
 import './Register.css'
 import Logo from '../../resources/images/post-tree-logo.png'
 import {
-  loginUser,
-  registerUser,
-  getAllPosts,
-  verifyUser,
-  removeToken
+  registerUser
 } from '../../Services/api-helper';
 
 export default class Register extends Component {

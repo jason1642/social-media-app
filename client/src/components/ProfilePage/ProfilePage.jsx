@@ -4,8 +4,7 @@ import { getAllUsersPosts, getOnePost, verifyUser } from '../../Services/api-hel
 import PostCard from '../PostCard/PostCard'
 import SideBar from './SideBar'
 
-const ProfilePage = props => {
-  const Container = styled.div`
+const Container = styled.div`
     /* height: 100px; */
     width: 80%;
     display: flex;
@@ -16,7 +15,7 @@ const ProfilePage = props => {
     margin: 3% auto;
   `;
 
-  const PostsSide = styled.div`
+const PostsSide = styled.div`
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -24,6 +23,9 @@ const ProfilePage = props => {
     margin-right: 14px;
     width: 80%; 
   `;
+
+const ProfilePage = props => {
+
 
   const [posts, setPosts] = useState()
   const [currentUser, setCurrentUser] = useState(props.currentUser)

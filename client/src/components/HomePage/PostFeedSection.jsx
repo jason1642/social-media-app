@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import CreatePostBox from './CreatePostBox.jsx'
 import PostCard from '../PostCard/PostCard'
 
-const PostFeedSection = props => {
-  const Main = styled.div`
+
+const Main = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -12,6 +12,9 @@ const PostFeedSection = props => {
   margin-right: 25px;
   width: 75%;
 `;
+
+
+const PostFeedSection = props => {
 
   return (
 

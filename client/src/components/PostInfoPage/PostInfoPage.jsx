@@ -8,6 +8,30 @@ import Content from './Content'
 import SideBar from './SideBar'
 
 
+const Container = styled.div`
+    width: 80%;
+    margin: 3% auto;
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+  `;
+const Main = styled.div`
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    margin: 4% 0;
+    width: 100%;
+    margin-right: 14px;
+    /* border: 1px solid black; */
+
+  `;
+
+const SidesContainer = styled.div`
+    display: flex;
+    margin-top: 18px;
+    justify-content: space-between;
+  `;
+
 const PostInfoPage = props => {
 
   const [post, setPost] = useState()
@@ -23,30 +47,6 @@ const PostInfoPage = props => {
     // document.title = post.title
   }, [])
 
-
-  const Container = styled.div`
-    width: 80%;
-    margin: 3% auto;
-    display: flex;
-    flex-direction: column;
-    /* border: 1px solid black; */
-  `;
-  const Main = styled.div`
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    margin: 4% 0;
-    width: 100%;
-    margin-right: 14px;
-    /* border: 1px solid black; */
-
-  `;
-
-  const SidesContainer = styled.div`
-    display: flex;
-    margin-top: 18px;
-    justify-content: space-between;
-  `;
   return (
     <>
       {

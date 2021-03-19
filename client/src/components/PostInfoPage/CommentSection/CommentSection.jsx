@@ -7,21 +7,23 @@ import CommentInput from './CommentInput'
 // Using React Hooks with onchange functions to create comment submission
 // functionality creates bugs with unwanted rerenders of this component
 
-// If user input in empty, reject post request
-const CommentSection = props => {
-
-  const Container = styled.div`
+const Container = styled.div`
       margin: 0 auto;
       /* border: 1px solid black; */
       width: 100%;
       margin: 0 auto;
   `;
-  const AddCommentTitle = styled.div`
+const AddCommentTitle = styled.div`
       text-align: left;
       width: 85%;
       margin: auto auto;
       padding: 8px 0 8px 0;
   `;
+
+// If user input in empty, reject post request
+const CommentSection = props => {
+
+
 
   const handleSubmit = async (commentText) => {
     //comment post request reqires post_id, comment_id, string
