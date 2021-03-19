@@ -1,9 +1,30 @@
-import React, { useState, useEffect } from 'react'
-import { Link, Router } from 'react-router-dom'
+import React, { useState } from 'react'
 import './LoginPage.css'
 import Logo from '../../resources/images/post-tree-logo.png'
+import ImageSide from './ImageSide'
+import styled from 'styled-components'
+import MainSide from './MainSide'
+
+
+const Container = styled.div`
+  margin: 0 auto;
+  padding: 8% 0;
+  padding-bottom: 0;
+  height: 100vh;
+  /* border: 1px solid black; */
+  /* width: 60%; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-repeat: not-repeat;
+  background-image: url("https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+`
+
+
 
 const LoginPage = props => {
+
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const handleChange = e => {
@@ -15,48 +36,15 @@ const LoginPage = props => {
     console.log(username, password)
   }
   return (
-    <div className='login-page-container'>
-      <img className="login-logo" src={Logo} alt='site logo' />
-      <form className='login-form' onSubmit={async (e) => {
-        e.preventDefault();
-        // await props.handleLogin({ "username": username, "password": password });
-        // console.log(props.handleLogin({ "username": username, "password": password }))
-        console.log(props)
-        // changes variable from false to true if user has valid log-in information
-        await props.handleLogin({ "username": username, "password": password }).then((value) => window.location.href = "/", (error) => alert("Error"))
-        // if user if valid, take user to home page
-      }}>
-        <h3>Log in</h3>
-        <label htmlFor="username"></label>
-        <input
-          id="username"
-          type="text"
-          name="username"
-          value={username}
-          onChange={handleChange}
-          placeholder='Username'
-        />
-        <br />
-        <br />
-        <label htmlFor="password"></label>
-        <input
-          id="password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={handleChange}
-          placeholder='Password'
-        />
-        <br />
-        <button className='login-submit-button'>Log In</button>
-      </form>
-      <p>Guest Login - User: tester | Password: abc123</p>
-      <p>
-        New to Post Tree?
-        <Link to='/register' className='sign-up-here-link'> Sign up here</Link>
-      </p>
-    </div>
+    <Container className='login-page-container'>
+
+      <ImageSide />
+      <MainSide handleLogin={props.handleLogin} handleChange={handleChange} username={username} password={password} />
+
+    </Container>
   )
 }
 
 export default LoginPage;
+
+

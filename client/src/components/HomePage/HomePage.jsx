@@ -1,11 +1,9 @@
-import React, { Component, useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react'
 import './HomePage.css'
 import styled from 'styled-components'
 import SideBar from './SideBar.jsx'
-import { getAllComments, getAllPosts, postPost, putPost, destroyPost, loginUser, verifyUser } from '../../Services/api-helper';
+import { getAllPosts } from '../../Services/api-helper';
 import PostFeedSection from './PostFeedSection.jsx'
-import CreatePostBox from './CreatePostBox.jsx'
 
 
 const Main = styled.div`

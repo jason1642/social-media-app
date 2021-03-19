@@ -4,7 +4,6 @@ import { Redirect } from 'react-router-dom'
 import { getAllComments, destroyComment } from '../../../Services/api-helper'
 import moment from 'moment'; // library to display how long ago comment was posted
 import DeleteButton from './DeleteButton'
-import EditButton from './EditButton'
 
 
 const Container = styled.div`

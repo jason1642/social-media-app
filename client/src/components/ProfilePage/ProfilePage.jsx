@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import { getAllUsersPosts, getOnePost, verifyUser } from '../../Services/api-helper'
+import { getAllUsersPosts } from '../../Services/api-helper'
 import PostCard from '../PostCard/PostCard'
 import SideBar from './SideBar'
 
