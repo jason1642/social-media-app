@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Logo from '../../resources/images/post-tree-logo.png'
 
 const Container = styled.div`
+  /* height: 700px; */
 `
 
 // Main is the right side that includes the form
