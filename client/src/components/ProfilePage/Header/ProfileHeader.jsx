@@ -26,7 +26,7 @@ const SideBar = (props) => {
       <ImageSide currentUser={props.currentUser} />
 
       {/*  */}
-      <BioSide currentUser={props.currentUser} />
+      <BioSide posts={props.posts} currentUser={props.currentUser} />
     </Container>
   );
 };

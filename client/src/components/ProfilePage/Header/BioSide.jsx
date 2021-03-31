@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   display: flex;
@@ -55,7 +55,26 @@ const RowThree = styled.div`
 `;
 
 const BioSide = (props) => {
-  const dateCreated = Date(props.currentUser.created_at);
+  const dateCreated = props.currentUser.created_at;
+  let year = dateCreated.slice(0, 4);
+  let day = dateCreated.slice(8, 10);
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+  let month = months[Number.parseFloat(dateCreated.slice(5, 7)) - 1];
+
   return (
     <Container currentUser={props.currentUser}>
       <RowOne>
@@ -64,17 +83,11 @@ const BioSide = (props) => {
       </RowOne>
 
       <RowTwo>
-        <p style={{ marginRight: "40px", display: "inline-block" }}>
-          <b>
-            {console.log(props)}
-            {props.currentUser.posts
-              ? props.currentUser.posts.length
-              : "0 "}{" "}
-          </b>
-          posts
+        <p style={{ marginRight: '40px', display: 'inline-block' }}>
+          <b>{props.posts ? props.posts.length : '0 '} </b> posts
         </p>
-        <p style={{ marginRight: "40px", display: "inline-block" }}>
-          Joined {dateCreated}
+        <p style={{ marginRight: '40px', display: 'inline-block' }}>
+          Joined {`${month} ${day}, ${year}`}
         </p>
       </RowTwo>
 

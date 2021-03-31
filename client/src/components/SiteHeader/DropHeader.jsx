@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import styled from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 const Header = styled.div`
   margin-bottom: 0em;
@@ -20,11 +20,13 @@ const Header = styled.div`
 const ProfilePicture = styled.img`
   height: 100%;
   width: 100%;
+  border-radius: 50%;
 `;
 
 const ImageContainer = styled.div`
   /* border: 1px solid black; */
   width: 40px;
+  border-radius: 50%;
 `;
 const UsernameContainer = styled.div`
   /* border: 1px solid black; */

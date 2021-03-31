@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Form = styled.form`
   /* background-color: blue; */
@@ -29,16 +29,19 @@ const InputRow = styled.div`
 `;
 const EditForm = (props) => {
   return (
-    <Form onSubmit={() => alert("submitted")}>
+    <Form onSubmit={() => alert('submitted')}>
       <Container>
+        {/*  */}
         <InputRow>
           <Label>Email</Label>
           <Input />
         </InputRow>
+        {/*  */}
         <InputRow>
           <Label>Bio</Label>
           <Input />
         </InputRow>
+        {/*  */}
       </Container>
       <SubmitButton>Save Changes</SubmitButton>
     </Form>

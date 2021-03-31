@@ -57,7 +57,7 @@ const ProfilePage = (props) => {
   // console.log(posts)
   return (
     <Container>
-      <ProfileHeader currentUser={currentUser} />
+      <ProfileHeader posts={posts} currentUser={currentUser} />
 
       <PostsSide>
         {posts && posts.length > 0 ? (
