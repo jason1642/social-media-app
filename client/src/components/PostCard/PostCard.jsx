@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import moment from 'moment'; // library to display how long ago comment was posted
 
 const Container = styled.div`
   width: 100%;
@@ -62,7 +63,12 @@ const Footer = styled.div`
   padding-bottom: 5px;
 `;
 
-const PostCard = (props) => {
+const DateCreated = styled.span`
+  font-size: 0.9em;
+  margin-left: 7px;
+`;
+
+const PostCard = props => {
   // console.log(props.postData)
 
   // useEffect(() => {
@@ -73,12 +79,15 @@ const PostCard = (props) => {
     <>
       {props.postData.user ? (
         <Container
-          onClick={(e) => props.history.push(`/posts/${props.postData.id}`)}
+          onClick={e => props.history.push(`/posts/${props.postData.id}`)}
         >
           <UpvoteSide></UpvoteSide>
           <Main>
             <TopRow>
               Posted by: <b>{props.postData.user.username}</b>
+              <DateCreated>
+                {moment(props.postData.created_at).fromNow()}
+              </DateCreated>
             </TopRow>
             {/* title min chars: 35 */}
             <Title>{props.postData.title}</Title>

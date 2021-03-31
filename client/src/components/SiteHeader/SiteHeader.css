@@ -16,10 +16,11 @@ header {
   text-decoration: none;
   align-self: left;
   font-size: 2em;
-  margin-left: 3px;
+  margin-left: 70px;
   color: white;
   display: flex;
   align-content: center;
+  font-weight: 300;
 }
 
 .header-logo {

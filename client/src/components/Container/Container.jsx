@@ -1,8 +1,8 @@
-import React, { Component, useState, useEffect } from "react";
-import { Route, Redirect } from "react-router-dom";
-import PostInfoPage from "../PostInfoPage/PostInfoPage.jsx";
-import LoginPage from "../LoginPage/LoginPage";
-import Register from "../Register/Register";
+import React, { Component, useState, useEffect } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import PostInfoPage from '../PostInfoPage/PostInfoPage.jsx';
+import LoginPage from '../LoginPage/LoginPage';
+import Register from '../Register/Register';
 import {
   getAllComments,
   getAllPosts,
@@ -11,39 +11,39 @@ import {
   destroyPost,
   loginUser,
   verifyUser,
-} from "../../Services/api-helper";
-import PostEditPage from "../PostEditPage/PostEditPage.jsx";
-import ProfilePage from "../ProfilePage/ProfilePage.jsx";
-import HomePage from "../HomePage/HomePage.jsx";
-import CreatePost from "../CreatePost/CreatePost.jsx";
-import ChangeAvatar from "../ProfileEditPage/ChangeAvatar";
-import EditProfile from "../ProfileEditPage/EditProfile";
-const Container = (props) => {
+} from '../../Services/api-helper';
+import PostEditPage from '../PostEditPage/PostEditPage.jsx';
+import ProfilePage from '../ProfilePage/ProfilePage.jsx';
+import HomePage from '../HomePage/HomePage.jsx';
+import CreatePost from '../CreatePost/CreatePost.jsx';
+import ChangeAvatar from '../ProfileEditPage/ChangeAvatar';
+import EditProfile from '../ProfileEditPage/EditProfile';
+
+const Container = props => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [posts, setPosts] = useState();
   const [rerenderPosts, setRerenderPosts] = useState(false);
 
-  const handleLogin = async (loginData) => {
+  const handleLogin = async loginData => {
     const currentUser1 = await loginUser(loginData);
     setCurrentUser(currentUser1);
     return currentUser ? true : false;
   };
 
-  const handlePostSubmit = async (postData) => {
+  const handlePostSubmit = async postData => {
     await postPost(postData);
     setRerenderPosts(true);
   };
   const handlePostUpdate = async (id, postData) => await putPost(id, postData);
 
-  const handlePostDelete = async (id) => await destroyPost(id);
+  const handlePostDelete = async id => await destroyPost(id);
 
   useEffect(() => {
     setRerenderPosts(false);
   }, [rerenderPosts]);
 
   useEffect(() => {
-    const setUser = async () =>
-      await verifyUser().then((v) => setCurrentUser(v));
+    const setUser = async () => await verifyUser().then(v => setCurrentUser(v));
     setUser();
     console.log(currentUser);
   }, []);
@@ -62,7 +62,7 @@ const Container = (props) => {
         <Route
           exact
           path="/"
-          render={(props) => (
+          render={props => (
             <HomePage
               {...props}
               handlePostDelete={handlePostDelete}
@@ -76,30 +76,26 @@ const Container = (props) => {
         <Route
           exact
           path="/profile"
-          render={(props) => (
-            <ProfilePage {...props} currentUser={currentUser} />
-          )}
+          render={props => <ProfilePage {...props} currentUser={currentUser} />}
         />
 
         <Route
           exact
           path="/profile/change_avatar"
-          render={(props) => (
+          render={props => (
             <ChangeAvatar {...props} currentUser={currentUser} />
           )}
         />
         <Route
           exact
           path="/profile/edit"
-          render={(props) => (
-            <EditProfile {...props} currentUser={currentUser} />
-          )}
+          render={props => <EditProfile {...props} currentUser={currentUser} />}
         />
 
         <Route
           exact
           path="/posts/new"
-          render={(props) => (
+          render={props => (
             <CreatePost
               {...props}
               currentUser={currentUser}
@@ -111,7 +107,7 @@ const Container = (props) => {
         <Route
           exact
           path="/posts/:id"
-          render={(props) => {
+          render={props => {
             const { id } = props.match.params;
             return (
               <PostInfoPage
@@ -127,7 +123,7 @@ const Container = (props) => {
         <Route
           exact
           path="/posts/:id/edit"
-          render={(props) => {
+          render={props => {
             const { id } = props.match.params;
             return (
               <PostEditPage
@@ -145,12 +141,12 @@ const Container = (props) => {
         <Route
           exact
           path="/login"
-          render={(props) => <LoginPage {...props} handleLogin={handleLogin} />}
+          render={props => <LoginPage {...props} handleLogin={handleLogin} />}
         />
         <Route
           exact
           path="/register"
-          render={(props) => (
+          render={props => (
             <Register {...props} handleRegister={props.handleRegister} />
           )}
         />

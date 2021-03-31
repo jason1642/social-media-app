@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   background-color: white;
@@ -15,31 +15,30 @@ const TextInput = styled.textarea`
   resize: vertical;
   text-align: left;
   padding: 5px 0 50px 5px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
 
-const CommentInput = (props) => {
+const CommentInput = props => {
   const [userInput, setUserInput] = useState();
 
   useEffect(() => {
     // console.log(userInput)
   }, [userInput]);
 
-  console.log("RERENDERED");
+  console.log('RERENDERED');
   return (
     <Container>
       <TextInput
         key="12er"
         value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
+        onChange={e => setUserInput(e.target.value)}
         placeholder="Write a comment"
         onFocus={function (e) {
           var val = e.target.value;
-          e.target.value = "";
+          e.target.value = '';
           e.target.value = val;
         }}
-        autoFocus
       />
       <button onClick={() => props.submitComment(userInput)}>submit</button>
     </Container>

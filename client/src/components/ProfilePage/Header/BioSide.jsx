@@ -31,14 +31,6 @@ const EditPageButton = styled(Link)`
   }
 `;
 
-const ChangeButton = styled(Link)`
-  text-decoration: none;
-  color: black;
-  &:hover {
-    color: grey;
-  }
-`;
-
 const RowOne = styled.div`
   display: flex;
   margin-bottom: 20px;
@@ -92,18 +84,9 @@ const BioSide = (props) => {
       </RowTwo>
 
       <RowThree>
-        <p>
-          {props.currentUser.bio}
-          {/* <input
-          placeholder={
-            props.currentUser.bio ? props.currentUser.bio : "Write a bio"
-          }
-        /> */}
-        </p>
+        <p>{props.currentUser.bio}</p>
       </RowThree>
-      {/* <ChangeButton to="/profile/change_avatar">
-        Change Profile Picture
-      </ChangeButton> */}
+
       {/* <EditForm /> */}
     </Container>
   );

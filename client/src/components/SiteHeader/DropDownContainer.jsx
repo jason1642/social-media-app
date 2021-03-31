@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import DropHeader from "./DropHeader";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+import DropHeader from './DropHeader';
 
-const Container = styled("div")`
+const Container = styled('div')`
   height: inherit;
   &:hover {
     cursor: pointer;
   }
+  margin-right: 55px;
 `;
-const DropDownListContainer = styled("div")`
+const DropDownListContainer = styled('div')`
   height: 100%;
   width: 100%;
   background-color: rgb(68, 68, 68);
@@ -56,7 +57,7 @@ const DropDownList = styled.ul`
   }
 `;
 
-const DropDownContainer = (props) => {
+const DropDownContainer = props => {
   const [isOpen, setIsOpen] = useState(false);
   const toggling = () => setIsOpen(!isOpen);
   return (

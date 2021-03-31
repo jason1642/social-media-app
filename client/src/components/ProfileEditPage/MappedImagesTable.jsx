@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { patchUser } from "../../Services/api-helper";
+import React from 'react';
+import styled from 'styled-components';
+import { patchUser } from '../../Services/api-helper';
 
 const Container = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const Image = styled.img`
   }
 `;
 
-const MappedImagesTable = (props) => {
+const MappedImagesTable = props => {
   const handleUserUpdate = async (id, userData) =>
     await patchUser(id, userData);
 
@@ -25,8 +25,8 @@ const MappedImagesTable = (props) => {
     display: flex;
     align-items: center;
     font-size: 20px;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #7dcfad;
     height: 50px;
     text-align: center;
@@ -37,7 +37,7 @@ const MappedImagesTable = (props) => {
   `;
   return (
     <Container>
-      {props.imageList.map((ele) => (
+      {props.imageList.map(ele => (
         <>
           <div onClick={() => props.handleClickImage(ele.source, ele.name)}>
             <Image src={ele.source} />
@@ -50,7 +50,7 @@ const MappedImagesTable = (props) => {
         onClick={() => {
           // console.log(`Submitting ${props.mainImage}`)
           handleUserUpdate(props.currentUser.id, { image: props.mainImage });
-          props.history.push("/");
+          props.history.push('/');
           window.location.reload();
         }}
       >

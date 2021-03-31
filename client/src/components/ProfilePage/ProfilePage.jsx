@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { getAllUsersPosts } from "../../Services/api-helper";
-import PostCard from "../PostCard/PostCard";
-import ProfileHeader from "./Header/ProfileHeader";
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { getAllUsersPosts } from '../../Services/api-helper';
+import PostCard from '../PostCard/PostCard';
+import ProfileHeader from './Header/ProfileHeader';
 
 const Container = styled.div`
   display: flex;
@@ -31,14 +31,14 @@ const UsersPostsContainer = styled.div`
   border-top: 1px solid rgba(var(--b38, 219, 219, 219), 1);
 `;
 
-const ProfilePage = (props) => {
+const ProfilePage = props => {
   const [posts, setPosts] = useState();
   const [currentUser, setCurrentUser] = useState(props.currentUser);
 
-  const getAllCurrentUsersPosts = async (currentUser) => {
+  const getAllCurrentUsersPosts = async currentUser => {
     // change '2' to current user
-    const HTMLPosts = await getAllUsersPosts(currentUser.id).then((ele) =>
-      ele.map((v) => (
+    const HTMLPosts = await getAllUsersPosts(currentUser.id).then(ele =>
+      ele.map(v => (
         // console.log(v)
         <PostCard {...props} postData={v} />
       ))
@@ -62,7 +62,7 @@ const ProfilePage = (props) => {
       <PostsSide>
         {posts && posts.length > 0 ? (
           <UsersPostsContainer>
-            <h2>These are all your Posts!</h2>
+            <h2 style={{ fontWeight: '300' }}>These are all your Posts!</h2>
             {posts}
           </UsersPostsContainer>
         ) : (
