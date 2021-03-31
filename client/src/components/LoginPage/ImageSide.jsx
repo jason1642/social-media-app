@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components'
-import treeLogo from '../../resources/images/full-tree-logo.png'
+import React from "react";
+import styled from "styled-components";
+// import treeLogo from '../../resources/images/full-tree-logo.png'
 import TextLoop from "react-text-loop";
-import Logo from '../../resources/images/post-tree-logo.png'
+// import Logo from '../../resources/images/post-tree-logo.png'
 
 const Container = styled.div`
   /* border: 1px solid black;
@@ -11,8 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 50%;
-
-`
+`;
 
 const Title = styled.h3`
   font-size: 5em;
@@ -21,7 +20,7 @@ const Title = styled.h3`
   text-align: center;
   /* width: 60%; */
   /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
-`
+`;
 const TextLoopBox = styled(TextLoop)`
   display: flex;
   justify-content: space-around;
@@ -31,12 +30,9 @@ const TextLoopBox = styled(TextLoop)`
   /* border: 1px solid black; */
   /* position: relative; */
   /* left: 0; */
-`
+`;
 
 const ImageSide = () => {
-
-
-
   return (
     <Container>
       {/* <div ><Image src={treeLogo} alt='' /></div> */}
@@ -49,21 +45,18 @@ const ImageSide = () => {
           damping: 14,
           // precision: 10
         }}
-      // children={["Make posts", "Talk about stuff", "Look at stuff"]}
+        // children={["Make posts", "Talk about stuff", "Look at stuff"]}
       >
         <Title>Make posts</Title>
         <Title>Talk about stuff</Title>
         <Title>Look at stuff</Title>
       </TextLoopBox>
 
-
       {/* Image by <a href="https://pixabay.com/users/openclipart-vectors-30363/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=576847">OpenClipart-Vectors</a>
  from
       <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=576847">Pixabay</a> */}
-
-
     </Container>
   );
-}
+};
 
 export default ImageSide;

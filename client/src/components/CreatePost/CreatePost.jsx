@@ -1,62 +1,55 @@
-import React, { Component } from 'react'
-import './CreatePost.css'
+import React, { useState } from "react";
+import "./CreatePost.css";
 
+const CreatePost = (props) => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [userId, setUserId] = useState(props.currentUser.id);
 
-class CreatePost extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      title: '',
-      description: '',
-      user_id: props.currentUser.id
-    }
-  }
-
-
-  handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({
-      [name]: value
-    })
 
-  }
+    name === "title" ? setTitle(value) : setDescription(value);
+    console.log(title, description);
+  };
 
-  render() {
-    const { title, description } = this.state;
-
-    return (
-      <form className='create-post-form' onSubmit={(e) => {
+  return (
+    <form
+      className="create-post-form"
+      onSubmit={(e) => {
         e.preventDefault();
-        console.log(this.state)
-        this.props.handlePostSubmit(this.state);
-        this.props.history.push('/');
-      }}>
-        <h3>Create a Post</h3>
-        <input
-          id="title"
-          type="text"
-          name="title"
-          minLength='10'
-          maxLength='150'
-          value={title}
-          onChange={this.handleChange}
-          placeholder="Title"
-        />
-        <textarea
-          id="description"
-          type="text"
-          name="description"
-          maxLength='300'
-          value={description}
-          placeholder="Description"
-          onChange={this.handleChange}
-        />
+        props.handlePostSubmit({
+          title,
+          description,
+          user_id: userId,
+        });
+        props.history.push("/");
+      }}
+    >
+      <h3>Create a Post</h3>
+      <input
+        id="title"
+        type="text"
+        name="title"
+        minLength="10"
+        maxLength="150"
+        value={title}
+        onChange={handleChange}
+        placeholder="Title"
+      />
+      <textarea
+        id="description"
+        type="text"
+        name="description"
+        maxLength="300"
+        value={description}
+        placeholder="Description"
+        onChange={handleChange}
+      />
 
-        <button className='createpost-submit-button'>Submit</button>
+      <button className="createpost-submit-button">Submit</button>
+    </form>
+  );
+};
 
-      </form>
-    )
-  }
-}
-
-export default CreatePost
+export default CreatePost;

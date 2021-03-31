@@ -1,8 +1,8 @@
 header {
-  background-color: white;
+  background-color: rgb(68, 68, 68);
   margin: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-direction: row;
   height: 6vh;
   padding: 0;
@@ -12,15 +12,15 @@ header {
   z-index: 5;
 }
 
-
 .site-title {
   text-decoration: none;
   align-self: left;
   font-size: 2em;
   margin-left: 3px;
-  color: rgb(0, 0, 0);
+  color: white;
+  display: flex;
+  align-content: center;
 }
-
 
 .header-logo {
   height: 100%;
@@ -30,7 +30,6 @@ header {
 .welcome-text {
   margin: auto 0;
 }
-
 
 .home-button,
 .logout-button,
@@ -44,7 +43,6 @@ header {
   justify-self: flex-start;
   border: none;
   color: black;
-
 }
 
 .logout-button {
@@ -52,7 +50,6 @@ header {
 }
 
 @media screen and (max-width: 500px) {
-
   .welcome-text,
   .site-title,
   .header-logo {
@@ -66,7 +63,6 @@ header {
   header {
     width: 100vw;
   }
-
 }
 
 @media screen and (max-width: 780px) {

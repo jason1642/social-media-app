@@ -1,62 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { addComment } from '../../../Services/api-helper'
-import styled from 'styled-components'
-import MappedComments from './MappedComments'
-import './CommentSection.css'
-import CommentInput from './CommentInput'
+import React, { useState, useEffect } from "react";
+import { addComment } from "../../../Services/api-helper";
+import styled from "styled-components";
+import MappedComments from "./MappedComments";
+import "./CommentSection.css";
+import CommentInput from "./CommentInput";
 // Using React Hooks with onchange functions to create comment submission
 // functionality creates bugs with unwanted rerenders of this component
 
 const Container = styled.div`
-      margin: 0 auto;
-      /* border: 1px solid black; */
-      width: 100%;
-      margin: 0 auto;
-  `;
+  margin: 0 auto;
+  /* border: 1px solid black; */
+  width: 100%;
+  margin: 0 auto;
+`;
 const AddCommentTitle = styled.div`
-      text-align: left;
-      width: 85%;
-      margin: auto auto;
-      padding: 8px 0 8px 0;
-  `;
+  text-align: left;
+  width: 85%;
+  margin: auto auto;
+  padding: 8px 0 8px 0;
+`;
 
 // If user input in empty, reject post request
-const CommentSection = props => {
-
-
-
+const CommentSection = (props) => {
   const handleSubmit = async (commentText) => {
     //comment post request reqires post_id, comment_id, string
-    console.log("SUBMITTED")
-    console.log(props)
+    console.log("SUBMITTED");
+    console.log(props);
     await addComment({
       comment_text: commentText,
       user_id: props.currentUser.id,
-      post_id: props.postId
+      post_id: props.postId,
     });
-    setShouldUpdate(true)
-  }
+    setShouldUpdate(true);
+  };
 
-  const [shouldUpdate, setShouldUpdate] = useState(false)
+  const [shouldUpdate, setShouldUpdate] = useState(false);
 
   useEffect(() => {
-    setShouldUpdate(false)
-  }, [])
+    setShouldUpdate(false);
+  }, []);
   // const [commentText, setCommentText] = useState('')
 
   // Submits the completed form to api-helper create
-  console.log(props)
+  console.log(props);
 
   return (
     <>
       <Container>
-
-        <div className='comment-input-box'>
+        <div className="comment-input-box">
           <AddCommentTitle>
-            Comment as {props.currentUser.username}
+            Comment as <b>{props.currentUser.username}</b>
           </AddCommentTitle>
-          <CommentInput
-            submitComment={handleSubmit} />
+          <CommentInput submitComment={handleSubmit} />
           {/* <div className='comment-input-footer'> */}
 
           {/* </div> */}
@@ -68,13 +63,9 @@ const CommentSection = props => {
           currentUser={props.currentUser}
           shouldUpdate={shouldUpdate}
         />
-
       </Container>
-
     </>
-  )
+  );
+};
 
-}
-
-
-export default CommentSection
+export default CommentSection;

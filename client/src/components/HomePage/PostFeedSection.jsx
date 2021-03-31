@@ -1,8 +1,7 @@
-import React from 'react';
-import styled from 'styled-components'
-import CreatePostBox from './CreatePostBox.jsx'
-import PostCard from '../PostCard/PostCard'
-
+import React from "react";
+import styled from "styled-components";
+import CreatePostBox from "./CreatePostBox.jsx";
+import PostCard from "../PostCard/PostCard";
 
 const Main = styled.div`
   display: flex;
@@ -13,26 +12,19 @@ const Main = styled.div`
   width: 75%;
 `;
 
-
-const PostFeedSection = props => {
-
+const PostFeedSection = (props) => {
   return (
-
     <Main>
-      <CreatePostBox />
-      {
-        props.posts.map(post => {
-          return (
-            <React.Fragment key={post.id}>
-              <PostCard {...props} postData={post} />
-            </React.Fragment>
+      <CreatePostBox currentUser={props.currentUser} />
+      {props.posts.map((post) => {
+        return (
+          <React.Fragment key={post.id}>
+            <PostCard {...props} postData={post} />
+          </React.Fragment>
+        );
+      })}
+    </Main>
+  );
+};
 
-          )
-        })
-      }
-    </Main >
-  )
-
-}
-
-export default PostFeedSection
+export default PostFeedSection;

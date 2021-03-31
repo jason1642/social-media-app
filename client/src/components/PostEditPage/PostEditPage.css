@@ -1,10 +1,10 @@
-.post-edit-page-form>input,
+.post-edit-page-form > input,
 textarea {
   width: 40%;
   margin-bottom: 20px;
   font-size: 1.1em;
   height: 50px;
-  border-radius: 12px;
+  border-radius: 1%;
   border: none;
 }
 
@@ -12,7 +12,7 @@ textarea {
   text-align: left;
 }
 
-.post-edit-page-form>textarea {
+.post-edit-page-form > textarea {
   height: 70px;
 }
 
