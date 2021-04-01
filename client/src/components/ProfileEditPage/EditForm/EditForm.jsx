@@ -6,7 +6,7 @@ import InputRows from './InputRows';
 // Edit for to alter profile data
 
 const Form = styled.div`
-  border: 1px solid black;
+  /* border: 1px solid black; */
 `;
 const Container = styled.div`
   display: flex;
